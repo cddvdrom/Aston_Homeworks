@@ -2,7 +2,7 @@ import java.io.Console;
 
 public class Lesson2 {
     public static void main(String[] args) {
-        Console console = System.console();
+
 
         printThreeWords();
         checkSumSign();
@@ -23,7 +23,7 @@ public class Lesson2 {
         int a = 1;
         int b = 2;
         int sum = a + b;
-        String result = (sum >= 0) ? "Cумма положительная" : "Сумма отрицательная";
+        String result = (sum >= 0) ? " Cумма положительная" : "Сумма отрицательная";
         System.out.println(result);
 
 
