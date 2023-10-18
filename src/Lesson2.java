@@ -31,7 +31,7 @@ public class Lesson2 {
 
     public static void printColor() {
         int value = 0;
-        String result = (value <= 0) ? "Красный" : (value > 0 && value <= 100) ? "Желтый" : "Зеленый";
+        String result = (value <= 0) ? "Красный" : (value > 0 & value <= 100) ? "Желтый" : "Зеленый";
         System.out.println(result);
     }
 
