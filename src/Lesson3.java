@@ -1,12 +1,14 @@
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static java.lang.Math.rint;
+
 public class Lesson3 {
     public static void main(String[] args) {
         System.out.println(comparisonOfTwoIntegers(9, 12));
-        chekingTheNumberAndPrintResultInConsole(1);
-        chekingTheNumberAndPrintResultInConsole(0);
-        chekingTheNumberAndPrintResultInConsole(-1);
+        isPositive(1);
+        isPositive(0);
+        isPositive(-1);
         System.out.println(checkingTheNumber(1));
         System.out.println(checkingTheNumber(0));
         System.out.println(checkingTheNumber(-1));
@@ -31,38 +33,44 @@ public class Lesson3 {
         System.out.println(Arrays.toString(fixArray));
         System.out.println(Arrays.toString(multNumberLessSixByTwo(fixArray)));
 
-        System.out.println(Arrays.deepToString(getSquareArrayWithFilledDiagonals(10)).replace("], ", "]\n"));
+        System.out.println(Arrays.deepToString(getSquareArrayWithFilledDiagonals(3)).replace("], ", "]\n"));
 
         System.out.println(Arrays.toString(getArray(10, 100)));
     }
 
+    // Задание 1
     public static boolean comparisonOfTwoIntegers(int a, int b) {
         return (a + b) >= 10 & (a + b) <= 20;
     }
 
-    public static void chekingTheNumberAndPrintResultInConsole(int a) {
+    // Задание 2
+    public static void isPositive(int a) {
         String result = (a >= 0) ? " положительное число" : " отрицательное число";
         System.out.println(a + result);
     }
 
+    // Задание 3
     public static boolean checkingTheNumber(int a) {
         return a >= 0;
     }
 
+    // Задание 4
     public static void printStringNumberOfTimes(String line, int count) {
         for (int i = 0; i < count; i++) {
             System.out.println(line);
         }
     }
 
+    // Задание 5
     public static boolean checkLeapYear(int year) {
         return (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0);
     }
 
+    // Задание 6
     public static int[] getRandomOneZeroArray(int a) {
         int[] array = new int[a];
         for (int i = 0; i < array.length; i++) {
-            array[i] = ThreadLocalRandom.current().nextInt(0, 2);
+            array[i] = (int) rint(Math.random());
         }
         return array;
     }
@@ -74,6 +82,7 @@ public class Lesson3 {
         return array;
     }
 
+    // Задание 7
     public static int[] getArrayOfOneHundredElementsFilledInOrder() {
         int[] array = new int[100];
         for (int i = 0; i < array.length; i++) {
@@ -82,6 +91,7 @@ public class Lesson3 {
         return array;
     }
 
+    // Задание 8
     public static int[] multNumberLessSixByTwo(int[] array) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] < 6) {
@@ -91,6 +101,7 @@ public class Lesson3 {
         return array;
     }
 
+    // Задание 10
     public static int[][] getSquareArrayWithFilledDiagonals(int a) {
         int[][] array = new int[a][a];
         for (int i = 0; i < array.length; i++) {
@@ -101,6 +112,7 @@ public class Lesson3 {
         return array;
     }
 
+    // Задание 11
     public static int[] getArray(int len, int initialValue) {
         int[] array = new int[len];
         for (int i = 0; i < array.length; i++) {
