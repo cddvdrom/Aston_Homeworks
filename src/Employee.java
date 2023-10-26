@@ -66,6 +66,18 @@ public class Employee implements Serializable {
 
     }
 
+    public void printEmployee() {
+        System.out.println("Сотрудник{" +
+                "ФИО='" + name + '\'' +
+                ", должность =" + position.getNameOfPosition() +
+                ", email='" + email + '\'' +
+                ", телефон =" + phone +
+                ", заработная плата =" + salary +
+                ", возраст =" + age +
+                '}');
+
+    }
+
     static void validate(Employee employee) throws IllegalAccessException, UserValidException, NoSuchFieldError {
 
 
