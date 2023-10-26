@@ -1,7 +1,14 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Lesson4 {
     public static void main(String[] args) {
+   ArrayList <Employee> employees=createListOfEmployees();
+   System.out.println(employees);
+
+
+    }
+    public static ArrayList <Employee> createListOfEmployees(){
         Employee employee1 = new EmployeeBuilderImpl().
                 name("Петров Петр Петрович").
                 salary(44000).
@@ -62,8 +69,8 @@ public class Lesson4 {
         employees.add(employee4);
         employees.add(employee5);
 
-        System.out.println(employees);
-
+        return employees;
     }
+
 
 }
