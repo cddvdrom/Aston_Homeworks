@@ -44,7 +44,8 @@ public class Employee {
                 ", телефон =" + phone +
                 ", заработная плата =" + salary +
                 ", возраст =" + age +
-                '}';
+                '}' ;
+
     }
 }
 
