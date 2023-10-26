@@ -1,4 +1,7 @@
-public class Employee {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Employee implements Serializable {
 
     private String name;
 
@@ -36,6 +39,21 @@ public class Employee {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        Employee employee = (Employee) o;
+        return Double.compare(employee.salary, salary) == 0 && age == employee.age &&
+                Objects.equals(name, employee.name) && position == employee.position &&
+                Objects.equals(email, employee.email) && Objects.equals(phone, employee.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position, email, phone, salary, age);
+    }
+
+    @Override
     public String toString() {
         return "Сотрудник{" +
                 "ФИО='" + name + '\'' +
@@ -44,7 +62,16 @@ public class Employee {
                 ", телефон =" + phone +
                 ", заработная плата =" + salary +
                 ", возраст =" + age +
-                '}' ;
+                '}';
+
+    }
+
+    static void validate(Employee employee) throws IllegalAccessException, UserValidException, NoSuchFieldError {
+
+
+    }
+
+    public class UserValidException extends Exception {
 
     }
 }
