@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -5,7 +7,11 @@ public class startTask12 {
     public static void main(String[] args) {
         ArrayList<Employee> employees = createListOfEmployees();
         System.out.println(employees);
-
+        try {
+            loadEmloyeesFromFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -69,6 +75,17 @@ public class startTask12 {
 
         return employees;
     }
+public static void loadEmloyeesFromFile() throws IOException {
+    File db = new File("db.csv");
+    if(!db.exists()){db.createNewFile();}
+}
+public static void findDataFile(){}
 
+public static void createEmployee(){}
 
+public static void readEmployee(){}
+
+public static void updateEmployee(){}
+
+public static void deleteEmployee(){}
 }
