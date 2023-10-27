@@ -1,7 +1,7 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class Lesson4 {
+
+public class startTask12 {
     public static void main(String[] args) {
    ArrayList <Employee> employees=createListOfEmployees();
    System.out.println(employees);
@@ -16,8 +16,8 @@ public class Lesson4 {
             @Override
             public String toString() {
                 StringBuilder employees = new StringBuilder();
-                for (Employee empl : this) {
-                    employees.append(empl.toString());
+                for (Employee employee : this) {
+                    employees.append(employee.toString());
                     employees.append("\n");
                 }
                 return employees.toString();
