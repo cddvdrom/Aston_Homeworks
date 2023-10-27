@@ -3,12 +3,13 @@ import java.util.ArrayList;
 
 public class startTask12 {
     public static void main(String[] args) {
-   ArrayList <Employee> employees=createListOfEmployees();
-   System.out.println(employees);
+        ArrayList<Employee> employees = createListOfEmployees();
+        System.out.println(employees);
 
 
     }
-    public static ArrayList <Employee> createListOfEmployees(){
+
+    public static ArrayList<Employee> createListOfEmployees() {
 
         ArrayList<Employee> employees = new ArrayList<>() {
             private static final long serialVersionUID = 1L;
@@ -25,7 +26,7 @@ public class startTask12 {
         };
 
 
-        employees.add( new EmployeeBuilderImpl().
+        employees.add(new EmployeeBuilderImpl().id().
                 name("Петров Петр Петрович").
                 salary(44000).
                 age(33).
@@ -33,7 +34,7 @@ public class startTask12 {
                 email("petrov@ya.ru").
                 phone("213378888").build());
 
-        employees.add(new EmployeeBuilderImpl().
+        employees.add(new EmployeeBuilderImpl().id().
                 name("Иванов Иван Иванович").
                 salary(100000).
                 age(55).
@@ -41,7 +42,7 @@ public class startTask12 {
                 email("ivanoc@mail.ru").
                 phone("6598989874").build());
 
-        employees.add( new EmployeeBuilderImpl().
+        employees.add(new EmployeeBuilderImpl().id().
                 name("Сидоров Сидор Сидорович").
                 salary(10000).
                 age(20).
@@ -49,7 +50,7 @@ public class startTask12 {
                 email("sidorov@mail.ru").
                 phone("465656844").build());
 
-        employees.add( new EmployeeBuilderImpl().
+        employees.add(new EmployeeBuilderImpl().id().
                 name("Алексеев Алексей Алексеевич").
                 salary(50000).
                 age(40).
@@ -57,15 +58,13 @@ public class startTask12 {
                 email("alekseev@mail.ru").
                 phone("9989898884").build());
 
-        employees.add( new EmployeeBuilderImpl().
+        employees.add(new EmployeeBuilderImpl().id().
                 name("Макарова Мария Макаровна").
                 salary(30000).
                 age(33).
                 position(Position.ACCOUNTANT).
                 email("makarova@mail.ru").
                 phone("365656444").build());
-
-
 
 
         return employees;

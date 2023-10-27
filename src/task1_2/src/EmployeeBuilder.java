@@ -1,4 +1,6 @@
 public interface EmployeeBuilder {
+    EmployeeBuilder id();
+
     EmployeeBuilder name(String name);
 
     EmployeeBuilder position(Position position);

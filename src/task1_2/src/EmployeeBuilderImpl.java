@@ -2,6 +2,12 @@ public class EmployeeBuilderImpl implements EmployeeBuilder {
     Employee employee = new Employee();
 
     @Override
+    public EmployeeBuilder id() {
+        employee.setId(Employee.count);
+        return this;
+    }
+
+    @Override
     public EmployeeBuilder name(String name) {
         employee.setName(name);
         return this;
@@ -39,6 +45,7 @@ public class EmployeeBuilderImpl implements EmployeeBuilder {
 
     @Override
     public Employee build() {
+        Employee.count++;
         return employee;
     }
 }

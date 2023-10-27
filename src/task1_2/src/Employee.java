@@ -1,8 +1,9 @@
 
 import java.util.Objects;
 
-public class Employee  {
-
+public class Employee {
+    public static int count;
+    private int id;
     private String name;
 
     private Position position;
@@ -38,6 +39,10 @@ public class Employee  {
         this.age = age;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,8 +60,8 @@ public class Employee  {
 
     @Override
     public String toString() {
-        return "Сотрудник{" +
-                "ФИО='" + name + '\'' +
+        return "Сотрудник{id =" + id +
+                "ФИО= " + name + '\'' +
                 ", должность =" + position.getNameOfPosition() +
                 ", email='" + email + '\'' +
                 ", телефон =" + phone +
