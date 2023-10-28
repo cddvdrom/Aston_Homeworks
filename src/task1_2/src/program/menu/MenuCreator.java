@@ -26,9 +26,7 @@ public class MenuCreator {
         menu.addEntry(new MenuEntry("Вывести всех сотрудников") {
             @Override
             public void run() {
-                ArrayList<Employee> dataList =new ArrayList<>() ;
-                dataList=employeeStore.load();
-                for (Employee employee : dataList
+                for (Employee employee : employeeStore.load()
                 ) {
 
                         System.out.println(employee);
