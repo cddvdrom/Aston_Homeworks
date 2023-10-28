@@ -55,7 +55,8 @@ public class MenuCreator {
                         try {
 
                             Optional<Employee> optional = employeeStore.findById(Integer.parseInt(menu1.getReader().readLine()));
-                            optional.ifPresent(System.out::println);
+                            if (optional.isPresent()){System.out.println(optional.get());}
+                            else {System.out.println("Сотрудника с данным ID нет в БД");}
 
                         } catch (IOException e) {
                             throw new RuntimeException(e);
@@ -77,7 +78,12 @@ public class MenuCreator {
                 System.out.println("run 4");
             }
         });
-
+        menu.addEntry(new MenuEntry("Сохранить изменения в БД") {
+            @Override
+            public void run() {
+                System.out.println("run 4");
+            }
+        });
 
 
         return menu;
