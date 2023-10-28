@@ -51,6 +51,7 @@ public class CsvEmployeeStore implements EmployeeStore {
             while ((row = bufferedReader.readLine()) != null) {
                 String[] data = row.split(",");
                 employees.add(converter.convert(data));
+
             }
             bufferedReader.close();
             return employees;

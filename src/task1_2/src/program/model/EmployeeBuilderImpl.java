@@ -5,7 +5,7 @@ public class EmployeeBuilderImpl implements EmployeeBuilder {
 
     @Override
     public EmployeeBuilder id(int id) {
-        employee.setId(Employee.count);
+        employee.setId(id);
         return this;
     }
 

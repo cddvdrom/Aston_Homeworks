@@ -26,6 +26,7 @@ public class MenuCreator {
         menu.addEntry(new MenuEntry("Вывести всех сотрудников") {
             @Override
             public void run() {
+
                 for (Employee employee : employeeStore.load()
                 ) {
 
