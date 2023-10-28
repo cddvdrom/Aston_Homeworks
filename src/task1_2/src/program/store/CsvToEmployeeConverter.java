@@ -8,9 +8,9 @@ import program.model.Position;
 
 
 
-public class CsvToEmloyeeConverter {
-    public Employee convert (String [] data){
 
+public class CsvToEmployeeConverter {
+    public Employee convert (String [] data){
 
             Employee employee = new EmployeeBuilderImpl().id(Integer.parseInt(data[0])).
                     name(data[1]).

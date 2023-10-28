@@ -2,40 +2,46 @@ package program.menu;
 
 import program.model.Employee;
 import program.model.EmployeeValidator;
-import program.store.CsvToEmloyeeConverter;
+
+import program.store.CsvEmployeeStore;
+import program.store.CsvToEmployeeConverter;
 import program.store.EmployeeStore;
 
 
 import java.io.IOException;
 
 import java.util.ArrayList;
-import java.util.Optional;
+
 
 
 
 
 public class MenuCreator {
-    EmployeeValidator validator=new EmployeeValidator();
-    CsvToEmloyeeConverter converter = new CsvToEmloyeeConverter();
+    private Menu menu;
+    private EmployeeValidator validator;
+    private CsvToEmployeeConverter converter;
     private EmployeeStore employeeStore;
 
-    public MenuCreator(EmployeeStore employeeStore) {
-        this.employeeStore = employeeStore;
+    public MenuCreator() {
+        this.employeeStore = new CsvEmployeeStore();
+        this.converter=new CsvToEmployeeConverter();
+        this.validator=new EmployeeValidator();
     }
 
     public Menu create() {
         Menu menu = new Menu();
+        ArrayList<Employee> dataList =employeeStore. ;
         menu.addEntry(new MenuEntry("Вывести всех сотрудников") {
             @Override
             public void run() {
 
-                ArrayList<Employee> dataList = employeeStore.load();
+
 
                 for (Employee employee : dataList
                 ) {
-                    if (validator.validate(employee)) {
+
                         System.out.println(employee);
-                    }
+
                 }
 
 
@@ -50,12 +56,12 @@ public class MenuCreator {
         });
 
         menu.addEntry(new MenuEntry("Вывести данные сотрудника") {
-            Menu menu1=createCleanMenu();
+
             @Override
             public void run() {
-
-
+                Menu menu1=new Menu();
                 menu1.addEntry(new MenuEntry("Ввод Id сотрудника") {
+
                     @Override
                     public void run() {
 
@@ -64,7 +70,9 @@ public class MenuCreator {
                             //Optional <Employee> optional;
                             //optional = employeeStore.findById(Integer.parseInt(menu1.getReader().readLine()));
                             //optional.ifPresent(System.out::println);
-                            System.out.println(employeeStore.findById(Integer.parseInt(menu1.getReader().readLine())));
+                            String s=menu1.getReader().readLine();
+
+                            System.out.println(employeeStore.findById(Integer.parseInt(s)));
 
                         } catch (IOException e) {
                             throw new RuntimeException(e);
@@ -72,10 +80,12 @@ public class MenuCreator {
 
 
                     }
-                });
-                menu1.run();
 
+                });
+
+                menu1.run();
             }
+
         });
 
         menu.addEntry(new MenuEntry("Удалить сотрудника") {
@@ -85,17 +95,9 @@ public class MenuCreator {
             }
         });
 
-        menu.addEntry(new MenuEntry("Изменить данные сотрудника") {
-            @Override
-            public void run() {
-                System.out.println("run 5");
-            }
-        });
 
 
         return menu;
     }
-    public  Menu createCleanMenu(){
-        return new Menu();
-    }
+
 }
