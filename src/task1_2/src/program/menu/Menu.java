@@ -6,10 +6,20 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Menu {
+    private BufferedReader reader ;
     private ArrayList<MenuEntry> entries = new ArrayList<>();
     private boolean exit = false;
 
+    public BufferedReader getReader() {
+        return reader;
+    }
+
+    public void setReader(BufferedReader reader) {
+        this.reader = reader;
+    }
+
     public Menu() {
+        this.reader=new BufferedReader(new InputStreamReader(System.in));
         entries.add(new MenuEntry("Exit") {
             @Override
             public void run() {
@@ -19,10 +29,10 @@ public class Menu {
     }
 
     public void run() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         while (!exit) {
             outputMenu();
-            String line = null;
+            String line;
             try {
                 line = reader.readLine();
 

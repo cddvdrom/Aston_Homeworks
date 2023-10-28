@@ -19,13 +19,13 @@ private File db=new File ("db.csv");
     }
 
     @Override
-    public Optional<Employee> findById(int id) {
+    public Employee findById(int id) {
         ArrayList <Employee> employees=load();
         for (Employee employee:employees
              ) {
-            if(employee.getId()==id){return Optional.of(employee);}
+            if(employee.getId()==id){return employee;}
         }
-return Optional.empty();
+return null;
     }
 
     @Override

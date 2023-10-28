@@ -5,16 +5,16 @@ import program.model.EmployeeValidator;
 import program.store.CsvToEmloyeeConverter;
 import program.store.EmployeeStore;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.Scanner;
+
+
 
 
 public class MenuCreator {
-Scanner scanner=new Scanner(System.in);
     EmployeeValidator validator=new EmployeeValidator();
     CsvToEmloyeeConverter converter = new CsvToEmloyeeConverter();
     private EmployeeStore employeeStore;
@@ -60,14 +60,16 @@ Scanner scanner=new Scanner(System.in);
                     public void run() {
 
                         System.out.println("Введите ID :");
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                        Optional <Employee> optional= null;
                         try {
-                            optional = employeeStore.findById(Integer.parseInt(reader.readLine()));
+                            //Optional <Employee> optional;
+                            //optional = employeeStore.findById(Integer.parseInt(menu1.getReader().readLine()));
+                            //optional.ifPresent(System.out::println);
+                            System.out.println(employeeStore.findById(Integer.parseInt(menu1.getReader().readLine())));
+
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-                        optional.ifPresent(System.out::println);
+
 
                     }
                 });
