@@ -1,13 +1,16 @@
 package program.store;
 
+import program.model.Employee;
+
 import java.util.ArrayList;
+import java.util.Optional;
 
 public interface EmployeeStore {
     void create ();
-    void findById();
+    Optional <Employee> findById(int id);
     void update ();
     void delete();
-    ArrayList<String []> load();
+    ArrayList<Employee> load();
     void verifyDb();
 
 }

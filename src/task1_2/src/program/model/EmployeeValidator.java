@@ -1,7 +1,8 @@
 package program.model;
 
 public class EmployeeValidator {
-    public boolean validate(String [] data){
+    public boolean validate(Employee employee){
+
         return true;
     }
 }

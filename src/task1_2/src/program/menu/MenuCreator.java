@@ -1,12 +1,19 @@
 package program.menu;
 
+import program.model.Employee;
+import program.model.EmployeeValidator;
 import program.store.CsvToEmloyeeConverter;
 import program.store.EmployeeStore;
 
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.Scanner;
 
 
 public class MenuCreator {
+    Scanner scanner=new Scanner(System.in);
+    EmployeeValidator validator=new EmployeeValidator();
+    CsvToEmloyeeConverter converter = new CsvToEmloyeeConverter();
     private EmployeeStore employeeStore;
 
     public MenuCreator(EmployeeStore employeeStore) {
@@ -18,11 +25,14 @@ public class MenuCreator {
         menu.addEntry(new MenuEntry("Вывести всех сотрудников") {
             @Override
             public void run() {
-                CsvToEmloyeeConverter converter = new CsvToEmloyeeConverter();
-                ArrayList<String[]> dataList = employeeStore.load();
-                for (String[] data : dataList
+
+                ArrayList<Employee> dataList = employeeStore.load();
+
+                for (Employee employee : dataList
                 ) {
-                    System.out.println(converter.convert(data));
+                    if (validator.validate(employee)) {
+                        System.out.println(employee);
+                    }
                 }
 
 
@@ -39,7 +49,21 @@ public class MenuCreator {
         menu.addEntry(new MenuEntry("Вывести данные сотрудника") {
             @Override
             public void run() {
-                System.out.println("run 3");
+                Menu menu1=createCleanMenu();
+
+                menu1.addEntry(new MenuEntry("Ввод Id сотрудника") {
+                    @Override
+                    public void run() {
+
+                        System.out.println("Введите ID :");
+                        int id=scanner.nextInt();
+                        Optional <Employee> optional=employeeStore.findById(id);
+                        optional.ifPresent(System.out::println);
+
+                    }
+                });
+                menu1.run();
+
             }
         });
 
@@ -59,5 +83,8 @@ public class MenuCreator {
 
 
         return menu;
+    }
+    public  Menu createCleanMenu(){
+        return new Menu();
     }
 }

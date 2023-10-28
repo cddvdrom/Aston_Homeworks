@@ -1,9 +1,13 @@
 package program.store;
 
+import program.model.Employee;
+
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class CsvEmployeeStore implements EmployeeStore {
+    CsvToEmloyeeConverter converter=new CsvToEmloyeeConverter();
 private File db=new File ("db.csv");
     public CsvEmployeeStore(){
         verifyDb();
@@ -15,8 +19,13 @@ private File db=new File ("db.csv");
     }
 
     @Override
-    public void findById() {
-
+    public Optional<Employee> findById(int id) {
+        ArrayList <Employee> employees=load();
+        for (Employee employee:employees
+             ) {
+            if(employee.getId()==id){return Optional.of(employee);}
+        }
+return Optional.empty();
     }
 
     @Override
@@ -30,15 +39,15 @@ private File db=new File ("db.csv");
     }
 
     @Override
-    public ArrayList <String []> load() {
+    public ArrayList <Employee> load() {
 
         try {
             BufferedReader bufferedReader=new BufferedReader(new FileReader(db));
             String row;
-            ArrayList <String []> dataList=new ArrayList<>();
+            ArrayList <Employee> dataList=new ArrayList<>();
             while ((row=bufferedReader.readLine())!=null){
                 String [] data=   row.split(",");
-                dataList.add(data);
+                dataList.add(converter.convert(data));
             }
             bufferedReader.close();
             return  dataList;

@@ -8,6 +8,38 @@ public class Employee implements Serializable {
     private int id;
     private String name;
 
+    public static int getCount() {
+        return count;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     private Position position;
 
     private String email;
