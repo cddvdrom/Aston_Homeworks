@@ -1,3 +1,5 @@
+package program.model;
+
 public enum Position {
     DIRECTOR("директор"),
     ACCOUNTANT("бухгалтер"),

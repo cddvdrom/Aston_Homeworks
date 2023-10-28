@@ -1,3 +1,4 @@
+package program.model;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -77,9 +78,9 @@ public class Employee implements Serializable {
 
     }
 
-    static void validate(Employee employee) throws IllegalAccessException, UserValidException, NoSuchFieldError {
+    static boolean validate(Employee employee) throws IllegalAccessException, UserValidException, NoSuchFieldError {
 
-
+return true;
     }
 
     public class UserValidException extends Exception {

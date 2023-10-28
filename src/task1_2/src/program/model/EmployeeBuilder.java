@@ -1,5 +1,7 @@
+package program.model;
+
 public interface EmployeeBuilder {
-    EmployeeBuilder id();
+    EmployeeBuilder id(int id);
 
     EmployeeBuilder name(String name);
 

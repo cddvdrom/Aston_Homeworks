@@ -1,8 +1,10 @@
+package program.model;
+
 public class EmployeeBuilderImpl implements EmployeeBuilder {
     Employee employee = new Employee();
 
     @Override
-    public EmployeeBuilder id() {
+    public EmployeeBuilder id(int id) {
         employee.setId(Employee.count);
         return this;
     }

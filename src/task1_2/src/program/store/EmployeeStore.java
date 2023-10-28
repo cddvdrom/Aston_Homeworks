@@ -1,10 +1,13 @@
-package store;
+package program.store;
+
+import java.util.ArrayList;
 
 public interface EmployeeStore {
     void create ();
     void findById();
     void update ();
     void delete();
-    void load();
+    ArrayList<String []> load();
+    void verifyDb();
 
 }

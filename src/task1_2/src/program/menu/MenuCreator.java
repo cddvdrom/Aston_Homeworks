@@ -1,12 +1,31 @@
-package menu;
+package program.menu;
+
+import program.store.CsvToEmloyeeConverter;
+import program.store.EmployeeStore;
+
+import java.util.ArrayList;
+
 
 public class MenuCreator {
-    public Menu create () {
-        Menu menu =new Menu();
+    private EmployeeStore employeeStore;
+
+    public MenuCreator(EmployeeStore employeeStore) {
+        this.employeeStore = employeeStore;
+    }
+
+    public Menu create() {
+        Menu menu = new Menu();
         menu.addEntry(new MenuEntry("Вывести всех сотрудников") {
             @Override
             public void run() {
-                System.out.println("run 1");
+                CsvToEmloyeeConverter converter = new CsvToEmloyeeConverter();
+                ArrayList<String[]> dataList = employeeStore.load();
+                for (String[] data : dataList
+                ) {
+                    System.out.println(converter.convert(data));
+                }
+
+
             }
         });
 
