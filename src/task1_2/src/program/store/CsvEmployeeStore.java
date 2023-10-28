@@ -4,6 +4,7 @@ import program.model.Employee;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class CsvEmployeeStore implements EmployeeStore {
     private File db;
@@ -20,18 +21,18 @@ public class CsvEmployeeStore implements EmployeeStore {
     }
 
     @Override
-    public Employee findById(int id) {
-        ArrayList<Employee> employees = new ArrayList<>();
-        employees = load();
-        print();
+    public Optional <Employee> findById(int id) {
+        Optional <Employee> employeeOptional;
+        ArrayList<Employee> employees = load();
         for (Employee employee : employees
         ) {
 
             if (employee.getId() == id) {
-                return employee;
+                employeeOptional=Optional.of(employee);
+                return employeeOptional;
             }
         }
-        return null;
+        return Optional.ofNullable(null);
     }
 
 

@@ -4,10 +4,11 @@ import program.model.Employee;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public interface EmployeeStore {
     void create ();
-    Employee findById(int id);
+    Optional <Employee> findById(int id);
 
     void delete();
    ArrayList <Employee>load();

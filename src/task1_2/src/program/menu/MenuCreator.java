@@ -7,9 +7,7 @@ import program.store.EmployeeStore;
 import java.io.IOException;
 
 import java.util.ArrayList;
-
-
-
+import java.util.Optional;
 
 
 public class MenuCreator {
@@ -57,12 +55,9 @@ public class MenuCreator {
 
                         System.out.println("Введите ID :");
                         try {
-                            //Optional <Employee> optional;
-                            //optional = employeeStore.findById(Integer.parseInt(menu1.getReader().readLine()));
-                            //optional.ifPresent(System.out::println);
-                            String s=menu1.getReader().readLine();
 
-                            System.out.println(employeeStore.findById(Integer.parseInt(s)));
+                            Optional<Employee> optional = employeeStore.findById(Integer.parseInt(menu1.getReader().readLine()));
+                            optional.ifPresent(System.out::println);
 
                         } catch (IOException e) {
                             throw new RuntimeException(e);
