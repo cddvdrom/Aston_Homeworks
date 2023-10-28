@@ -1,7 +1,8 @@
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Employee {
+public class Employee implements Serializable {
     public static int count;
     private int id;
     private String name;
