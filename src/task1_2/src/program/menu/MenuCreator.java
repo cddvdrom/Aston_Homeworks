@@ -1,10 +1,6 @@
 package program.menu;
 
 import program.model.Employee;
-import program.model.EmployeeValidator;
-
-import program.store.CsvEmployeeStore;
-import program.store.CsvToEmployeeConverter;
 import program.store.EmployeeStore;
 
 
@@ -17,26 +13,21 @@ import java.util.ArrayList;
 
 
 public class MenuCreator {
-    private Menu menu;
-    private EmployeeValidator validator;
-    private CsvToEmployeeConverter converter;
     private EmployeeStore employeeStore;
 
-    public MenuCreator() {
-        this.employeeStore = new CsvEmployeeStore();
-        this.converter=new CsvToEmployeeConverter();
-        this.validator=new EmployeeValidator();
+    public MenuCreator(EmployeeStore employeeStore) {
+        this.employeeStore = employeeStore;
+
     }
 
     public Menu create() {
         Menu menu = new Menu();
-        ArrayList<Employee> dataList =employeeStore. ;
+
         menu.addEntry(new MenuEntry("Вывести всех сотрудников") {
             @Override
             public void run() {
-
-
-
+                ArrayList<Employee> dataList =new ArrayList<>() ;
+                dataList=employeeStore.load();
                 for (Employee employee : dataList
                 ) {
 

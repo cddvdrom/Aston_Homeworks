@@ -4,19 +4,13 @@ import program.model.Employee;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class CsvEmployeeStore implements EmployeeStore {
-    private ArrayList<Employee> employees ;
     private File db;
 
-    private CsvToEmployeeConverter converter;
-
     public CsvEmployeeStore() {
-        this.converter = new CsvToEmployeeConverter();
-        this.employees=new ArrayList<>();
-        verifyDb();
-        db=new File("db.csv");
+
+        this.db = verifyDb();
     }
 
 
@@ -27,8 +21,9 @@ public class CsvEmployeeStore implements EmployeeStore {
 
     @Override
     public Employee findById(int id) {
-      load();
-print();
+        ArrayList<Employee> employees = new ArrayList<>();
+        employees = load();
+        print();
         for (Employee employee : employees
         ) {
 
@@ -46,8 +41,9 @@ print();
     }
 
     @Override
-    public void load() {
-        employees.clear();
+    public ArrayList<Employee> load() {
+        CsvToEmployeeConverter converter = new CsvToEmployeeConverter();
+        ArrayList<Employee> employees = new ArrayList<>();
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(db));
             String row;
@@ -57,7 +53,7 @@ print();
                 employees.add(converter.convert(data));
             }
             bufferedReader.close();
-
+            return employees;
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -68,7 +64,7 @@ print();
     }
 
     @Override
-    public void verifyDb() {
+    public File verifyDb() {
         File db = new File("db.csv");
         if (!db.exists()) {
             try {
@@ -77,6 +73,7 @@ print();
                 throw new RuntimeException(e);
             }
         }
+        return db;
     }
 
     public void print() {
