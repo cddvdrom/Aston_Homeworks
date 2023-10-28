@@ -7,13 +7,22 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class CsvEmployeeStore implements EmployeeStore {
-    private File db;
+    private final File DB = new File("src/task1_2/src/program/data","db.csv");
+
+    private ArrayList<Employee> employees;
 
     public CsvEmployeeStore() {
 
-        this.db = verifyDb();
+        this.employees = load();
     }
 
+    public ArrayList<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(ArrayList<Employee> employees) {
+        this.employees = employees;
+    }
 
     @Override
     public void create() {
@@ -21,14 +30,14 @@ public class CsvEmployeeStore implements EmployeeStore {
     }
 
     @Override
-    public Optional <Employee> findById(int id) {
-        Optional <Employee> employeeOptional;
-        ArrayList<Employee> employees = load();
+    public Optional<Employee> findById(int id) {
+        Optional<Employee> employeeOptional;
+
         for (Employee employee : employees
         ) {
 
             if (employee.getId() == id) {
-                employeeOptional=Optional.of(employee);
+                employeeOptional = Optional.of(employee);
                 return employeeOptional;
             }
         }
@@ -46,7 +55,7 @@ public class CsvEmployeeStore implements EmployeeStore {
         CsvToEmployeeConverter converter = new CsvToEmployeeConverter();
         ArrayList<Employee> employees = new ArrayList<>();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(db));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(DB));
             String row;
 
             while ((row = bufferedReader.readLine()) != null) {
@@ -65,18 +74,6 @@ public class CsvEmployeeStore implements EmployeeStore {
 
     }
 
-    @Override
-    public File verifyDb() {
-        File db = new File("db.csv");
-        if (!db.exists()) {
-            try {
-                db.createNewFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return db;
-    }
 
     public void print() {
         ArrayList<Employee> dataList = new ArrayList<>();
