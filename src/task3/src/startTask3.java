@@ -5,5 +5,6 @@ public class startTask3 {
         park.addAttraction("Колесо обозрения", 10, 25.5);
         park.addAttraction("Крылатые качели", 5, 5.5);
 
+        System.out.println(park.getAttractions());
     }
 }

@@ -11,9 +11,7 @@ public class Park {
         return attractions;
     }
 
-    public void setAttractions(ArrayList<Attraction> attractions) {
-        this.attractions = attractions;
-    }
+
 
     public void addAttraction(String name, int time, double cost) {
         attractions.add(new Attraction(name, time, cost));
@@ -28,6 +26,15 @@ public class Park {
             this.name = name;
             this.time = time;
             this.cost = cost;
+        }
+
+        @Override
+        public String toString() {
+            return "Attraction{" +
+                    "name='" + name + '\'' +
+                    ", time=" + time +
+                    ", cost=" + cost +
+                    '}';
         }
 
         public void info() {
