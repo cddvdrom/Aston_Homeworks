@@ -23,10 +23,10 @@ public class MenuCreator {
             @Override
             public void run() {
 
-                for (Employee employee : employeeStore.load()
+                for (Employee employee : employeeStore.getEmployees()
                 ) {
 
-                        System.out.println(employee);
+                    System.out.println(employee);
 
                 }
 
@@ -45,7 +45,7 @@ public class MenuCreator {
 
             @Override
             public void run() {
-                Menu menu1=new Menu();
+                Menu menu1 = new Menu();
                 menu1.addEntry(new MenuEntry("Ввод Id сотрудника") {
 
                     @Override
@@ -55,8 +55,11 @@ public class MenuCreator {
                         try {
 
                             Optional<Employee> optional = employeeStore.findById(Integer.parseInt(menu1.getReader().readLine()));
-                            if (optional.isPresent()){System.out.println(optional.get());}
-                            else {System.out.println("Сотрудника с данным ID нет в БД");}
+                            if (optional.isPresent()) {
+                                System.out.println(optional.get());
+                            } else {
+                                System.out.println("Сотрудника с данным ID нет в БД");
+                            }
 
                         } catch (IOException e) {
                             throw new RuntimeException(e);
@@ -75,7 +78,26 @@ public class MenuCreator {
         menu.addEntry(new MenuEntry("Удалить сотрудника") {
             @Override
             public void run() {
-                System.out.println("run 4");
+                Menu menu = new Menu();
+                menu.addEntry(new MenuEntry("Ввод ID удаляемого сотрудника") {
+                    @Override
+                    public void run() {
+                        System.out.println("Введите ID : ");
+                        try {
+                            int id = Integer.parseInt(menu.getReader().readLine());
+                            if (employeeStore.delete(id)) {
+                                System.out.println("Cотрудник " + id + "успешно удален ");
+                            } else {
+                                System.out.println("Cотрудник " + id + "не найден ");
+                            }
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+                });
+
+                menu.run();
             }
         });
         menu.addEntry(new MenuEntry("Сохранить изменения в БД") {

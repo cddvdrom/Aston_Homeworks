@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class CsvEmployeeStore implements EmployeeStore {
-    private final File DB = new File("src/task1_2/src/program/data","db.csv");
+    private final File DB = new File("src/task1_2/src/program/data", "db.csv");
 
     private ArrayList<Employee> employees;
 
@@ -46,8 +46,17 @@ public class CsvEmployeeStore implements EmployeeStore {
 
 
     @Override
-    public void delete() {
+    public boolean delete(int id) {
 
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getId() == id) {
+                this.employees.remove(i);
+
+                return true;
+            }
+
+        }
+        return false;
     }
 
     @Override
@@ -76,9 +85,9 @@ public class CsvEmployeeStore implements EmployeeStore {
 
 
     public void print() {
-        ArrayList<Employee> dataList = new ArrayList<>();
-        load();
-        for (Employee e : dataList
+
+
+        for (Employee e : employees
         ) {
             System.out.println(e);
         }

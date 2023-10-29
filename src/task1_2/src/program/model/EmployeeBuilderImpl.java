@@ -47,7 +47,6 @@ public class EmployeeBuilderImpl implements EmployeeBuilder {
 
     @Override
     public Employee build() {
-        Employee.count++;
         return employee;
     }
 }

@@ -3,14 +3,20 @@ package program.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Employee implements Serializable {
-    public static int count;
+public class Employee {
+
     private int id;
     private String name;
+    private Position position;
 
-    public static int getCount() {
-        return count;
-    }
+    private String email;
+
+    private String phone;
+
+    private double salary;
+    private int age;
+
+
 
     public int getId() {
         return id;
@@ -40,14 +46,7 @@ public class Employee implements Serializable {
         return age;
     }
 
-    private Position position;
 
-    private String email;
-
-    private String phone;
-
-    private double salary;
-    private int age;
 
     public void setName(String name) {
         this.name = name;

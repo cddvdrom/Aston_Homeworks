@@ -7,7 +7,6 @@ import program.store.CsvEmployeeStore;
 import program.store.EmployeeStore;
 
 
-
 public class startTask12 {
     public static void main(String[] args) {
         EmployeeStore employeeStore = new CsvEmployeeStore();
