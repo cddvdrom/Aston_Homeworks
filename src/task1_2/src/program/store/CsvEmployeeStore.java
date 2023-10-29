@@ -69,8 +69,9 @@ public class CsvEmployeeStore implements EmployeeStore {
 
             while ((row = bufferedReader.readLine()) != null) {
                 String[] data = row.split(",");
-                if (converter.convert(data).isPresent()){
-                employees.add(converter.convert(data).get());}
+                if (converter.convert(data).isPresent()) {
+                    employees.add(converter.convert(data).get());
+                }
 
             }
             bufferedReader.close();
@@ -83,18 +84,20 @@ public class CsvEmployeeStore implements EmployeeStore {
 
 
     }
-    public void save(){
 
+    public void save() {
 
 
         try {
 
 
+            FileWriter fileWriter = new FileWriter(DB, false);
+            fileWriter.write("");
+            fileWriter.flush();
 
-            BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(DB));
-            bufferedWriter.write("");
-            StringBuilder stringBuilder=new StringBuilder();
-            for (int i=0;i<employees.size();i++){
+            System.out.println(employees.size());
+            for (int i = 0; i < employees.size(); i++) {
+                StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append(employees.get(i).getId());
                 stringBuilder.append(",");
                 stringBuilder.append(employees.get(i).getName());
@@ -109,14 +112,14 @@ public class CsvEmployeeStore implements EmployeeStore {
                 stringBuilder.append(",");
                 stringBuilder.append(employees.get(i).getPhone());
                 stringBuilder.append("\n");
-                bufferedWriter.append(stringBuilder.toString());
+                fileWriter.write(stringBuilder.toString());
+                fileWriter.flush();
             }
 
-            bufferedWriter.close();
+            fileWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
 
 
     }
