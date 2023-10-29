@@ -14,9 +14,7 @@ public class Menu {
         return reader;
     }
 
-    public void setReader(BufferedReader reader) {
-        this.reader = reader;
-    }
+
 
     public Menu() {
         this.reader=new BufferedReader(new InputStreamReader(System.in));
