@@ -3,6 +3,8 @@ package program.store;
 import program.model.Employee;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -69,7 +71,8 @@ public class CsvEmployeeStore implements EmployeeStore {
 
             while ((row = bufferedReader.readLine()) != null) {
                 String[] data = row.split(",");
-                employees.add(converter.convert(data));
+                if (converter.convert(data).isPresent()){
+                employees.add(converter.convert(data).get());}
 
             }
             bufferedReader.close();
@@ -79,6 +82,43 @@ public class CsvEmployeeStore implements EmployeeStore {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
+    }
+    public void save(){
+
+
+
+        try {
+
+
+
+            BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter(DB));
+            bufferedWriter.write("");
+            StringBuilder stringBuilder=new StringBuilder();
+            for (int i=0;i<employees.size();i++){
+                stringBuilder.append(employees.get(i).getId());
+                stringBuilder.append(",");
+                stringBuilder.append(employees.get(i).getName());
+                stringBuilder.append(",");
+                stringBuilder.append(employees.get(i).getSalary());
+                stringBuilder.append(",");
+                stringBuilder.append(employees.get(i).getAge());
+                stringBuilder.append(",");
+                stringBuilder.append(employees.get(i).getPosition().getNameOfPosition());
+                stringBuilder.append(",");
+                stringBuilder.append(employees.get(i).getEmail());
+                stringBuilder.append(",");
+                stringBuilder.append(employees.get(i).getPhone());
+                stringBuilder.append("\n");
+                bufferedWriter.append(stringBuilder.toString());
+            }
+
+            bufferedWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
 
     }

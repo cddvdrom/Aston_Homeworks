@@ -17,5 +17,6 @@ public interface EmployeeStore {
     ArrayList<Employee> getEmployees();
 
     void setEmployees(ArrayList<Employee> employees);
+    void save();
 
 }

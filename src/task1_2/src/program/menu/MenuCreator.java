@@ -9,10 +9,12 @@ import java.util.Optional;
 
 
 public class MenuCreator {
+
     private EmployeeStore employeeStore;
 
     public MenuCreator(EmployeeStore employeeStore) {
         this.employeeStore = employeeStore;
+
 
     }
 
@@ -22,25 +24,27 @@ public class MenuCreator {
         menu.addEntry(new MenuEntry("Вывести всех сотрудников") {
             @Override
             public void run() {
+                if (employeeStore.getEmployees().size() != 0) {
+                    for (Employee employee : employeeStore.getEmployees()
+                    ) {
 
-                for (Employee employee : employeeStore.getEmployees()
-                ) {
+                        System.out.println(employee);
 
-                    System.out.println(employee);
-
+                    }
+                } else {
+                    System.out.println("База сотрудников пуста");
                 }
-
 
             }
         });
-
+/*
         menu.addEntry(new MenuEntry("Добавить нового сотрудника") {
             @Override
             public void run() {
                 System.out.println("run 2");
             }
         });
-
+*/
         menu.addEntry(new MenuEntry("Вывести данные сотрудника") {
 
             @Override
@@ -103,7 +107,7 @@ public class MenuCreator {
         menu.addEntry(new MenuEntry("Сохранить изменения в БД") {
             @Override
             public void run() {
-                System.out.println("run 4");
+                employeeStore.save();
             }
         });
 
