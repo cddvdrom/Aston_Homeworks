@@ -45,6 +45,15 @@ public class MenuCreator {
             }
         });
 */
+
+        menu.addEntry(new MenuEntry("Вывести сотрудников старше 40 лет ") {
+            @Override
+            public void run() {
+              employeeStore.getEmployees().stream().filter(x->x.getAge()>40).forEach(System.out::println);
+
+            }
+        });
+
         menu.addEntry(new MenuEntry("Вывести данные сотрудника") {
 
             @Override
