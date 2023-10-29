@@ -37,7 +37,7 @@ public class Park {
                     '}';
         }
 
-        public void info() {
+        public void printInfo() {
 
             System.out.println("Аттракцион :" + name);
             System.out.println("Время работы :" + time);
