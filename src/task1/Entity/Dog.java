@@ -5,7 +5,7 @@ import task1.Validator.Validator;
 public class Dog extends Animal {
     static int countDogs;
     private final int MAX_RUN_DISTANCE = 500;
-    private final int MAX_SWIM_DISTANCE = 10;
+    private final int MAX_SWIM_DISTANCE =  10;
     private Validator runValidator;
     private Validator swimValidator;
     private String name;

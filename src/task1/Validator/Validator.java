@@ -1,7 +1,7 @@
 package task1.Validator;
 
 public class Validator {
-    private int maxDistance;
+    private int maxDistance ;
 
     public Validator(int maxDistance) {
         this.maxDistance = maxDistance;

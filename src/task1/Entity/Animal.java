@@ -1,6 +1,6 @@
 package task1.Entity;
 
-public abstract class Animal {
+public abstract class  Animal {
     static int count;
 
     public Animal() {

@@ -3,7 +3,7 @@ package task1.Entity;
 import task1.Validator.Validator;
 
 public class Cat extends Animal {
-    private final int MAX_RUN_DISTANCE=200;
+    private final int MAX_RUN_DISTANCE =200;
     static int countCats;
     private String name;
     private Validator runValidator;

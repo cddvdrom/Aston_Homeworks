@@ -4,7 +4,7 @@ import task1.Entity.Animal;
 import task1.Entity.Cat;
 import task1.Entity.Dog;
 
-import java.util.ArrayList;
+import java.util.ArrayList ;
 
 public class Start {
     public static void main(String[] args) {
