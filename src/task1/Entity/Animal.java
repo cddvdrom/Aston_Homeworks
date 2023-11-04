@@ -8,7 +8,6 @@ public abstract class Animal {
     private  int maxSwimDistance;
     private  int amountForFull;
 
-
     private boolean full;
 
     public Animal() {
@@ -23,7 +22,7 @@ public abstract class Animal {
 
     public String getName() {
         return name;
-    }
+   }
 
     public boolean isFull() {
         return full;
