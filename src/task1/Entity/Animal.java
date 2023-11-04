@@ -21,7 +21,7 @@ public abstract class Animal {
 
     public abstract boolean isSwimming();
 
-    public abstract void info();
+    public abstract String info();
 
     public String getName() {
         return name;
@@ -105,4 +105,6 @@ public abstract class Animal {
             System.out.println(name + " поел ");
         }
     }
+
+
 }

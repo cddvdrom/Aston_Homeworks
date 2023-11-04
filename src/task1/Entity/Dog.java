@@ -3,19 +3,14 @@ package task1.Entity;
 
 
 public class Dog extends Animal {
-    private final int MAX_DOG_RUN_DISTANCE=200;
-    private final int MAX_DOG_SWIM_DISTANCE=50;
-    private final int AMOUNT_FOR_FULL = 40;
+
     static int countDogs;
 
 
-    public Dog(String name) {
+    public Dog() {
 
         super();
-        super.setAmountForFull(AMOUNT_FOR_FULL);
-        super.setMaxRunDistance(MAX_DOG_RUN_DISTANCE);
-        super.setMaxSwimDistance(MAX_DOG_SWIM_DISTANCE);
-        super.setName(name);
+
         countDogs++;
     }
 
@@ -28,26 +23,18 @@ public class Dog extends Animal {
         return true;
     }
 
-    public void info() {
-        System.out.println("Информация о животном: ");
-        System.out.println("Вид : собака");
-        System.out.println("Кличка : " + super.getName());
-        System.out.println("Cытость : " + ((super.isFull()) ? "Сыт" : "Голоден"));
+    public String info() {
+        StringBuilder builder=new StringBuilder();
+        builder.append("Информация о животном: ");
+        builder.append("Вид : собака");
+        builder.append("Кличка : " + super.getName());
+        builder.append("Cытость : " + ((super.isFull()) ? "Сыт" : "Голоден"));
+        return builder.toString();
     }
 
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
+    public static int getCountDogs() {
+        return countDogs;
     }
 }
