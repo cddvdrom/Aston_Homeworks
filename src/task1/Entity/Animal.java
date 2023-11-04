@@ -5,18 +5,16 @@ import task1.Validator.RunSwimValidator;
 public abstract class Animal {
 
     static int count;
-    private String name;
-    private int maxRunDistance;
-    private int maxSwimDistance;
-    private int amountForFull;
-    private RunSwimValidator runValidator;
-    private RunSwimValidator swimValidator;
+    private final String name;
+    private final int maxRunDistance;
+    private final int maxSwimDistance;
+    private final int amountForFull;
+    private final RunSwimValidator runValidator;
 
     private boolean full;
 
     public Animal(int maxRunDistance, int maxSwimDistance, int amountForFull, String name) {
         this.runValidator = new RunSwimValidator(maxRunDistance);
-        this.swimValidator = new RunSwimValidator(maxSwimDistance);
         this.maxRunDistance = maxRunDistance;
         this.maxSwimDistance = maxSwimDistance;
         this.amountForFull = amountForFull;
