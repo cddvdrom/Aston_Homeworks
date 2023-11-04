@@ -7,9 +7,9 @@ public abstract class  Animal {
         count++;
     }
 
-    public abstract void run(int distance);
+    public  abstract void run(int distance);
 
     public abstract void swim(int distance);
 
-    public abstract void eat(int quantity);
+    public abstract void eat(Pork pork);
 }
