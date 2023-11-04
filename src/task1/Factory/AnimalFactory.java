@@ -3,6 +3,8 @@ package task1.Factory;
 import task1.Entity.Animal;
 import task1.Entity.Cat;
 import task1.Entity.Dog;
+import task1.Validator.AnimalValidator;
+import task1.Validator.AnimalValidatorImpl;
 
 public class AnimalFactory {
     private final int MAX_CAT_RUN_DISTANCE = 100;
@@ -13,7 +15,11 @@ public class AnimalFactory {
     private final int MAX_DOG_SWIM_DISTANCE=50;
     private final int AMOUNT_DOG_FOR_FULL = 40;
 
+    private AnimalValidator validator;
+
     public Animal createAnimal (AnymalType type,String name){
+        this.validator=new AnimalValidatorImpl();
+
        Animal animal=null;
 
        switch (type){
@@ -33,5 +39,6 @@ public class AnimalFactory {
                break;
 
        }
+
     return animal;
 }}

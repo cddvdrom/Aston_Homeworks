@@ -1,7 +1,5 @@
 package task1.Entity;
 
-import task1.Validator.RunSwimValidator;
-
 public abstract class Animal {
 
     static int count;
