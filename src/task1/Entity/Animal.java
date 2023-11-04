@@ -1,5 +1,9 @@
 package task1.Entity;
 
+import task1.Result.Result;
+import task1.Validator.ActionValidator;
+import task1.Validator.ActionValidatorIml;
+
 public abstract class Animal {
 
     static int count;
@@ -7,10 +11,11 @@ public abstract class Animal {
     private  int maxRunDistance;
     private  int maxSwimDistance;
     private  int amountForFull;
-
+private ActionValidator actionValidator;
     private boolean full;
 
     public Animal() {
+        actionValidator=new ActionValidatorIml();
         count++;
     }
 
@@ -70,39 +75,26 @@ public abstract class Animal {
         this.full = full;
     }
 
-    public void run(int distance) {
+    public Result run(int distance) {
 
-            if (isRunning() && distance <= maxRunDistance) {
-                System.out.println(name + " пробежал " + distance + " метров");
-            } else if (distance > maxRunDistance) {
-                System.out.println(name + " не может пробежать " + distance + " метров");
-            } else {
-                System.out.println(name + " не умеет бегать");
+            if(actionValidator.runDistanceIsValid(distance,this)){
+                return null;
             }
-
+        return null;
     }
 
-    public void swim(int distance) {
-        if (isSwimming() && distance <= maxSwimDistance) {
-            System.out.println(name + " проплыл " + distance + " метров");
-
-        } else if (isSwimming() && distance > maxSwimDistance) {
-
-        } else {
-            System.out.println(name + " не умеет плавать");
+    public Result swim(int distance) {
+        if(actionValidator.runDistanceIsValid(distance,this)){
+            return null;
         }
+        return null;
     }
 
-    public void eat(Pork pork) {
-        if (pork.getAmount() == 0) {
-            System.out.println(name + " не поел , так как в тарелке не хватает ");
-            return;
+    public Result eat(Pork pork) {
+        if(actionValidator.amountFoodIsValid(pork.getAmount(),this)){
+            return null;
         }
-        if (pork.getAmount() > amountForFull) {
-            full = true;
-            pork.spendFood(amountForFull);
-            System.out.println(name + " поел ");
-        }
+        return null;
     }
 
 
