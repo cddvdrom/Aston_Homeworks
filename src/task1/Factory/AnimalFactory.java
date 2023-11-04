@@ -22,9 +22,15 @@ public class AnimalFactory {
 
     private AnimalValidator validator;
 
-    public Animal createAnimal(AnymalType type, String name) throws IllegalArgumentException {
-        this.validator = new AnimalValidatorImpl();
+    public AnimalFactory() {
         this.animals = new ArrayList<>();
+        this.validator = new AnimalValidatorImpl();
+        ;
+    }
+
+    public Animal createAnimal(AnymalType type, String name) throws IllegalArgumentException {
+
+
         Animal animal = null;
 
         switch (type) {
@@ -58,12 +64,13 @@ public class AnimalFactory {
     }
 
     public long getQuantityCats() {
-        return animals.stream().filter(x->x.getGender().equals("кот")).count();
+        return animals.stream().filter(x -> x.getGender().equals("кот")).count();
     }
 
     public long getQuantityDogs() {
-        return animals.stream().filter(x->x.getGender().equals("собака")).count();
+        return animals.stream().filter(x -> x.getGender().equals("собака")).count();
     }
+
     public long getQuantityAnimals() {
         return animals.size();
     }

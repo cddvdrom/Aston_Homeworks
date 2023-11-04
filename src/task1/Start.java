@@ -12,7 +12,7 @@ import task1.View.DisplayResult;
 public class Start {
     public static void main(String[] args) {
         AnimalFactory factory = new AnimalFactory();
-        DisplayResult display=new ConsoleDisplay();
+        DisplayResult display = new ConsoleDisplay();
         try {
             Animal dog = factory.createAnimal(AnymalType.DOG, "Шарик");
             System.out.println(dog.info());
@@ -22,10 +22,6 @@ public class Start {
             System.out.println(e);
         }
 
-        System.out.println("Всего создано "+ factory.getQuantityAnimals()+" животных");
-        System.out.println("Всего создано "+ factory.getQuantityCats()+" котов");
-        System.out.println("Всего создано "+ factory.getQuantityDogs()+" собак");
-
         try {
             Animal cat = factory.createAnimal(AnymalType.CAT, "Барсик");
             System.out.println(cat.info());
@@ -34,8 +30,8 @@ public class Start {
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }
-        System.out.println("Всего создано "+ factory.getQuantityAnimals()+" животных");
-System.out.println("Всего создано "+ factory.getQuantityCats()+" котов");
-        System.out.println("Всего создано "+ factory.getQuantityDogs()+" собак");
+        System.out.println("Всего создано " + factory.getQuantityAnimals() + " животных");
+        System.out.println("Всего создано " + factory.getQuantityCats() + " котов");
+        System.out.println("Всего создано " + factory.getQuantityDogs() + " собак");
     }
 }
