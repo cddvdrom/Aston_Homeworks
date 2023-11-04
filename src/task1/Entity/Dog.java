@@ -3,11 +3,19 @@ package task1.Entity;
 import task1.Validator.RunSwimValidator;
 
 public class Dog extends Animal {
+    private final int MAX_DOG_RUN_DISTANCE=200;
+    private final int MAX_DOG_SWIM_DISTANCE=50;
+    private final int AMOUNT_FOR_FULL = 40;
     static int countDogs;
 
 
     public Dog(String name) {
-        super(200, 100, 30, name);
+
+        super();
+        super.setAmountForFull(AMOUNT_FOR_FULL);
+        super.setMaxRunDistance(MAX_DOG_RUN_DISTANCE);
+        super.setMaxSwimDistance(MAX_DOG_SWIM_DISTANCE);
+        super.setName(name);
         countDogs++;
     }
 

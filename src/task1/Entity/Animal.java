@@ -5,21 +5,15 @@ import task1.Validator.RunSwimValidator;
 public abstract class Animal {
 
     static int count;
-    private final String name;
-    private final int maxRunDistance;
-    private final int maxSwimDistance;
-    private final int amountForFull;
-    private final RunSwimValidator runValidator;
+    private String name;
+    private  int maxRunDistance;
+    private  int maxSwimDistance;
+    private  int amountForFull;
+    private  RunSwimValidator runValidator;
 
     private boolean full;
 
-    public Animal(int maxRunDistance, int maxSwimDistance, int amountForFull, String name) {
-        this.runValidator = new RunSwimValidator(maxRunDistance);
-        this.maxRunDistance = maxRunDistance;
-        this.maxSwimDistance = maxSwimDistance;
-        this.amountForFull = amountForFull;
-        this.full = false;
-        this.name = name;
+    public Animal() {
         count++;
     }
 
@@ -35,6 +29,46 @@ public abstract class Animal {
 
     public boolean isFull() {
         return full;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getMaxRunDistance() {
+        return maxRunDistance;
+    }
+
+    public void setMaxRunDistance(int maxRunDistance) {
+        this.maxRunDistance = maxRunDistance;
+    }
+
+    public int getMaxSwimDistance() {
+        return maxSwimDistance;
+    }
+
+    public void setMaxSwimDistance(int maxSwimDistance) {
+        this.maxSwimDistance = maxSwimDistance;
+    }
+
+    public int getAmountForFull() {
+        return amountForFull;
+    }
+
+    public void setAmountForFull(int amountForFull) {
+        this.amountForFull = amountForFull;
+    }
+
+    public RunSwimValidator getRunValidator() {
+        return runValidator;
+    }
+
+    public void setRunValidator(RunSwimValidator runValidator) {
+        this.runValidator = runValidator;
+    }
+
+    public void setFull(boolean full) {
+        this.full = full;
     }
 
     public void run(int distance) {
