@@ -77,21 +77,21 @@ private ActionValidator actionValidator;
 
     public Result run(int distance) {
 
-            if(actionValidator.runDistanceIsValid(distance,this)){
+            if(actionValidator.isRunActionValid(distance,this)){
                 return null;
             }
         return null;
     }
 
     public Result swim(int distance) {
-        if(actionValidator.runDistanceIsValid(distance,this)){
+        if(actionValidator.isSwimActionValid(distance,this)){
             return null;
         }
         return null;
     }
 
     public Result eat(Pork pork) {
-        if(actionValidator.amountFoodIsValid(pork.getAmount(),this)){
+        if(actionValidator.isEatActionValid(pork.getAmount(),this,pork)){
             return null;
         }
         return null;
