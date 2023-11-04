@@ -1,16 +1,10 @@
 package task1.Entity;
 
 
-
 public class Dog extends Animal {
-    static int countDogs;
-
 
     public Dog() {
-
         super();
-
-        countDogs++;
     }
 
 
@@ -23,9 +17,4 @@ public class Dog extends Animal {
     }
 
 
-
-
-    public static int getCountDogs() {
-        return countDogs;
-    }
 }

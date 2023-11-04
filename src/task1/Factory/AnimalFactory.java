@@ -6,9 +6,12 @@ import task1.Entity.Dog;
 import task1.Validator.AnimalValidator;
 import task1.Validator.AnimalValidatorImpl;
 
+import java.util.ArrayList;
 
 
 public class AnimalFactory {
+
+    private ArrayList<Animal> animals;
     private final int MAX_CAT_RUN_DISTANCE = 200;
     private final int MAX_CAT_SWIM_DISTANCE = 0;
     private final int AMOUNT_CAT_FOR_FULL = 20;
@@ -19,9 +22,9 @@ public class AnimalFactory {
 
     private AnimalValidator validator;
 
-    public Animal createAnimal(AnymalType type, String name) throws IllegalArgumentException{
+    public Animal createAnimal(AnymalType type, String name) throws IllegalArgumentException {
         this.validator = new AnimalValidatorImpl();
-
+        this.animals = new ArrayList<>();
         Animal animal = null;
 
         switch (type) {
@@ -44,12 +47,24 @@ public class AnimalFactory {
 
         }
 
-    if (validator.isValid(animal)) {
-        return animal;}
-     else {
-        throw new IllegalArgumentException("Объект не создан. Ошибка входных данных ");
+        if (validator.isValid(animal)) {
+            animals.add(animal);
+            return animal;
+        } else {
+            throw new IllegalArgumentException("Объект не создан. Ошибка входных данных ");
+
+        }
 
     }
 
-}
+    public long getQuantityCats() {
+        return animals.stream().filter(x->x.getGender().equals("кот")).count();
+    }
+
+    public long getQuantityDogs() {
+        return animals.stream().filter(x->x.getGender().equals("собака")).count();
+    }
+    public long getQuantityAnimals() {
+        return animals.size();
+    }
 }

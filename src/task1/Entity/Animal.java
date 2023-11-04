@@ -6,7 +6,6 @@ import task1.Validator.ActionValidatorIml;
 
 public abstract class Animal {
 
-    static int count;
     private String gender;
     private String name;
     private int maxRunDistance;
@@ -17,7 +16,7 @@ public abstract class Animal {
 
     public Animal() {
         actionValidator = new ActionValidatorIml();
-        count++;
+
     }
 
 

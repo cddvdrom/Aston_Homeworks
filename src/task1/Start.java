@@ -21,6 +21,11 @@ public class Start {
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }
+
+        System.out.println("Всего создано "+ factory.getQuantityAnimals()+" животных");
+        System.out.println("Всего создано "+ factory.getQuantityCats()+" котов");
+        System.out.println("Всего создано "+ factory.getQuantityDogs()+" собак");
+
         try {
             Animal cat = factory.createAnimal(AnymalType.CAT, "Барсик");
             System.out.println(cat.info());
@@ -29,7 +34,8 @@ public class Start {
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }
-
-
+        System.out.println("Всего создано "+ factory.getQuantityAnimals()+" животных");
+System.out.println("Всего создано "+ factory.getQuantityCats()+" котов");
+        System.out.println("Всего создано "+ factory.getQuantityDogs()+" собак");
     }
 }
