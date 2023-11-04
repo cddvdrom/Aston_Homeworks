@@ -1,11 +1,13 @@
 package task1.Entity;
 
 import task1.Result.Result;
+import task1.Service.EatService;
+import task1.Service.EatServiceImpl;
 import task1.Validator.ActionValidator;
 import task1.Validator.ActionValidatorIml;
 
 public abstract class Animal {
-
+private EatService eatService;
     private String gender;
     private String name;
     private int maxRunDistance;
@@ -15,8 +17,8 @@ public abstract class Animal {
     private boolean full;
 
     public Animal() {
-        actionValidator = new ActionValidatorIml();
-
+        this.actionValidator = new ActionValidatorIml();
+        this.eatService=new EatServiceImpl();
     }
 
 
@@ -104,8 +106,7 @@ public abstract class Animal {
     public Result eat(Pork pork) {
         if (actionValidator.isEatActionValid(pork.getAmount(), this, pork)) {
             {
-                pork.spendFood(amountForFull);
-                full = true;
+                eatService.eat(pork,this);
             }
             return new Result(gender + " " + name + " поел" + ".В тарелке осталось " + pork.getAmount());
         }

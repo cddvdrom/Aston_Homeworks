@@ -18,7 +18,6 @@ public class Start {
         DisplayResult display = new ConsoleDisplay();
         try {
             Animal dog = animalFactory.createAnimal(AnymalType.DOG, "Шарик");
-            System.out.println(dog.info());
             display.show(dog.run(200));
             display.show(dog.swim(10));
         } catch (IllegalArgumentException e) {
@@ -27,7 +26,6 @@ public class Start {
 
         try {
             Animal cat = animalFactory.createAnimal(AnymalType.CAT, "Барсик");
-            System.out.println(cat.info());
             display.show(cat.run(100));
             display.show(cat.swim(1));
         } catch (IllegalArgumentException e) {
@@ -40,12 +38,12 @@ public class Start {
             for (Animal animal:animalFactory.getAnimals()
                  ) {
                 System.out.println(animal.eat(pork).getMessage());
+
             }
         }
         catch (IllegalArgumentException e){System.out.println(e);}
 
-        System.out.println("Всего создано " + animalFactory.getQuantityAnimals() + " животных");
-        System.out.println("Всего создано " + animalFactory.getQuantityCats() + " котов");
-        System.out.println("Всего создано " + animalFactory.getQuantityDogs() + " собак");
+        System.out.println(animalFactory.info());
+
     }
 }

@@ -3,6 +3,7 @@ package task1.Factory;
 import task1.Entity.Animal;
 import task1.Entity.Cat;
 import task1.Entity.Dog;
+import task1.Result.Result;
 import task1.Validator.AnimalValidator;
 import task1.Validator.AnimalValidatorImpl;
 
@@ -61,6 +62,12 @@ public class AnimalFactory {
 
         }
 
+    }
+
+    public String info() {
+        return "Всего создано " + getQuantityAnimals() + " животных" + "\n" +
+                "котов : " + getQuantityCats() + "\n" +
+                "собак : " + getQuantityDogs();
     }
 
     public ArrayList<Animal> getAnimals() {
