@@ -8,14 +8,14 @@ public abstract class Animal {
 
     static int count;
     private String name;
-    private  int maxRunDistance;
-    private  int maxSwimDistance;
-    private  int amountForFull;
-private ActionValidator actionValidator;
+    private int maxRunDistance;
+    private int maxSwimDistance;
+    private int amountForFull;
+    private ActionValidator actionValidator;
     private boolean full;
 
     public Animal() {
-        actionValidator=new ActionValidatorIml();
+        actionValidator = new ActionValidatorIml();
         count++;
     }
 
@@ -24,18 +24,18 @@ private ActionValidator actionValidator;
 
     public abstract boolean isSwimming();
 
-    public  String info(){
-        StringBuilder builder=new StringBuilder();
-        builder.append("Информация о животном: "+"\n");
-        builder.append("Вид : кот"+"\n");
-        builder.append("Кличка : " + name+"\n");
-        builder.append("Cытость : " + ((full) ? "Сыт" : "Голоден")+"\n");
+    public String info() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Информация о животном: " + "\n");
+        builder.append("Вид : кот" + "\n");
+        builder.append("Кличка : " + name + "\n");
+        builder.append("Cытость : " + ((full) ? "Сыт" : "Голоден") + "\n");
         return builder.toString();
     }
 
     public String getName() {
         return name;
-   }
+    }
 
     public boolean isFull() {
         return full;
@@ -70,28 +70,32 @@ private ActionValidator actionValidator;
     }
 
 
-
     public void setFull(boolean full) {
         this.full = full;
     }
 
     public Result run(int distance) {
-
-            if(actionValidator.isRunActionValid(distance,this)){
-                return null;
-            }
-        return null;
+        if (isRunning()) {
+            new Result(name + " не умеет бегать");
+        }
+        if (actionValidator.isRunActionValid(distance, this)) {
+            new Result(name + " пробежал " + distance + " метров");
+        }
+        return new Result(name + " не смог пробежать " + distance + " метров");
     }
 
     public Result swim(int distance) {
-        if(actionValidator.isSwimActionValid(distance,this)){
-            return null;
+        if (isSwimming()) {
+            new Result(name + " не умеет плавать");
         }
-        return null;
+        if (actionValidator.isSwimActionValid(distance, this)) {
+            new Result(name + " проплыл " + distance + " метров");
+        }
+        return new Result(name + " не смог пробежать " + distance + " метров");
     }
 
     public Result eat(Pork pork) {
-        if(actionValidator.isEatActionValid(pork.getAmount(),this,pork)){
+        if (actionValidator.isEatActionValid(pork.getAmount(), this, pork)) {
             return null;
         }
         return null;
