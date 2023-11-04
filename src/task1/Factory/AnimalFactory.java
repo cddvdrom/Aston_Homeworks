@@ -65,9 +65,9 @@ public class AnimalFactory {
     }
 
     public String info() {
-        return "Всего создано " + getQuantityAnimals() + " животных" + "\n" +
+        return "\n"+"Всего создано " + getQuantityAnimals() + " животных" + "\n" +
                 "котов : " + getQuantityCats() + "\n" +
-                "собак : " + getQuantityDogs();
+                "собак : " + getQuantityDogs()+"\n";
     }
 
     public ArrayList<Animal> getAnimals() {
