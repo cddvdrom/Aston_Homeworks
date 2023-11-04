@@ -14,11 +14,19 @@ public abstract class Animal {
         count++;
     }
 
+
     public abstract boolean isRunning();
 
     public abstract boolean isSwimming();
 
-    public abstract String info();
+    public  String info(){
+        StringBuilder builder=new StringBuilder();
+        builder.append("Информация о животном: "+"\n");
+        builder.append("Вид : кот"+"\n");
+        builder.append("Кличка : " + name+"\n");
+        builder.append("Cытость : " + ((full) ? "Сыт" : "Голоден")+"\n");
+        return builder.toString();
+    }
 
     public String getName() {
         return name;

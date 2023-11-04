@@ -6,7 +6,7 @@ import task1.Entity.Dog;
 import task1.Validator.AnimalValidator;
 import task1.Validator.AnimalValidatorImpl;
 
-import java.util.Optional;
+
 
 public class AnimalFactory {
     private final int MAX_CAT_RUN_DISTANCE = 100;
@@ -19,7 +19,7 @@ public class AnimalFactory {
 
     private AnimalValidator validator;
 
-    public Animal createAnimal(AnymalType type, String name) {
+    public Animal createAnimal(AnymalType type, String name) throws IllegalArgumentException{
         this.validator = new AnimalValidatorImpl();
 
         Animal animal = null;
@@ -42,9 +42,12 @@ public class AnimalFactory {
 
         }
 
-            if (validator.isValid(animal)) {
-             return animal;
-        }
-return null;
+    if (validator.isValid(animal)) {
+        return animal;}
+     else {
+        throw new IllegalArgumentException("Объект не создан. Ошибка входных данных ");
+
     }
+
+}
 }

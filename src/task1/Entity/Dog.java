@@ -23,14 +23,6 @@ public class Dog extends Animal {
         return true;
     }
 
-    public String info() {
-        StringBuilder builder=new StringBuilder();
-        builder.append("Информация о животном: ");
-        builder.append("Вид : собака");
-        builder.append("Кличка : " + super.getName());
-        builder.append("Cытость : " + ((super.isFull()) ? "Сыт" : "Голоден"));
-        return builder.toString();
-    }
 
 
 
