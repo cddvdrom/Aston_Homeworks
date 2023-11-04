@@ -1,6 +1,6 @@
 package task1.Entity;
 
-import task1.Validator.RunSwimValidator;
+
 
 public class Dog extends Animal {
     private final int MAX_DOG_RUN_DISTANCE=200;

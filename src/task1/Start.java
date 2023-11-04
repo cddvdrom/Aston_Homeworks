@@ -12,5 +12,6 @@ public class Start {
         AnimalFactory factory=new AnimalFactory();
         Animal dog=factory.createAnimal(AnymalType.DOG,"Барсик");
         Animal cat=factory.createAnimal(AnymalType.CAT,"Шарик");
+        cat.info();
     }
 }
