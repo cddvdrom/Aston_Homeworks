@@ -75,23 +75,23 @@ public abstract class Animal {
     }
 
     public Result run(int distance) {
-        if (isRunning()) {
-            new Result(name + " не умеет бегать");
+        if (!isRunning()) {
+            return new Result(name + " не умеет бегать");
         }
         if (actionValidator.isRunActionValid(distance, this)) {
-            new Result(name + " пробежал " + distance + " метров");
+            return new Result(name + " пробежал " + distance + " метров");
         }
         return new Result(name + " не смог пробежать " + distance + " метров");
     }
 
     public Result swim(int distance) {
-        if (isSwimming()) {
-            new Result(name + " не умеет плавать");
+        if (!isSwimming()) {
+            return new Result(name + " не умеет плавать");
         }
         if (actionValidator.isSwimActionValid(distance, this)) {
-            new Result(name + " проплыл " + distance + " метров");
+            return new Result(name + " проплыл " + distance + " метров");
         }
-        return new Result(name + " не смог пробежать " + distance + " метров");
+        return new Result(name + " не смог проплыть " + distance + " метров");
     }
 
     public Result eat(Pork pork) {
