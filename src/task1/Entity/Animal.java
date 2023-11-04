@@ -7,6 +7,7 @@ import task1.Validator.ActionValidatorIml;
 public abstract class Animal {
 
     static int count;
+    private String gender;
     private String name;
     private int maxRunDistance;
     private int maxSwimDistance;
@@ -69,6 +70,13 @@ public abstract class Animal {
         this.amountForFull = amountForFull;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public void setFull(boolean full) {
         this.full = full;
@@ -76,22 +84,22 @@ public abstract class Animal {
 
     public Result run(int distance) {
         if (!isRunning()) {
-            return new Result(name + " не умеет бегать");
+            return new Result(gender+" "+name + " не умеет бегать");
         }
         if (actionValidator.isRunActionValid(distance, this)) {
-            return new Result(name + " пробежал " + distance + " метров");
+            return new Result(gender+" "+name + " пробежал " + distance + " метров");
         }
-        return new Result(name + " не смог пробежать " + distance + " метров");
+        return new Result(gender+" "+name + " не смог пробежать " + distance + " метров");
     }
 
     public Result swim(int distance) {
         if (!isSwimming()) {
-            return new Result(name + " не умеет плавать");
+            return new Result(gender+" "+name + " не умеет плавать");
         }
         if (actionValidator.isSwimActionValid(distance, this)) {
-            return new Result(name + " проплыл " + distance + " метров");
+            return new Result(gender+" "+name + " проплыл " + distance + " метров");
         }
-        return new Result(name + " не смог проплыть " + distance + " метров");
+        return new Result(gender+" "+name + " не смог проплыть " + distance + " метров");
     }
 
     public Result eat(Pork pork) {

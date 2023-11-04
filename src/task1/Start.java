@@ -16,16 +16,16 @@ public class Start {
         try {
             Animal dog = factory.createAnimal(AnymalType.DOG, "Шарик");
             System.out.println(dog.info());
-            display.show(dog.run(-500));
-            display.show(dog.swim(-500));
+            display.show(dog.run(200));
+            display.show(dog.swim(10));
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }
         try {
             Animal cat = factory.createAnimal(AnymalType.CAT, "Барсик");
             System.out.println(cat.info());
-            display.show(cat.run(-500));
-            display.show(cat.swim(-500));
+            display.show(cat.run(100));
+            display.show(cat.swim(1));
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }

@@ -3,7 +3,6 @@ package task1.Entity;
 
 
 public class Dog extends Animal {
-
     static int countDogs;
 
 

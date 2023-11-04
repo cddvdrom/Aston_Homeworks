@@ -19,7 +19,7 @@ public class ActionValidatorIml implements ActionValidator{
         if (errors.length() > 0) {
             throw new IllegalArgumentException(errors.toString());
         }
-        return distance<animal.getMaxRunDistance() && animal.isRunning();
+        return distance<=animal.getMaxRunDistance() && animal.isRunning();
 
 
 
@@ -38,7 +38,7 @@ public class ActionValidatorIml implements ActionValidator{
         if (errors.length() > 0) {
             throw new IllegalArgumentException(errors.toString());
         }
-        return distance<animal.getMaxSwimDistance() && animal.isSwimming();
+        return distance<=animal.getMaxSwimDistance() && animal.isSwimming();
     }
 
     @Override
