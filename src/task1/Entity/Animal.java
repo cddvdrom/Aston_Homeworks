@@ -83,29 +83,33 @@ public abstract class Animal {
 
     public Result run(int distance) {
         if (!isRunning()) {
-            return new Result(gender+" "+name + " не умеет бегать");
+            return new Result(gender + " " + name + " не умеет бегать");
         }
         if (actionValidator.isRunActionValid(distance, this)) {
-            return new Result(gender+" "+name + " пробежал " + distance + " метров");
+            return new Result(gender + " " + name + " пробежал " + distance + " метров");
         }
-        return new Result(gender+" "+name + " не смог пробежать " + distance + " метров");
+        return new Result(gender + " " + name + " не смог пробежать " + distance + " метров");
     }
 
     public Result swim(int distance) {
         if (!isSwimming()) {
-            return new Result(gender+" "+name + " не умеет плавать");
+            return new Result(gender + " " + name + " не умеет плавать");
         }
         if (actionValidator.isSwimActionValid(distance, this)) {
-            return new Result(gender+" "+name + " проплыл " + distance + " метров");
+            return new Result(gender + " " + name + " проплыл " + distance + " метров");
         }
-        return new Result(gender+" "+name + " не смог проплыть " + distance + " метров");
+        return new Result(gender + " " + name + " не смог проплыть " + distance + " метров");
     }
 
     public Result eat(Pork pork) {
         if (actionValidator.isEatActionValid(pork.getAmount(), this, pork)) {
-            return null;
+            {
+                pork.spendFood(amountForFull);
+                full = true;
+            }
+            return new Result(gender + " " + name + " поел" + ".В тарелке осталось " + pork.getAmount());
         }
-        return null;
+        return new Result(gender + " " + name + " не смог поесть" + ".В тарелке " + pork.getAmount());
     }
 
 

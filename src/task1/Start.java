@@ -3,18 +3,21 @@ package task1;
 
 import task1.Entity.Animal;
 
+import task1.Entity.Pork;
 import task1.Factory.AnimalFactory;
 import task1.Factory.AnymalType;
+import task1.Factory.PorkFactory;
 import task1.View.ConsoleDisplay;
 import task1.View.DisplayResult;
 
 
 public class Start {
     public static void main(String[] args) {
-        AnimalFactory factory = new AnimalFactory();
+        AnimalFactory animalFactory = new AnimalFactory();
+        PorkFactory porkFactory= new PorkFactory();
         DisplayResult display = new ConsoleDisplay();
         try {
-            Animal dog = factory.createAnimal(AnymalType.DOG, "Шарик");
+            Animal dog = animalFactory.createAnimal(AnymalType.DOG, "Шарик");
             System.out.println(dog.info());
             display.show(dog.run(200));
             display.show(dog.swim(10));
@@ -23,15 +26,26 @@ public class Start {
         }
 
         try {
-            Animal cat = factory.createAnimal(AnymalType.CAT, "Барсик");
+            Animal cat = animalFactory.createAnimal(AnymalType.CAT, "Барсик");
             System.out.println(cat.info());
             display.show(cat.run(100));
             display.show(cat.swim(1));
         } catch (IllegalArgumentException e) {
             System.out.println(e);
         }
-        System.out.println("Всего создано " + factory.getQuantityAnimals() + " животных");
-        System.out.println("Всего создано " + factory.getQuantityCats() + " котов");
-        System.out.println("Всего создано " + factory.getQuantityDogs() + " собак");
+
+        try{
+            Pork pork=porkFactory.createPork(1000);
+            pork.addFood(300);
+            for (Animal animal:animalFactory.getAnimals()
+                 ) {
+                System.out.println(animal.eat(pork).getMessage());
+            }
+        }
+        catch (IllegalArgumentException e){System.out.println(e);}
+
+        System.out.println("Всего создано " + animalFactory.getQuantityAnimals() + " животных");
+        System.out.println("Всего создано " + animalFactory.getQuantityCats() + " котов");
+        System.out.println("Всего создано " + animalFactory.getQuantityDogs() + " собак");
     }
 }

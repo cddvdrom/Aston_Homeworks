@@ -1,27 +1,26 @@
 package task1.Entity;
 
-import task1.Validator.AnimalValidator;
-
 public class Pork {
-    private final int MAX_AMOUNT = 100;
+    private final int VOLUME;
     private int amount;
 
-
-    public Pork() {
-
+    public Pork(int volume) {
+        VOLUME = volume;
     }
+
 
     public int getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+
+    public int getVOLUME() {
+        return VOLUME;
     }
 
     public void addFood(int extra) {
 
-            amount = (amount + extra) > MAX_AMOUNT ? MAX_AMOUNT : amount + extra;
+            amount = (amount + extra) > VOLUME ? VOLUME : amount + extra;
 
     }
 
@@ -29,15 +28,8 @@ public class Pork {
 
             amount = (amount - food) > 0 ? amount - food : 0;
 
-            System.out.println("Еда не добавлена,тк входные данные неверны");
 
     }
 
-    public void printInfo() {
-        if (amount == 0) {
-            System.out.println("Тарелка пуста");
-        } else {
-            System.out.println("В тарелке " + amount + " еды");
-        }
-    }
+
 }

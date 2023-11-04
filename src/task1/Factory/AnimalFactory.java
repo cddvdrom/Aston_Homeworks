@@ -25,7 +25,7 @@ public class AnimalFactory {
     public AnimalFactory() {
         this.animals = new ArrayList<>();
         this.validator = new AnimalValidatorImpl();
-        ;
+
     }
 
     public Animal createAnimal(AnymalType type, String name) throws IllegalArgumentException {
@@ -61,6 +61,10 @@ public class AnimalFactory {
 
         }
 
+    }
+
+    public ArrayList<Animal> getAnimals() {
+        return animals;
     }
 
     public long getQuantityCats() {
