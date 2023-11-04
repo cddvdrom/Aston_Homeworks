@@ -7,7 +7,7 @@ public abstract class Animal {
     private  int maxRunDistance;
     private  int maxSwimDistance;
     private  int amountForFull;
-    private  RunSwimValidator runValidator;
+
 
     private boolean full;
 
@@ -57,20 +57,14 @@ public abstract class Animal {
         this.amountForFull = amountForFull;
     }
 
-    public RunSwimValidator getRunValidator() {
-        return runValidator;
-    }
 
-    public void setRunValidator(RunSwimValidator runValidator) {
-        this.runValidator = runValidator;
-    }
 
     public void setFull(boolean full) {
         this.full = full;
     }
 
     public void run(int distance) {
-        if (runValidator.isValid(distance)) {
+
             if (isRunning() && distance <= maxRunDistance) {
                 System.out.println(name + " пробежал " + distance + " метров");
             } else if (distance > maxRunDistance) {
@@ -78,7 +72,7 @@ public abstract class Animal {
             } else {
                 System.out.println(name + " не умеет бегать");
             }
-        }
+
     }
 
     public void swim(int distance) {
