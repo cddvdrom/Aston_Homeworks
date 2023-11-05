@@ -1,13 +1,11 @@
 package task2.Entity;
 
-public enum Figur {
+public enum FigureType {
     CIRCLE,
     OVAL,
     TRIANGLE,
     HEXAGON,
     OCTAGON,
-    TRAPEZIUM,
     DIAMOND,
-    PARALLELOGRAM,
     RECTANGLE
 }
