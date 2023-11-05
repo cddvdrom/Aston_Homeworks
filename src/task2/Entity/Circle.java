@@ -19,6 +19,6 @@ public class Circle extends Figure implements Calculation {
 
     @Override
     public Result area() {
-        return null;
+        return new Result(Double.toString(Math.PI*(radius*radius)));
     }
 }

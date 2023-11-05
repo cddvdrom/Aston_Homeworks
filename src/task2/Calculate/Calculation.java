@@ -6,15 +6,7 @@ import task2.Entity.FigureType;
 
 
 public interface Calculation {
-    default Result perimeter(Figure figure) {
-        if(figure.getFigure().equals(FigureType.CIRCLE))
-        {
+    Result perimeter();
 
-        }
-        return null;
-    }
-
-    default Result area() {
-        return null;
-    }
+  Result area() ;
 }
