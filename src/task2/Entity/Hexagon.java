@@ -12,12 +12,12 @@ public class Hexagon extends Figure implements Calculation {
     @Override
     public double perimeter() {
 
-        return 7.5;
+        return 6*radius;
     }
 
     @Override
     public double area() {
 
-        return 7.5;
+        return (3*Math.sqrt(3)*radius*radius)/2;
     }
 }

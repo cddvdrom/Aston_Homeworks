@@ -6,12 +6,13 @@ import task2.Entity.Figure;
 public class InfoService {
     public Result getFigurInfoResult(Figure figure) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("===============");
+        stringBuilder.append("============================");
         stringBuilder.append("\n");
         stringBuilder.append("Информация о фигуре :");
         stringBuilder.append("\n");
-        stringBuilder.append("===============");
+        stringBuilder.append("============================");
         stringBuilder.append("\n");
+        stringBuilder.append("Вид :");
         stringBuilder.append(figure.getFigure().getName());
         stringBuilder.append("\n");
         stringBuilder.append("Цвет фона :");
@@ -26,7 +27,7 @@ public class InfoService {
         stringBuilder.append("Площадь :");
         stringBuilder.append(figure.area());
         stringBuilder.append("\n");
-        stringBuilder.append("===============");
+        stringBuilder.append("============================");
         Result result = new Result(stringBuilder.toString());
 
 

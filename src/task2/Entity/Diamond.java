@@ -16,12 +16,12 @@ public class Diamond extends Figure implements Calculation {
     @Override
     public double perimeter() {
 
-        return 7.5;
+        return 4*(Math.sqrt(Math.pow(diagonal1,2)+Math.pow(diagonal2,2)))/2;
     }
 
     @Override
     public double area() {
 
-        return 7.5;
+        return diagonal1*diagonal2/2;
     }
 }

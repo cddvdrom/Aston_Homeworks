@@ -16,12 +16,12 @@ public class Rectangle extends Figure implements Calculation {
     @Override
     public double perimeter() {
 
-        return 6.5;
+        return 2*side1+2*side2;
     }
 
     @Override
     public double area() {
 
-        return 6.5;
+        return side1*side2;
     }
 }

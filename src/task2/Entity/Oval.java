@@ -19,12 +19,12 @@ public class Oval extends Figure implements Calculation {
     @Override
     public double perimeter() {
 
-        return 6.5;
+        return 2*Math.PI*Math.sqrt((Math.pow(radius1,2)+Math.pow(radius2,2))/2);
     }
 
     @Override
     public double area() {
 
-        return 6.5;
+        return Math.PI*radius1*radius2;
     }
 }

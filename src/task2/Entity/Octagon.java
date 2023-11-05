@@ -14,12 +14,12 @@ public class Octagon extends Figure implements Calculation {
     @Override
     public double perimeter() {
 
-        return 6.5;
+        return 8*radius*Math.sqrt(2-Math.sqrt(2));
     }
 
     @Override
     public double area() {
 
-        return 6.5;
+        return 2*Math.pow(radius,2)*(1+Math.sqrt(2));
     }
 }
