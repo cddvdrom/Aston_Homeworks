@@ -24,8 +24,8 @@ public class Oval extends Figure implements Calculation {
     }
 
     @Override
-    public double area() {
+    public Result area() {
 
-        return 0;
+        return null;
     }
 }
