@@ -7,9 +7,11 @@ public class InfoService {
     public Result getFigurInfoResult(Figure figure) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("===============");
+        stringBuilder.append("\n");
         stringBuilder.append("Информация о фигуре :");
         stringBuilder.append("\n");
         stringBuilder.append("===============");
+        stringBuilder.append("\n");
         stringBuilder.append(figure.getFigure().getName());
         stringBuilder.append("\n");
         stringBuilder.append("Цвет фона :");
