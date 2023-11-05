@@ -1,6 +1,9 @@
 package task2.Calculate;
 
+import task1.Result.Result;
+
+
 public interface Calculation {
-    double perimeter();
+    Result perimeter();
     double area();
 }

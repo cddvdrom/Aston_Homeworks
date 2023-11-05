@@ -1,6 +1,8 @@
 package task2.Entity;
 
-public abstract class Figure  {
+import task2.Calculate.Calculation;
+
+public abstract class Figure implements Calculation {
     private FigureType figure;
     private Colors background;
     private Colors border;

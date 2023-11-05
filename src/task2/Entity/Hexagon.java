@@ -1,6 +1,8 @@
 package task2.Entity;
 
+import task1.Result.Result;
 import task2.Calculate.Calculation;
+
 
 public class Hexagon extends Figure implements Calculation {
     private double radius;
@@ -9,9 +11,9 @@ public class Hexagon extends Figure implements Calculation {
         this.radius=radius;
     }
     @Override
-    public double perimeter() {
+    public Result perimeter() {
 
-        return 0;
+        return null;
     }
 
     @Override

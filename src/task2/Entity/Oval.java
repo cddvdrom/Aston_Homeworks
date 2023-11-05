@@ -1,6 +1,8 @@
 package task2.Entity;
 
+import task1.Result.Result;
 import task2.Calculate.Calculation;
+
 
 public class Oval extends Figure implements Calculation {
     private double radius1;
@@ -16,9 +18,9 @@ public class Oval extends Figure implements Calculation {
     }
 
     @Override
-    public double perimeter() {
+    public Result perimeter() {
 
-        return 0;
+        return null;
     }
 
     @Override

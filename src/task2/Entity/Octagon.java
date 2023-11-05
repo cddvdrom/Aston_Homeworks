@@ -1,6 +1,8 @@
 package task2.Entity;
 
+import task1.Result.Result;
 import task2.Calculate.Calculation;
+
 
 public class Octagon extends Figure implements Calculation {
     private double radius;
@@ -11,9 +13,9 @@ public class Octagon extends Figure implements Calculation {
     }
 
     @Override
-    public double perimeter() {
+    public Result perimeter() {
 
-        return 0;
+        return null;
     }
 
     @Override

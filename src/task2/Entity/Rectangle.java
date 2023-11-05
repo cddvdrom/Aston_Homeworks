@@ -1,6 +1,8 @@
 package task2.Entity;
 
+import task1.Result.Result;
 import task2.Calculate.Calculation;
+
 
 public class Rectangle extends Figure implements Calculation {
 
@@ -13,9 +15,9 @@ public class Rectangle extends Figure implements Calculation {
     }
 
     @Override
-    public double perimeter() {
+    public Result perimeter() {
 
-        return 0;
+        return null;
     }
 
     @Override
