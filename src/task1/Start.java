@@ -7,17 +7,16 @@ import task1.Entity.Pork;
 import task1.Factory.AnimalFactory;
 import task1.Factory.AnimalType;
 import task1.Factory.PorkFactory;
-import task1.View.ConsoleDisplay;
 import task1.View.Display;
-
-
+import task1.View.DisplayLoader;
 
 
 public class Start {
     public static void main(String[] args) {
         AnimalFactory animalFactory = new AnimalFactory();
         PorkFactory porkFactory= new PorkFactory();
-        Display display = new ConsoleDisplay();
+        DisplayLoader loader=new DisplayLoader();
+        Display display = loader.load();
 
         try {
             Animal dog = animalFactory.createAnimal(AnimalType.DOG, "Шарик");
@@ -49,4 +48,5 @@ public class Start {
 
 
     }
+
 }
