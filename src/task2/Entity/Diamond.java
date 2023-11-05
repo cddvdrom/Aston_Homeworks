@@ -3,7 +3,7 @@ package task2.Entity;
 import task2.Calculate.Calculation;
 
 public class Diamond extends Figure implements Calculation {
-    public Diamond(Figure figure) {
+    public Diamond(FigureType figure) {
         super(figure);
     }
 

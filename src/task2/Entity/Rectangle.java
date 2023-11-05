@@ -3,7 +3,7 @@ package task2.Entity;
 import task2.Calculate.Calculation;
 
 public class Rectangle extends Figure implements Calculation {
-    public Rectangle(Figure figure) {
+    public Rectangle(FigureType figure) {
         super(figure);
     }
 

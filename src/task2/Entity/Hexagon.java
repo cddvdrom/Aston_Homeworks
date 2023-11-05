@@ -3,7 +3,7 @@ package task2.Entity;
 import task2.Calculate.Calculation;
 
 public class Hexagon extends Figure implements Calculation {
-    public Hexagon(Figure figure) {
+    public Hexagon(FigureType figure) {
         super(figure);
     }
 
