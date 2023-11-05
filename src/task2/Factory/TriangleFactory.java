@@ -2,7 +2,6 @@ package task2.Factory;
 
 import task2.Entity.Colors;
 import task2.Entity.Figure;
-import task2.Entity.Oval;
 import task2.Entity.Triangle;
 import task2.Validator.ColorValidator;
 import task2.Validator.ValueValidator;
