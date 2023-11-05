@@ -8,8 +8,8 @@ public class Oval extends Figure implements Calculation {
     private int radius3;
 
 
-    public Oval(FigureType figure,Colors background,Colors border,int radius1,int radius2,int radius3) {
-        super(figure,background,border);
+    public Oval(Colors background,Colors border,int radius1,int radius2,int radius3) {
+        super(FigureType.OVAL,background,border);
         this.radius1=radius1;
         this.radius2=radius2;
         this.radius3=radius3;

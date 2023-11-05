@@ -7,5 +7,6 @@ public enum FigureType {
     HEXAGON,
     OCTAGON,
     DIAMOND,
-    RECTANGLE
+    RECTANGLE,
+    SQUARE
 }

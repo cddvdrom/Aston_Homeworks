@@ -5,8 +5,8 @@ import task2.Calculate.Calculation;
 public class Octagon extends Figure implements Calculation {
     private int radius;
 
-    public Octagon(FigureType figure,Colors background,Colors border,int radius) {
-        super(figure,background,border);
+    public Octagon(Colors background,Colors border,int radius) {
+        super(FigureType.OCTAGON,background,border);
         this.radius=radius;
     }
 
