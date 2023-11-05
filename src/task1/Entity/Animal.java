@@ -7,18 +7,18 @@ import task1.Service.AnimalServiceImpl;
 import task1.Validator.ActionValidator;
 
 public abstract class Animal {
-private AnimalService service;
+    private AnimalService service;
     private String gender;
     private String name;
     private int maxRunDistance;
     private int maxSwimDistance;
     private int amountForFull;
-    private ActionValidator actionValidator;
+
     private boolean full;
 
     public Animal() {
-        this.actionValidator = new ActionValidator();
-        this.service=new AnimalServiceImpl();
+
+        this.service = new AnimalServiceImpl();
     }
 
 
@@ -84,33 +84,18 @@ private AnimalService service;
     }
 
     public Result run(int distance) {
-        if (!isRunning()) {
-            return new Result(gender + " " + name + " не умеет бегать");
-        }
-        if (actionValidator.isRunActionValid(distance, this)) {
-            return new Result(gender + " " + name + " пробежал " + distance + " метров");
-        }
-        return new Result(gender + " " + name + " не смог пробежать " + distance + " метров");
+        Result result = service.run(this, distance);
+        return result;
     }
 
     public Result swim(int distance) {
-        if (!isSwimming()) {
-            return new Result(gender + " " + name + " не умеет плавать");
-        }
-        if (actionValidator.isSwimActionValid(distance, this)) {
-            return new Result(gender + " " + name + " проплыл " + distance + " метров");
-        }
-        return new Result(gender + " " + name + " не смог проплыть " + distance + " метров");
+        Result result = service.swim(this, distance);
+        return result;
     }
 
     public Result eat(Pork pork) {
-        if (actionValidator.isEatActionValid(pork.getAmount(), this, pork)) {
-            {
-                service.eat(pork,this);
-            }
-            return new Result(gender + " " + name + " поел" + ".В тарелке осталось " + pork.getAmount());
-        }
-        return new Result(gender + " " + name + " не смог поесть" + ".В тарелке " + pork.getAmount());
+        Result result = service.eat(this, pork);
+        return result;
     }
 
 

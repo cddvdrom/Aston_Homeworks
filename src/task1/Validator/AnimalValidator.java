@@ -4,9 +4,9 @@ import task1.Entity.Animal;
 
 import java.util.StringJoiner;
 
-public class AnimalValidator implements AnimalValidator {
+public class AnimalValidator {
 
-    @Override
+
     public boolean isValid(Animal animal) {
 
 

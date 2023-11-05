@@ -43,7 +43,7 @@ public class Start {
         }
         catch (IllegalArgumentException e){System.out.println(e);}
 
-        System.out.println(animalFactory.getCounter().getAnimals());
+
 
     }
 }

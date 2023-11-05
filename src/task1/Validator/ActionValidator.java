@@ -5,64 +5,42 @@ import task1.Entity.Pork;
 
 import java.util.StringJoiner;
 
-public class ActionValidator implements ActionValidator{
-    @Override
+public class ActionValidator {
+
     public boolean isRunActionValid(int distance, Animal animal) {
-        StringJoiner errors = new StringJoiner("\n");
-        if (!isDistanceValid(distance)) {
-            errors.add("Некорректная дистанция");
-        }
-        if (animal==null) {
-            errors.add("Некорретное животное");
-        }
-
-        if (errors.length() > 0) {
-            throw new IllegalArgumentException(errors.toString());
-        }
-        return distance<=animal.getMaxRunDistance() && animal.isRunning();
-
+        findErrors(distance, animal);
+        return distance <= animal.getMaxRunDistance() && animal.isRunning();
 
 
     }
 
-    @Override
+
     public boolean isSwimActionValid(int distance, Animal animal) {
-        StringJoiner errors = new StringJoiner("\n");
-        if (!isDistanceValid(distance)) {
-            errors.add("Некорректная дистанция");
-        }
-        if (animal==null) {
-            errors.add("Некорретное животное");
-        }
-
-        if (errors.length() > 0) {
-            throw new IllegalArgumentException(errors.toString());
-        }
-        return distance<=animal.getMaxSwimDistance() && animal.isSwimming();
+        findErrors(distance, animal);
+        return distance <= animal.getMaxSwimDistance() && animal.isSwimming();
     }
 
-    @Override
+
     public boolean isEatActionValid(int amount, Animal animal, Pork pork) {
+        findErrors(amount, animal);
+        return amount >= animal.getAmountForFull() && pork.getAmount() >= amount;
+    }
+
+    public boolean isAmountValid(int amount) {
+        return amount > 0;
+    }
+
+    public void findErrors(int amount, Animal animal) {
         StringJoiner errors = new StringJoiner("\n");
         if (!isAmountValid(amount)) {
-            errors.add("Некорректное количество еды");
+            errors.add("Некорректные данные");
         }
-        if (animal==null) {
+        if (animal == null) {
             errors.add("Некорретное животное");
         }
 
         if (errors.length() > 0) {
             throw new IllegalArgumentException(errors.toString());
         }
-        return amount>=animal.getAmountForFull() && pork.getAmount()>=amount;
-    }
-
-    @Override
-    public boolean isDistanceValid(int distance) {
-        return distance>0;
-    }
-    @Override
-    public boolean isAmountValid(int amount) {
-        return amount>0;
     }
 }
