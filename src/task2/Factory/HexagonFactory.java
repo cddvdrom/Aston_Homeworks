@@ -7,7 +7,7 @@ import task2.Entity.Hexagon;
 
 public interface HexagonFactory {
 
-    default Figure create(Colors background, Colors border, int radius) {
+    default Figure create(Colors background, Colors border, double radius) {
         return new Hexagon(background,border,radius);
 
     }

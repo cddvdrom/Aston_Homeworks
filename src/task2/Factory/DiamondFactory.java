@@ -7,7 +7,7 @@ import task2.Entity.Figure;
 
 public interface DiamondFactory {
 
-  default Figure create(Colors background, Colors border, int diagonal1,int diagonal2) {
+  default Figure create(Colors background, Colors border, double diagonal1,double diagonal2) {
     return new Diamond(background,border,diagonal1,diagonal2);
 
   }

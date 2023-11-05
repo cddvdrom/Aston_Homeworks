@@ -7,7 +7,7 @@ import task2.Entity.Figure;
 
 public interface CircleFactory  {
 
-default Figure create(Colors background, Colors border, int radius) {
+default Figure create(Colors background, Colors border, double radius) {
     return new Circle(background,border,radius);
 
     }

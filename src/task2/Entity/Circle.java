@@ -5,9 +5,9 @@ import task2.Calculate.Calculation;
 import javax.swing.plaf.synth.ColorType;
 
 public class Circle extends Figure implements Calculation {
-    private int radius;
+    private double radius;
 
-    public Circle(Colors background, Colors border, int radius) {
+    public Circle(Colors background, Colors border, double radius) {
         super(FigureType.CIRCLE,background,border);
         this.radius=radius;
     }
