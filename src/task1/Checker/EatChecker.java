@@ -13,9 +13,12 @@ public class EatChecker {
     public Result canPerform(Animal animal, Pork pork) {
         if (actionValidator.isEatActionValid(pork.getAmount(), animal, pork)) {
             {
-                return new Result(animal.getGender() + " " + animal.getName() + " поел" + ".В тарелке осталось " + pork.getAmount());
+                return new Result(animal.getGender() + " " + animal.getName() + " поел" + "."
+
+                );
             }
         }
-        return new Result(animal.getGender() + " " + animal.getName() + " не смог поесть" + ".В тарелке " + pork.getAmount());
+        return new Result(animal.getGender() + " " + animal.getName() + " не смог поесть" + "" +
+                ".В тарелке " + pork.getAmount());
     }
 }
