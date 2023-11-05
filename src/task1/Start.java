@@ -35,7 +35,7 @@ public class Start {
         try{
             Pork pork=porkFactory.createPork(1000);
             pork.addFood(300);
-            for (Animal animal:animalFactory.getAnimals()
+            for (Animal animal:animalFactory.getCounter().getAnimals()
                  ) {
                 System.out.println(animal.eat(pork).getMessage());
 
@@ -43,7 +43,7 @@ public class Start {
         }
         catch (IllegalArgumentException e){System.out.println(e);}
 
-        System.out.println(animalFactory.info());
+        System.out.println(animalFactory.getCounter().getAnimals());
 
     }
 }
