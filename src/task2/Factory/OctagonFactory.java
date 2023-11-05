@@ -8,10 +8,10 @@ import task2.Entity.Octagon;
 import task2.Validator.ColorValidator;
 import task2.Validator.ValueValidator;
 
-public interface OctagonFactory {
+public class OctagonFactory{
     ValueValidator valueValidator = new ValueValidator();
     ColorValidator colorValidator = new ColorValidator();
-    default Figure create(Colors background, Colors border, double radius) throws IllegalArgumentException{
+   public Figure create(Colors background, Colors border, double radius) throws IllegalArgumentException{
         if (colorValidator.isValid(background) && colorValidator.isValid(border) && valueValidator.isValid(radius)) {
             return new Octagon(background, border, radius);
         } else {

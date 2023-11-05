@@ -6,11 +6,11 @@ import task2.Entity.Triangle;
 import task2.Validator.ColorValidator;
 import task2.Validator.ValueValidator;
 
-public interface TriangleFactory {
+public class TriangleFactory{
     ValueValidator valueValidator = new ValueValidator();
     ColorValidator colorValidator = new ColorValidator();
 
-    default Figure create(Colors background, Colors border, double side1, double side2, double side3)
+    public Figure create(Colors background, Colors border, double side1, double side2, double side3)
             throws IllegalArgumentException {
         if (colorValidator.isValid(background) && colorValidator.isValid(border) && valueValidator.isValid(side1)
                 && valueValidator.isValid(side2) && valueValidator.isValid(side3)) {

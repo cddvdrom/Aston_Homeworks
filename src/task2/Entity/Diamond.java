@@ -1,6 +1,5 @@
 package task2.Entity;
 
-import task1.Result.Result;
 import task2.Calculate.Calculation;
 
 
@@ -15,14 +14,14 @@ public class Diamond extends Figure implements Calculation {
     }
 
     @Override
-    public Result perimeter() {
+    public double perimeter() {
 
-        return null;
+        return 7.5;
     }
 
     @Override
-    public Result area() {
+    public double area() {
 
-        return null;
+        return 7.5;
     }
 }

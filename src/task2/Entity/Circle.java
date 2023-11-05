@@ -1,6 +1,5 @@
 package task2.Entity;
 
-import task1.Result.Result;
 import task2.Calculate.Calculation;
 
 
@@ -13,12 +12,12 @@ public class Circle extends Figure implements Calculation {
     }
 
     @Override
-    public Result perimeter() {
-        return new Result (Double.toString(2*Math.PI*radius));
+    public double perimeter() {
+        return 2*Math.PI*radius;
     }
 
     @Override
-    public Result area() {
-        return new Result(Double.toString(Math.PI*(radius*radius)));
+    public double area() {
+        return Math.PI*(radius*radius);
     }
 }

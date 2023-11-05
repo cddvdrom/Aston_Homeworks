@@ -4,11 +4,11 @@ import task2.Entity.*;
 import task2.Validator.ColorValidator;
 import task2.Validator.ValueValidator;
 
-public interface RectangleFactory {
+public class RectangleFactory{
     ValueValidator valueValidator = new ValueValidator();
     ColorValidator colorValidator = new ColorValidator();
 
-    default Figure create(Colors background, Colors border, double side1, double side2) throws IllegalArgumentException {
+  public Figure create(Colors background, Colors border, double side1, double side2) throws IllegalArgumentException {
         if (colorValidator.isValid(background) && colorValidator.isValid(border) && valueValidator.isValid(side2)
                 && valueValidator.isValid(side2)) {
             return new Rectangle(background, border, side1, side2);
