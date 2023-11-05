@@ -7,8 +7,8 @@ import task1.Entity.Dog;
 import task1.Validator.AnimalValidator;
 
 
-import static task1.Factory.AnymalType.CAT;
-import static task1.Factory.AnymalType.DOG;
+import static task1.Factory.AnimalType.CAT;
+import static task1.Factory.AnimalType.DOG;
 
 
 public class AnimalFactory {
@@ -22,7 +22,7 @@ public class AnimalFactory {
 
     }
 
-    public Animal createAnimal(AnymalType type, String name) throws IllegalArgumentException {
+    public Animal createAnimal(AnimalType type, String name) throws IllegalArgumentException {
 
 
         Animal animal = null;

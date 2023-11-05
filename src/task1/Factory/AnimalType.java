@@ -1,6 +1,6 @@
 package task1.Factory;
 
-public enum AnymalType {
+public enum AnimalType {
     DOG(500, 10, 40),
     CAT(200, 0, 20);
 
@@ -8,7 +8,7 @@ public enum AnymalType {
     private final int MAX_SWIM_DISTANCE;
     private final int AMOUNT_FOR_FULL;
 
-    AnymalType(int maxRunDistance, int maxSwimDistance, int amountForFull) {
+    AnimalType(int maxRunDistance, int maxSwimDistance, int amountForFull) {
         this.MAX_RUN_DISTANCE = maxRunDistance;
         this.MAX_SWIM_DISTANCE = maxSwimDistance;
         this.AMOUNT_FOR_FULL = amountForFull;

@@ -5,19 +5,22 @@ import task1.Entity.Animal;
 
 import task1.Entity.Pork;
 import task1.Factory.AnimalFactory;
-import task1.Factory.AnymalType;
+import task1.Factory.AnimalType;
 import task1.Factory.PorkFactory;
 import task1.View.ConsoleDisplay;
-import task1.View.DisplayResult;
+import task1.View.Display;
+
+
 
 
 public class Start {
     public static void main(String[] args) {
         AnimalFactory animalFactory = new AnimalFactory();
         PorkFactory porkFactory= new PorkFactory();
-        DisplayResult display = new ConsoleDisplay();
+        Display display = new ConsoleDisplay();
+
         try {
-            Animal dog = animalFactory.createAnimal(AnymalType.DOG, "Шарик");
+            Animal dog = animalFactory.createAnimal(AnimalType.DOG, "Шарик");
             display.show(dog.run(200));
             display.show(dog.swim(10));
         } catch (IllegalArgumentException e) {
@@ -25,7 +28,7 @@ public class Start {
         }
 
         try {
-            Animal cat = animalFactory.createAnimal(AnymalType.CAT, "Барсик");
+            Animal cat = animalFactory.createAnimal(AnimalType.CAT, "Барсик");
             display.show(cat.run(100));
             display.show(cat.swim(1));
         } catch (IllegalArgumentException e) {
