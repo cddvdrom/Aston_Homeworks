@@ -11,12 +11,14 @@ public class Square extends Figure implements Calculation {
     }
 
     @Override
-    public void perimeter(Figure figure) {
+    public double perimeter() {
 
+        return 0;
     }
 
     @Override
-    public void area(Figure figure) {
+    public double area() {
 
+        return 0;
     }
 }

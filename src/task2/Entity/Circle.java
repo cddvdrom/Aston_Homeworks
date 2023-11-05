@@ -2,8 +2,6 @@ package task2.Entity;
 
 import task2.Calculate.Calculation;
 
-import javax.swing.plaf.synth.ColorType;
-
 public class Circle extends Figure implements Calculation {
     private double radius;
 
@@ -13,12 +11,12 @@ public class Circle extends Figure implements Calculation {
     }
 
     @Override
-    public void perimeter(Figure figure) {
-
+    public double perimeter() {
+        return 2*Math.PI*radius;
     }
 
     @Override
-    public void area(Figure figure) {
-
+    public double area() {
+        return Math.PI*(radius*radius);
     }
 }

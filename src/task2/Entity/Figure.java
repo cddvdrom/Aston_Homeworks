@@ -12,4 +12,16 @@ public abstract class Figure  {
         this.background=background;
         this.border=border;
     }
+
+    public FigureType getFigure() {
+        return figure;
+    }
+
+    public Colors getBackground() {
+        return background;
+    }
+
+    public Colors getBorder() {
+        return border;
+    }
 }

@@ -5,9 +5,9 @@ import task2.Entity.Colors;
 import task2.Entity.Figure;
 
 
-public interface CircleFactory  {
+public class CircleFactory{
 
-default Figure create(Colors background, Colors border, double radius) {
+public Figure create(Colors background, Colors border, double radius) {
     return new Circle(background,border,radius);
 
     }
