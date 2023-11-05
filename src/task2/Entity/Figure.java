@@ -6,7 +6,10 @@ public abstract class Figure  {
     private Colors border;
 
 
-    public Figure(FigureType figure) {
+    public Figure(FigureType figure,Colors background,Colors border)
+    {
         this.figure = figure;
+        this.background=background;
+        this.border=border;
     }
 }

@@ -3,8 +3,13 @@ package task2.Entity;
 import task2.Calculate.Calculation;
 
 public class Diamond extends Figure implements Calculation {
-    public Diamond(FigureType figure) {
-        super(figure);
+    private int diagonal1;
+    private int diagonal2;
+
+    public Diamond(FigureType figure,Colors background,Colors border,int diagonal1,int diagonal2) {
+        super(figure,background,border);
+        this.diagonal1=diagonal1;
+        this.diagonal2=diagonal2;
     }
 
     @Override

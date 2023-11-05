@@ -3,8 +3,13 @@ package task2.Entity;
 import task2.Calculate.Calculation;
 
 public class Rectangle extends Figure implements Calculation {
-    public Rectangle(FigureType figure) {
-        super(figure);
+
+    private int side1;
+    private int side2;
+    public Rectangle(FigureType figure,Colors background,Colors border,int side1,int side2) {
+        super(figure,background,border);
+        this.side1=side1;
+        this.side2=side2;
     }
 
     @Override
