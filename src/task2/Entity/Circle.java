@@ -1,9 +1,8 @@
 package task2.Entity;
 
-import task2.Calculate.Calculation;
 
 
-public class Circle extends Figure implements Calculation {
+public class Circle extends Figure  {
     private double radius;
 
     public Circle(Colors background, Colors border, double radius) {

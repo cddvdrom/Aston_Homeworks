@@ -3,7 +3,7 @@ package task2.Entity;
 import task2.Calculate.Calculation;
 
 
-public class Oval extends Figure implements Calculation {
+public class Oval extends Figure{
     private double radius1;
     private double radius2;
     private double radius3;

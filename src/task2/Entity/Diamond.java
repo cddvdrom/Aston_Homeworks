@@ -3,7 +3,7 @@ package task2.Entity;
 import task2.Calculate.Calculation;
 
 
-public class Diamond extends Figure implements Calculation {
+public class Diamond extends Figure{
     private double diagonal1;
     private double diagonal2;
 
