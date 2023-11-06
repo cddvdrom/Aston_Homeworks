@@ -1,5 +1,5 @@
 package Validator;
 
 public interface MyValidator {
-    boolean isValid();
+    boolean isValid(String line);
 }

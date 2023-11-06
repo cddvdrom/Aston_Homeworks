@@ -1,5 +1,5 @@
 package Display;
 
 public interface Display {
-    void show ();
+    void show (String line);
 }
