@@ -60,13 +60,13 @@ public class MenuCreator {
                     fileMenu.add(new MenuEntry(fileMenuData.getNames()[finalI]) {
                         @Override
                         void run() {
-                            System.out.println(store.load(fileMenuData.getPaths()[finalI]));
-/*
+
+
                             AppData appData =
                                     stringListToAppDataConverter.convert(store.load(fileMenuData.getPaths()[finalI]));
                             display.show(appData.toString());
 
- */
+
                         }
                     });
                 }

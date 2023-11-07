@@ -1,23 +1,16 @@
 package Data;
 
-import Store.DataStore;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AppData  {
-    private File file;
     private String [] []data;
     private String [] header;
 
-    public File getFile() {
-        return file;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
-    }
+public AppData(int values,int lines){
+    this.data=new String[lines][values];
+    this.header=new String[values];
+}
 
     public String[][] getData() {
         return data;
@@ -38,7 +31,6 @@ public class AppData  {
     @Override
     public String toString() {
         return "AppData{" +
-                "file=" + file +
                 ", data=" + Arrays.toString(data) +
                 ", header=" + Arrays.toString(header) +
                 '}';
