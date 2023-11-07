@@ -1,6 +1,6 @@
 package Menu;
 
-import Converter.AppDatatoStringListConverter;
+import Converter.AppDataToStringListConverter;
 import Converter.StringListToAppDataConverter;
 import Data.AppData;
 import Display.Display;
@@ -11,17 +11,18 @@ import Validator.DirectoryValidator;
 import Validator.MyValidator;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class MenuCreator {
     private MyValidator dirValidator;
     private InputData inputData;
     private StringListToAppDataConverter stringListToAppDataConverter;
-    private AppDatatoStringListConverter appDatatoStringListConverter;
+    private AppDataToStringListConverter appDatatoStringListConverter;
 
 
     public Menu create(Display display, DataStore store) {
         this.stringListToAppDataConverter = new StringListToAppDataConverter();
-        this.appDatatoStringListConverter = new AppDatatoStringListConverter();
+        this.appDatatoStringListConverter = new AppDataToStringListConverter();
         dirValidator = new DirectoryValidator();
         this.inputData = new InputDataService();
         Menu menu = new Menu(display, "Меню программы");
@@ -96,7 +97,11 @@ public class MenuCreator {
         menu.add(new MenuEntry("Создать новый СSV файл") {
             @Override
             void run() {
-                System.out.println("punkt 4");
+                ArrayList <String> result = new ArrayList<>();
+                display.show("Сколько строк будет в файле ?");
+                int count=Integer.parseInt(inputData.input());
+                display.show("Введите через пробел значения заголовков");
+                String header=inputData.input();
             }
         });
 

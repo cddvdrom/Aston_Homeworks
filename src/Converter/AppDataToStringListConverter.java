@@ -4,7 +4,7 @@ import Data.AppData;
 
 import java.util.ArrayList;
 
-public class AppDatatoStringListConverter {
+public class AppDataToStringListConverter {
     public ArrayList <String> convert(AppData appData){
         ArrayList <String> lines=new ArrayList<>();
         StringBuilder stringBuilder=new StringBuilder();
