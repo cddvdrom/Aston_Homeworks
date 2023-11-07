@@ -8,7 +8,7 @@ public class AppData  {
     private String [] header;
 
 public AppData(int values,int lines){
-    this.data=new String[lines][values];
+    this.data=new String[lines-1][values];
     this.header=new String[values];
 }
 
@@ -30,9 +30,14 @@ public AppData(int values,int lines){
 
     @Override
     public String toString() {
-        return "AppData{" +
-                ", data=" + Arrays.toString(data) +
-                ", header=" + Arrays.toString(header) +
-                '}';
+    StringBuilder stringBuilder=new StringBuilder();
+    String header=String.join(";",getHeader())+";";
+    stringBuilder.append(header+"\n");
+    for(int i=0;i<data.length;i++){
+            String data=String.join(";",getData()[i]);
+            stringBuilder.append(data+";\n");
+    }
+
+        return stringBuilder.toString();
     }
 }
