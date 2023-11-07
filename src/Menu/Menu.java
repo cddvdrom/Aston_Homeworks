@@ -10,7 +10,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import static java.awt.SystemColor.menu;
+
 public class Menu {
+    private String name;
     private OutputMenu outputMenu;
     private MyValidator validator;
     private Display display;
@@ -18,13 +21,21 @@ public class Menu {
     private ArrayList<MenuEntry> menuEntries;
     private boolean isExit = false;
 
-    public Menu(Display display) {
+    public Menu(Display display,String name) {
+        this.name=name;
         menuEntries = new ArrayList<>();
         outputMenu=new OutputMenu();
         validator = new MenuItemValidator();
         this.display = display;
         this.reader = new BufferedReader(new InputStreamReader(System.in));
+        menuEntries.add(new MenuEntry("Exit") {
+            @Override
+            void run() {
 
+                isExit=true;
+            }
+
+        });
     }
 
     public void setExit(boolean exit) {
@@ -45,7 +56,7 @@ public class Menu {
 
     public void run() {
         while (!isExit) {
-            display.show(outputMenu.output(menuEntries));
+            display.show(outputMenu.output(menuEntries,name));
             String line;
             int item;
             try {

@@ -1,20 +1,20 @@
 package Store;
 
-import Data.AppData;
+import Menu.FileMenuData;
 
-import java.io.File;
-import java.io.FileFilter;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class CsvStore implements DataStore{
-    private ArrayList <AppData> appDatas;
-    private final String extension ="csv";
+
+public class CsvStore implements DataStore {
+
+    private final String extension = "csv";
     private File workDirectory;
 
     public CsvStore() {
-        this.workDirectory =new File(System.getProperty("user.dir")+"\\src\\FileData");
-        this.appDatas=new ArrayList<>();
+        this.workDirectory = new File(System.getProperty("user.dir") + "\\src\\FileData");
+
+
     }
 
     public String getExtension() {
@@ -35,7 +35,21 @@ public class CsvStore implements DataStore{
     }
 
     @Override
-    public void load() {
+    public ArrayList<String> load(File file) {
+        FileReader reader = null;
+        try {
+            reader = new FileReader(file);
+
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            String line;
+            ArrayList<String> lines = new ArrayList<>();
+            while ((line = bufferedReader.readLine()) != null) {
+                lines.add(line);
+            }
+            return lines;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -45,23 +59,20 @@ public class CsvStore implements DataStore{
     }
 
     @Override
-    public void delete() {
+    public void delete(File file) {
+        if (file.exists()) file.delete();
+    }
+
+    public FileMenuData loadAppDataFromWorkDir() {
+
+        File[] paths = workDirectory.listFiles(new FileFilter() {
+            @Override
+            public boolean accept(File pathname) {
+                return !pathname.isDirectory() && String.valueOf(pathname).endsWith(extension);
+            }
+        });
+        String[] names = workDirectory.list();
+        return new FileMenuData(paths, names);
 
     }
-    public void loadAppDataFromWorkDir(){
-
-File [] listFiles = workDirectory.listFiles(new FileFilter() {
-    @Override
-    public boolean accept(File pathname) {
-        return !pathname.isDirectory()&&String.valueOf(pathname).endsWith(extension);
-    }
-});
-
-        for (File file:listFiles
-             ) {
-           System.out.println(file.toString());
-        }
-        System.out.println(Arrays.deepToString(workDirectory.list()));
-
-
-}}
+}
