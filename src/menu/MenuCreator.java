@@ -8,6 +8,7 @@ import service.InputData;
 import service.InputDataService;
 import store.DataStore;
 import store.FileMenuData;
+import validator.AppDataValidator;
 import validator.DirectoryValidator;
 import validator.MyValidator;
 
@@ -104,10 +105,16 @@ public class MenuCreator {
                 ArrayList<String> result = new ArrayList<>();
                 display.show("Введите название файла :");
                 String fileName = store.getWorkDirectory() + "\\" + inputData.input() + ".csv";
-                display.show("Сколько строк данных будет в файле ?");
-                int lines = Integer.parseInt(inputData.input());
-                display.show("Сколько столбцов будет в файле ?");
-                int column = Integer.parseInt(inputData.input());
+
+                    display.show("Сколько строк данных будет в файле ?");
+                    int lines = Integer.parseInt(inputData.input());
+                    display.show("Сколько столбцов будет в файле ?");
+                    int column = Integer.parseInt(inputData.input());
+                    if(!new AppDataValidator().validate(column,lines)){
+                        display.show("Введены некорректные данные");
+                        return;}
+
+
                 String[] header = new String[column];
                 String[][] data = new String[lines][column];
                 display.show("Введите значения заголовков");
