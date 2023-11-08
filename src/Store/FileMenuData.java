@@ -1,4 +1,4 @@
-package Menu;
+package Store;
 
 import java.io.File;
 
