@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Menu.*;
+import menu.*;
 
 import java.util.ArrayList;
 

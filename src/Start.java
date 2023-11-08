@@ -1,20 +1,17 @@
-import DataLoader.DisplayLoader;
-import DataLoader.FileTypeLoader;
-import Display.*;
-import Menu.Menu;
-import Menu.MenuCreator;
-import Store.CsvStore;
-import Store.DataStore;
+import dataLoader.DisplayLoader;
+import dataLoader.FileTypeLoader;
+import display.*;
+import menu.Menu;
+import menu.MenuCreator;
+import store.DataStore;
 
 public class Start {
     public static void main(String[] args) {
-        DisplayLoader displayLoader=new DisplayLoader();
-        Display display=displayLoader.load();
-        FileTypeLoader fileTypeLoader=new FileTypeLoader();
-        DataStore store= fileTypeLoader.load();
-        MenuCreator menuCreator=new MenuCreator();
-        Menu menu=menuCreator.create(display,store);
-        menu.run();
+
+        Display display=new DisplayLoader().load();
+        DataStore store= new FileTypeLoader().load();
+        new MenuCreator().create(display,store).run();
+
 
     }
 }

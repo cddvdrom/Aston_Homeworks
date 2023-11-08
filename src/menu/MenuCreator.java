@@ -1,18 +1,19 @@
-package Menu;
+package menu;
 
-import Converter.AppDataToStringListConverter;
-import Converter.StringListToAppDataConverter;
-import Data.AppData;
-import Display.Display;
-import Service.InputData;
-import Service.InputDataService;
-import Store.DataStore;
-import Store.FileMenuData;
-import Validator.DirectoryValidator;
-import Validator.MyValidator;
+import converter.AppDataToStringListConverter;
+import converter.StringListToAppDataConverter;
+import data.AppData;
+import display.Display;
+import service.InputData;
+import service.InputDataService;
+import store.DataStore;
+import store.FileMenuData;
+import validator.DirectoryValidator;
+import validator.MyValidator;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MenuCreator {
     private MyValidator dirValidator;
@@ -99,10 +100,30 @@ public class MenuCreator {
             @Override
             void run() {
                 ArrayList <String> result = new ArrayList<>();
-                display.show("Сколько строк будет в файле ?");
-                int count=Integer.parseInt(inputData.input());
-                display.show("Введите через пробел значения заголовков");
-                String header=inputData.input();
+                display.show("Введите название файла :");
+                String fileName=store.getWorkDirectory()+"\\"+inputData.input()+".csv";
+                display.show("Сколько строк данных будет в файле ?");
+                int lines=Integer.parseInt(inputData.input());
+                display.show("Сколько столбцов будет в файле ?");
+                int column=Integer.parseInt(inputData.input());
+                String [] header=new String[column];
+                String [] [] data =new String[lines][column];
+                display.show("Введите значения заголовков");
+                for (int i=0;i<column;i++){
+                    display.show("Значение столбца "+(i+1)+" :");
+                    header[i]=inputData.input();
+                }
+                display.show("Введите данные:");
+                for(int j=0;j<lines;j++) {
+                    for (int i = 0; i < column; i++) {
+                        display.show("Строка " + (j + 1) + ", Cтолбец " + (i + 1));
+                        data[j][i] = inputData.input();
+                    }
+                }
+                AppData appData=new AppData(column,lines);
+                appData.setData(data);
+                appData.setHeader(header);
+                store.save(new File(fileName),new AppDataToStringListConverter().convert(appData));
             }
         });
 

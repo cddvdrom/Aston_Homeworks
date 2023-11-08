@@ -1,15 +1,13 @@
-package Data;
+package data;
 
-
-import java.util.Arrays;
 
 public class AppData  {
     private String [] []data;
     private String [] header;
 
-public AppData(int values,int lines){
-    this.data=new String[lines-1][values];
-    this.header=new String[values];
+public AppData(int column,int lines){
+    this.data=new String[lines-1][column];
+    this.header=new String[column];
 }
 
     public String[][] getData() {

@@ -1,4 +1,4 @@
-package Store;
+package store;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -52,8 +52,18 @@ public class CsvStore implements DataStore {
     }
 
     @Override
-    public void save() {
+    public void save(File file,ArrayList <String>stringList) {
 
+        try {
+            FileWriter fileWriter=new FileWriter(file,true);
+            for (String line:stringList
+                 ) {
+                fileWriter.write(line+"\n");
+            }
+            fileWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

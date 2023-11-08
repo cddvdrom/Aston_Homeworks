@@ -16,4 +16,4 @@ private int[][] data;
 Если выполняется save(AppData data), то старые данные в файле полностью перезаписываются
 
 
-(c) Copyright MaxSoft Computer Service
+(c) Copyright MaxSoft Computer service

@@ -1,6 +1,6 @@
-package DataLoader;
+package dataLoader;
 
-import Display.*;
+import display.*;
 
 import java.io.File;
 import java.io.FileInputStream;

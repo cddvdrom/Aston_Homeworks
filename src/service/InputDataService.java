@@ -1,6 +1,4 @@
-package Service;
-
-import Validator.MyValidator;
+package service;
 
 import java.io.BufferedReader;
 import java.io.IOException;

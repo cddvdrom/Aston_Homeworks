@@ -1,16 +1,14 @@
-package Menu;
+package menu;
 
-import Display.Display;
-import Service.OutputMenu;
-import Validator.MenuItemValidator;
-import Validator.MyValidator;
+import display.Display;
+import service.OutputMenu;
+import validator.MenuItemValidator;
+import validator.MyValidator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-import static java.awt.SystemColor.menu;
 
 public class Menu {
     private String name;

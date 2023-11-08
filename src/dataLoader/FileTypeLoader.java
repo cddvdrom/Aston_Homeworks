@@ -1,7 +1,6 @@
-package DataLoader;
+package dataLoader;
 
-import Display.Display;
-import Store.CsvStore;
+import store.CsvStore;
 
 import java.io.File;
 import java.io.FileInputStream;
