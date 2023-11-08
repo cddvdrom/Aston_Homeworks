@@ -10,7 +10,8 @@ import java.util.Properties;
 public class DisplayLoader {
     public Display load() {
         File file = new File("src/file.properties");
-        if (file.exists()) {
+        if (file.exists())
+        {
             try {
                 Properties props = new Properties();
                 props.load(new FileInputStream(file));
@@ -18,17 +19,20 @@ public class DisplayLoader {
                 String value = "";
                 for (Object key : props.keySet()) {
 
-                    if (Objects.equals(key, display)) {
+                    if (Objects.equals(key, display))
+                    {
                         value = (String) props.get(key);
                     }
                 }
-                if (Objects.equals(value, "console")) {
+                if (Objects.equals(value, "console"))
+                {
                     return new ConsoleDisplay();
                 } else {
                     throw new RuntimeException("не определен метод вывода");
                 }
 
-            } catch (Exception e) {
+            } catch (Exception e)
+            {
                 e.printStackTrace();
             }
         } else {

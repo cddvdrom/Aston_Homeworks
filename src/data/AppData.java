@@ -31,7 +31,8 @@ public AppData(int column,int lines){
     StringBuilder stringBuilder=new StringBuilder();
     String header=String.join(";",getHeader())+";";
     stringBuilder.append(header+"\n");
-    for(int i=0;i<data.length;i++){
+    for(int i=0;i<data.length;i++)
+    {
             String data=String.join(";",getData()[i]);
             stringBuilder.append(data+";\n");
     }

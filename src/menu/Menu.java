@@ -29,31 +29,29 @@ public class Menu {
         menuEntries.add(new MenuEntry("Exit") {
             @Override
             void run() {
-
                 isExit=true;
             }
-
         });
     }
-
-    public void setExit(boolean exit) {
+    public void setExit(boolean exit)
+    {
         isExit = exit;
     }
-
-    public ArrayList<MenuEntry> getMenuEntries() {
+    public ArrayList<MenuEntry> getMenuEntries()
+    {
         return menuEntries;
     }
-
-    public void setMenuEntries(ArrayList<MenuEntry> menuEntries) {
+    public void setMenuEntries(ArrayList<MenuEntry> menuEntries)
+    {
         this.menuEntries = menuEntries;
     }
-
-    public void add(MenuEntry menuEntry) {
+    public void add(MenuEntry menuEntry)
+    {
         menuEntries.add(menuEntry);
     }
-
     public void run() {
-        while (!isExit) {
+        while (!isExit)
+        {
             display.show(outputMenu.output(menuEntries,name));
             String line;
             int item;
@@ -61,7 +59,8 @@ public class Menu {
                 line = reader.readLine();
                 if (validator.isValid(line)) {
                     item = Integer.parseInt(line);
-                    if (item >= 0 & item < menuEntries.size()) {
+                    if (item >= 0 & item < menuEntries.size())
+                    {
                         menuEntries.get(item).run();
                     }
                 }

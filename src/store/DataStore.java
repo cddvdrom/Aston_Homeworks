@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 public interface DataStore {
-    void create();
     ArrayList<String> load(File file);
     void save(File file,ArrayList <String>list);
     void delete(File file);

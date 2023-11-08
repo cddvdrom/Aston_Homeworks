@@ -10,19 +10,23 @@ import java.util.Properties;
 public class FileTypeLoader {
     public CsvStore load() {
         File file = new File("src/file.properties");
-        if (file.exists()) {
+        if (file.exists())
+        {
             try {
                 Properties props = new Properties();
                 props.load(new FileInputStream(file));
                 String display = "fileType";
                 String value = "";
-                for (Object key : props.keySet()) {
+                for (Object key : props.keySet())
+                {
 
-                    if (Objects.equals(key, display)) {
+                    if (Objects.equals(key, display))
+                    {
                         value = (String) props.get(key);
                     }
                 }
-                if (Objects.equals(value, "csv")) {
+                if (Objects.equals(value, "csv"))
+                {
                     return new CsvStore();
                 } else {
                     throw new RuntimeException("не определен формат данных");

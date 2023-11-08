@@ -15,7 +15,8 @@ public class OutputMenu {
         stringBuilder.append("\n");
         stringBuilder.append("=================");
         stringBuilder.append("\n");
-        for (int i = 1; i < menuEntries.size(); i++) {
+        for (int i = 1; i < menuEntries.size(); i++)
+        {
             stringBuilder.append(i + ". ");
             stringBuilder.append(menuEntries.get(i).getName());
             stringBuilder.append("\n");

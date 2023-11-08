@@ -5,31 +5,19 @@ import java.util.ArrayList;
 
 
 public class CsvStore implements DataStore {
-
     private final String extension = "csv";
     private File workDirectory;
-
     public CsvStore() {
         this.workDirectory = new File(System.getProperty("user.dir") + "\\src\\FileData");
-
-
     }
-
     public String getExtension() {
         return extension;
     }
-
     public File getWorkDirectory() {
         return workDirectory;
     }
-
     public void setWorkDirectory(File workDirectory) {
         this.workDirectory = workDirectory;
-    }
-
-    @Override
-    public void create() {
-
     }
 
     @Override
@@ -37,11 +25,11 @@ public class CsvStore implements DataStore {
         FileReader reader = null;
         try {
             reader = new FileReader(file);
-
             BufferedReader bufferedReader = new BufferedReader(reader);
             String line;
             ArrayList<String> lines = new ArrayList<>();
-            while ((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null)
+            {
                 lines.add(line);
             }
             return lines;

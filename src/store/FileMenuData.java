@@ -10,11 +10,9 @@ public class FileMenuData {
         this.paths=paths;
         this.names=names;
     }
-
     public File[] getPaths() {
         return paths;
     }
-
     public String[] getNames() {
         return names;
     }

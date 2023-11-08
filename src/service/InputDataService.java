@@ -9,7 +9,6 @@ public class InputDataService implements InputData{
     private boolean exit;
 
     public InputDataService(){
-
         this.reader=new BufferedReader(new InputStreamReader(System.in));
         this.exit=false;
     }
