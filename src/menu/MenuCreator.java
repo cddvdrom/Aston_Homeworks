@@ -37,8 +37,8 @@ public class MenuCreator {
                 String line = inputData.input();
                 if (line.equals(".."))
                 {
-                    store.setWorkDirectory(new File(System.getProperty("user.dir") + "\\FileData"));
-                    System.out.println(System.getProperty("user.dir") + "\\FileData");
+                    store.setWorkDirectory(new File(System.getProperty("user.dir") + "\\fileData"));
+                    System.out.println(System.getProperty("user.dir") + "\\fileData");
                 } else
                 {
                     if (dirValidator.isValid(line))
