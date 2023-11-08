@@ -2,7 +2,7 @@ package menu;
 
 import converter.AppDataToStringListConverter;
 import converter.StringListToAppDataConverter;
-import data.AppData;
+import entity.AppData;
 import display.Display;
 import service.InputData;
 import service.InputDataService;
@@ -14,7 +14,6 @@ import validator.MyValidator;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MenuCreator {
     private MyValidator dirValidator;

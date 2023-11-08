@@ -1,6 +1,6 @@
 package converter;
 
-import data.AppData;
+import entity.AppData;
 
 import java.util.ArrayList;
 

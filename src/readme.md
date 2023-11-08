@@ -10,10 +10,10 @@
 Для хранения данных использовать класс вида:
 public class AppData {
 private String[] header;
-private int[][] data;
+private int[][] entity;
 // ...
 }
-Если выполняется save(AppData data), то старые данные в файле полностью перезаписываются
+Если выполняется save(AppData entity), то старые данные в файле полностью перезаписываются
 
 
 (c) Copyright MaxSoft Computer service
