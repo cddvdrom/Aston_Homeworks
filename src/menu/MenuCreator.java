@@ -126,7 +126,7 @@ public class MenuCreator {
                 for (int j = 0; j < lines; j++)
                 {
                     for (int i = 0; i < column; i++) {
-                        display.show("Строка " + (j + 1) + ", Cтолбец " + (i + 1));
+                        display.show("Строка " + (j + 1) + ", Cтолбец " + (i + 1)+" "+header[i]);
                         data[j][i] = inputData.input();
                     }
                 }
