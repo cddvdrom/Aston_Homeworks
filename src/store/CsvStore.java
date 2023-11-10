@@ -2,6 +2,7 @@ package store;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class CsvStore implements DataStore {
@@ -67,7 +68,12 @@ public class CsvStore implements DataStore {
                 return !pathname.isDirectory() && String.valueOf(pathname).endsWith(extension);
             }
         });
-        String[] names = workDirectory.list();
+        String[] names = workDirectory.list(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return String.valueOf(name).endsWith(extension);
+            }
+        });
         return new FileMenuData(paths, names);
 
     }
