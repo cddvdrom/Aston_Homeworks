@@ -1,8 +1,6 @@
-package task1;
+package task1.dataLoader;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Properties;
 
 public class FileDataLoader {
@@ -12,22 +10,17 @@ public class FileDataLoader {
         InputStream stream = loader.getResourceAsStream("file.properties");
         try {
             properties.load(stream);
-
             File file = new File(properties.getProperty("file"));
             if (file.exists()) {
-                System.out.println(file.getName());
+                String result = "";
+                BufferedReader reader = new BufferedReader(new FileReader(file));
+                result = reader.readLine();
+                return result;
             } else {
                 throw new FileNotFoundException("файл данных не найден");
             }
-            String result = "";
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            result = reader.readLine();
-            return result;
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 }
