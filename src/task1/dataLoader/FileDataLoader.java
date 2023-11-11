@@ -7,7 +7,7 @@ public class FileDataLoader {
     public String load() {
         Properties properties = new Properties();
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        InputStream stream = loader.getResourceAsStream("file.properties");
+        InputStream stream = loader.getResourceAsStream("\\task1\\file.properties");
         try {
             properties.load(stream);
             File file = new File(properties.getProperty("file"));
