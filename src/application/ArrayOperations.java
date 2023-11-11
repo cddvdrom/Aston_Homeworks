@@ -13,8 +13,8 @@ public class ArrayOperations {
         ArrayCellValueValidator valueValidator = new ArrayCellValueValidator();
         try {
             if (!sizeValidator.isValid(array.length)) {
-                throw new MyArraySizeException("Неверное количество строк в массиве : "
-                        + (array.length) + " , вместо " + ArraySize.RIGHT_SIZE.getSize());
+                throw new MyArraySizeException("В данном массиве "
+                        + (array.length) + " строки "+"вместо " + ArraySize.RIGHT_SIZE.getSize());
             }
         } catch (MyArraySizeException e) {
             System.out.println(e.getMessage());
@@ -24,9 +24,9 @@ public class ArrayOperations {
             try {
                 if (!sizeValidator.isValid(array[i].length)) {
                     throw new MyArraySizeException
-                            ("Неверное количество столбцов : " + (array[i].length) + " вместо " +
+                            ("В строке " + i + " неверное количество столбцов " + (array[i].length) + " , вместо " +
                                     ArraySize.RIGHT_SIZE.getSize()
-                                    + " в строке " + i);
+                                    );
                 }
             } catch (MyArraySizeException e) {
                 System.out.println(e.getMessage());
