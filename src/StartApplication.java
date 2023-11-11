@@ -1,10 +1,12 @@
-import application.ArrayOperations;
+
+import application.ArrayResearcher;
 import data.MyArrays;
 
 public class StartApplication {
     public static void main(String[] args) {
-        ArrayOperations arrayOperations=new ArrayOperations();
-        arrayOperations.sum(MyArrays.RIGHT_ARRAY.getArray());
-        arrayOperations.sum(MyArrays.WRONG_ARRAY.getArray());
+        ArrayResearcher researcher=new ArrayResearcher();
+        researcher.outputInfo(MyArrays.RIGHT_ARRAY.getArray());
+        researcher.outputInfo(MyArrays.WRONG_SIZE_ARRAY.getArray());
+        researcher.outputInfo(MyArrays.WRONG_DATA_ARRAY.getArray());
     }
 }

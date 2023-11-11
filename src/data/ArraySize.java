@@ -1,8 +1,7 @@
 package data;
 
 public enum ArraySize {
-    RIGHT_SIZE(4),
-    WRONG_SIZE(5);
+    RIGHT_SIZE(4);
 
 private int size;
 ArraySize(int size){
