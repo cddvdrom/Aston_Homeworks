@@ -3,26 +3,33 @@ package task2.phoneBook;
 import java.util.*;
 
 public class PhoneBook {
-    private Map<String, Contact> phoneEntries;
-
+    private ArrayList<String> peoples;
+    private ArrayList<String> phones;
     public PhoneBook() {
-        this.phoneEntries = new HashMap<>();
+        this.peoples = new ArrayList<>();
+        this.phones = new ArrayList<>();
     }
-
-    public void add(String surname, Long phone) {
-        Set<Map.Entry<String, Contact>> entrySet = phoneEntries.entrySet();
-        Set<String> surnames = phoneEntries.keySet();
-        for (String key : surnames
-        ) {
-            if (key.equals(surname)) {
-                phoneEntries.get(key).addPhone(phone);
-            } else {
-                phoneEntries.put(surname, new Contact());
+    public void add(String surname, String phone) {
+        peoples.add(surname);
+        phones.add(phone);
+    }
+    public ArrayList<String> findAbonent(String surname) {
+        ArrayList<String> result = new ArrayList<>();
+        for (int i = 0; i < peoples.size(); i++) {
+            if (peoples.get(i).equals(surname)) {
+                result.add(phones.get(i));
             }
         }
+        return result;
     }
-    public ArrayList <String> findAbonent(String surname){
-        List <String>
-        return null;
+    public void printFindAbonent(String surname, ArrayList<String> result) {
+        System.out.println("Данные поиска по абоненту - " + surname + " :");
+        if (result.size() == 0) {
+            System.out.println("Абонент с данной фамилией отсутствует в справочнике");
+        } else {
+            for (String phone : result) {
+                System.out.println(phone);
+            }
+        }
     }
 }
