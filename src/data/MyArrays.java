@@ -24,7 +24,7 @@ public enum MyArrays {
 
             }
     );
-    private String[][] array;
+    private final String[][] array;
     MyArrays(String[][] array) {
         this.array = array;
     }

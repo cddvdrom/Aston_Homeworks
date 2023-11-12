@@ -6,6 +6,6 @@ public class ArrayResearcher {
         System.out.println("Исследуется массив :");
         System.out.println(Arrays.deepToString(array).replace("], ", "]\n"));
         System.out.println("Сумма значений = " + arrayOperations.sum(array));
-        System.out.println("");
+        System.out.println();
     }
 }
