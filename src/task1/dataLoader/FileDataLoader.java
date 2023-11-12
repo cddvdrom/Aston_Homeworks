@@ -7,20 +7,32 @@ public class FileDataLoader {
     public String load() {
         Properties properties = new Properties();
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        InputStream stream = loader.getResourceAsStream("\\task1\\file.properties");
-        try {
+        try (InputStream stream = loader.getResourceAsStream("\\task1\\file.properties"))
+        {
             properties.load(stream);
-            File file = new File(properties.getProperty("file"));
-            if (file.exists()) {
-                String result ;
-                BufferedReader reader = new BufferedReader(new FileReader(file));
-                result = reader.readLine();
-                return result;
-            } else {
-                throw new FileNotFoundException("файл данных не найден");
-            }
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             throw new RuntimeException(e);
+        }
+        File file = new File(properties.getProperty("file"));
+        if (file.exists())
+        {
+            String result;
+            try (BufferedReader reader = new BufferedReader(new FileReader(file)))
+            {
+                result = reader.readLine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            return result;
+        } else
+        {
+            try
+            {
+                throw new FileNotFoundException("файл данных не найден");
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
