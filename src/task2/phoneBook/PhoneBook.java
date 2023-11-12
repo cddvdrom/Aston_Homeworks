@@ -1,8 +1,8 @@
 package task2.phoneBook;
 import java.util.*;
 public class PhoneBook {
-    private ArrayList<String> peoples;
-    private ArrayList<String> phones;
+    private final ArrayList<String> peoples;
+    private final ArrayList<String> phones;
     public PhoneBook(){
         this.peoples = new ArrayList<>();
         this.phones = new ArrayList<>();
