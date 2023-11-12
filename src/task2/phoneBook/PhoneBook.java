@@ -5,7 +5,7 @@ import java.util.*;
 public class PhoneBook {
     private ArrayList<String> peoples;
     private ArrayList<String> phones;
-    public PhoneBook() {
+    public PhoneBook(){
         this.peoples = new ArrayList<>();
         this.phones = new ArrayList<>();
     }
@@ -15,8 +15,10 @@ public class PhoneBook {
     }
     public ArrayList<String> findAbonent(String surname) {
         ArrayList<String> result = new ArrayList<>();
-        for (int i = 0; i < peoples.size(); i++) {
-            if (peoples.get(i).equals(surname)) {
+        for (int i = 0; i < peoples.size(); i++)
+        {
+            if (peoples.get(i).equals(surname))
+            {
                 result.add(phones.get(i));
             }
         }
@@ -24,10 +26,14 @@ public class PhoneBook {
     }
     public void printFindAbonent(String surname, ArrayList<String> result) {
         System.out.println("Данные поиска по абоненту - " + surname + " :");
-        if (result.size() == 0) {
+        if (result.size() == 0)
+        {
             System.out.println("Абонент с данной фамилией отсутствует в справочнике");
-        } else {
-            for (String phone : result) {
+        }
+        else
+        {
+            for (String phone : result)
+            {
                 System.out.println(phone);
             }
         }
