@@ -1,7 +1,5 @@
 package task2;
-
 import task2.phoneBook.PhoneBook;
-
 public class StartApp {
     public static void main(String[] args) {
         PhoneBook phoneBook = new PhoneBook();

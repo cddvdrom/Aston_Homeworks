@@ -1,7 +1,5 @@
 package task1.service;
-
 import java.util.*;
-
 public class DisplayOutput {
     public void show(Map<String, Integer> map) {
         Set<String> keys = map.keySet();

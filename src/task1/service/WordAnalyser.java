@@ -1,7 +1,5 @@
 package task1.service;
-
 import java.util.*;
-
 public class WordAnalyser {
     public Map<String, Integer> analyse(String[] array) {
         Map<String, Integer> map = new HashMap<>();

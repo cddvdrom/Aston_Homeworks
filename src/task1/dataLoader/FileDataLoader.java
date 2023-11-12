@@ -1,8 +1,6 @@
 package task1.dataLoader;
-
 import java.io.*;
 import java.util.Properties;
-
 public class FileDataLoader {
     public String load() {
         Properties properties = new Properties();

@@ -1,7 +1,5 @@
 package task2.phoneBook;
-
 import java.util.*;
-
 public class PhoneBook {
     private ArrayList<String> peoples;
     private ArrayList<String> phones;
