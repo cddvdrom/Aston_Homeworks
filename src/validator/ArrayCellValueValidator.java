@@ -1,11 +1,12 @@
 package validator;
-
 public class ArrayCellValueValidator {
     public boolean isValid(String value){
-        try {
+        try
+        {
             Integer.parseInt(value);
             return true;
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e) {
             return false;
         }
     }

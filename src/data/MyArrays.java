@@ -1,6 +1,4 @@
 package data;
-
-
 public enum MyArrays {
     RIGHT_ARRAY(new String[][]
             {
@@ -26,7 +24,6 @@ public enum MyArrays {
 
             }
     );
-
     private String[][] array;
     MyArrays(String[][] array) {
         this.array = array;

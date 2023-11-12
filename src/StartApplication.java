@@ -1,7 +1,5 @@
-
 import application.ArrayResearcher;
 import data.MyArrays;
-
 public class StartApplication {
     public static void main(String[] args) {
         ArrayResearcher researcher=new ArrayResearcher();
