@@ -9,7 +9,7 @@ public class DisplayOutput {
         Collections.sort(list);
 
         System.out.println("---------------------------------------------------------");
-        System.out.print(String.format("|%-3s|%-25s | %-22s |\n","id", "Слово", "Количество повторений"));
+        System.out.print(String.format("|%-3s|%-25s | %-22s |\n","№", "Слово", "Количество повторений"));
         System.out.println("---------------------------------------------------------");
         int counter=1;
         for (String value : list
