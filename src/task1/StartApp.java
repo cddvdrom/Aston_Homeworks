@@ -8,10 +8,10 @@ import task1.service.WordAnalyser;
 public class StartApp {
     public static void main(String[] args) {
         Converter converter = new Converter();
-        FileDataLoader loader=new FileDataLoader();
+        FileDataLoader loader = new FileDataLoader();
         String data=loader.load();
         String[] dataArr = converter.getArrayFromString(data);
-        WordAnalyser analyser=new WordAnalyser();
+        WordAnalyser analyser = new WordAnalyser();
         new DisplayOutput().show(analyser.analyse(dataArr));
     }
 }
