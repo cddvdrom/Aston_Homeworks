@@ -12,7 +12,7 @@ public class FileDataLoader {
             properties.load(stream);
             File file = new File(properties.getProperty("file"));
             if (file.exists()) {
-                String result = "";
+                String result ;
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 result = reader.readLine();
                 return result;
