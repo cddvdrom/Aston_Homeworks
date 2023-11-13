@@ -17,8 +17,7 @@ public class GeneratorRandom {
         return list;
     }
     public int getRandomInt(int minRange, int maxRange) {
-        int randomNumber = random.nextInt(maxRange - minRange + 1) + minRange;
-        return randomNumber;
+        return random.nextInt(maxRange - minRange + 1 ) + minRange;
     }
     public enum RandomProperties {
         MIN_RANGE(0),
