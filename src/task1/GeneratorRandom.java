@@ -2,7 +2,7 @@ package task1;
 
 import java.util.*;
 public class GeneratorRandom {
-    private Random random;
+    private final Random random;
     public GeneratorRandom() {
         this.random = new Random();
     }
@@ -24,7 +24,7 @@ public class GeneratorRandom {
         MAX_RANGE(100),
         MIN_ARRAY_SIZE(1),
         MAX_ARRAY_SIZE(12);
-        private int value;
+        private final int value;
         RandomProperties(int value) {
             this.value = value;
         }
