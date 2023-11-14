@@ -15,6 +15,6 @@ public class StartTask2 {
         Long result = list.stream().filter( x -> x.contains("High") ).count();
         System.out.println(result);
         System.out.println("Первый элемент коллекции = " + util.getFirst(list));
-        System.out.println("Первый элемент коллекции = " + util.getLast(list));
+        System.out.println("Последний элемент коллекции = " + util.getLast(list));
     }
 }
