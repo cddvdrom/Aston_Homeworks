@@ -8,7 +8,7 @@ public class StartTask1 {
         System.out.println ("Случайные числа : " + list);
         System.out.println ("Общее количество чисел = " + list.size());
         System.out.print ("Количество положительных = ");
-        Long count = list.stream().filter( x -> x%2==0 ).count();
+        Long count = list.stream().filter( x -> x % 2 == 0 ).count();
         System.out.print(count);
     }
 }
