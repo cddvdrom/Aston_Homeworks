@@ -6,6 +6,7 @@ public class StartApp {
         OuterInConcole printer = new OuterInConcole();
         SearchCondition condition = String::startsWith;
         System.out.println("Введите логины ,при завершении введите пустую строку :");
+        data.input();
         System.out.println("Список логинов , которые начинаются на f : ");
         printer.printList(data.findDataCondition(condition, "f"));
     }
