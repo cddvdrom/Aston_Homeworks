@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 public class Data {
-    private List <String> data;
+    private final List <String> data;
     public Data () {
         this.data = new ArrayList <> (Arrays.asList(
                 "f10",

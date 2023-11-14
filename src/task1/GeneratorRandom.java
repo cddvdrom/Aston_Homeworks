@@ -9,10 +9,9 @@ public class GeneratorRandom {
         this.random = new Random();
     }
     public List<Integer> generateList() {
-        Integer [] array = new Integer[getRandomInt(RandomProperties.MIN_ARRAY_SIZE.getValue(),
-                RandomProperties.MAX_ARRAY_SIZE.getValue())];
-
-            return Arrays.stream(array).map(x-> getRandomInt(RandomProperties.MIN_RANGE.getValue(),
+            return Arrays.stream(new Integer[getRandomInt(RandomProperties.MIN_ARRAY_SIZE.getValue(),
+                    RandomProperties.MAX_ARRAY_SIZE.getValue())]).map
+                    (x-> getRandomInt(RandomProperties.MIN_RANGE.getValue(),
                     RandomProperties.MAX_RANGE.getValue())).collect(Collectors.toList());
     }
     public int getRandomInt(int minRange, int maxRange) {

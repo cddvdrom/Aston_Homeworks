@@ -11,6 +11,6 @@ public class CollectionUtils {
     public List <String> sortWordsCollectionInNaturalOrder (List <String> list){
         return list.stream().map(x -> Arrays.stream(x.split("")).
                         sorted().collect(Collectors.toList())).
-                map(x -> x.stream().collect(Collectors.joining())).collect(Collectors.toList());
+                map(x -> String.join("", x)).collect(Collectors.toList());
     }
 }

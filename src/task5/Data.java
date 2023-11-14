@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Data {
-    private List<String> listData;
+    private final List<String> listData;
 
     public Data() {
         this.listData = new ArrayList<>();
     }
-    public List<String> input() {
+    public void input() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             boolean isExit = false;
             while (!isExit) {
@@ -24,13 +24,11 @@ public class Data {
                     isExit = true;
                 }
             }
-            return listData;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
     public List<String> findDataCondition(SearchCondition condition, String item) {
-        List<String> list = listData.stream().filter(x -> condition.compare(x, item)).collect(Collectors.toList());
-        return list;
+        return listData.stream().filter(x -> condition.compare(x, item)).collect(Collectors.toList());
     }
 }

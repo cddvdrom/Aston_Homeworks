@@ -47,7 +47,7 @@ public class StartApp {
     }
     private static class StudentUtils {
         public OptionalDouble getAverageAgeOfManStudent(Collection<Student> list) {
-            return list.stream().map(x -> x.getAge()).mapToInt(Integer::intValue).average();
+            return list.stream().map(Student::getAge).mapToInt(Integer::intValue).average();
         }
         public List<Student> getStudentsForMilitaryService(Collection<Student> list) {
             return list.stream().filter(x -> x.getAge() > 18 && x.getAge() < 27 && x.getGender() == Gender.MAN).
@@ -55,7 +55,7 @@ public class StartApp {
         }
         public void printListStudents(Collection<Student> students) {
             System.out.println("----------------------------------------");
-            System.out.println(String.format("%-20s%-10s%-10s", "Имя", "Возраст", "Пол"));
+            System.out.printf("%-20s%-10s%-10s%n", "Имя", "Возраст", "Пол");
             System.out.println("----------------------------------------");
             for (Student student : students)
             {

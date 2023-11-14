@@ -9,7 +9,7 @@ public class CollectionUtil {
     }
     public String getLast (List <String> list){
      //   return (list.size()==0) ? "0" : list.get(list.size()-1) ;
-        long counter = list.stream().count();
-        return list.stream().skip( counter - 1 ).findFirst().orElse("0");
+        long counter = list.size();
+        return list.stream().skip(counter - 1).findFirst().orElse("0");
     }
 }
