@@ -22,7 +22,7 @@ public class StartApp {
             System.out.println("\nСредний возраст студентов вычислить невозможно");
         }
         List<Student> studentForMilitaryService = utils.getStudentsForMilitaryService(students);
-        System.out.println("\nКоличество студентов , подлежащих призыву : ");
+        System.out.println("\nСтуденты , подлежащие призыву : ");
         utils.printListStudents(studentForMilitaryService);
     }
     private static class Student {
