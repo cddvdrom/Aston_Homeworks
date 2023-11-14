@@ -4,9 +4,26 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class StartApp {
-    private enum Gender {
-        MAN,
-        WOMAN
+    public static void main(String[] args) {
+        Collection<Student> students = Arrays.asList(
+                new Student("Дмитрий", 17, Gender.MAN),
+                new Student("Максим", 20, Gender.MAN),
+                new Student("Екатерина", 20, Gender.WOMAN),
+                new Student("Михаил", 28, Gender.MAN));
+        StudentUtils utils = new StudentUtils();
+        OptionalDouble average = utils.getAverageAgeOfManStudent(students);
+        System.out.println("Список студентов :");
+        utils.printListStudents(students);
+        if ( average.isPresent() )
+        {
+            System.out.println("\nСредний возраст студентов мужского пола = " + average.getAsDouble());
+        } else
+        {
+            System.out.println("\nСредний возраст студентов посчитать невозможно");
+        }
+        List<Student> studentForMilitaryService = utils.getStudentsForMilitaryService(students);
+        System.out.println("\nКоличество студентов , подлежащих призыву : ");
+        utils.printListStudents(studentForMilitaryService);
     }
     private static class Student {
         private final String name;
@@ -64,26 +81,8 @@ public class StartApp {
             System.out.println("----------------------------------------");
         }
     }
-    public static void main(String[] args) {
-        Collection<Student> students = Arrays.asList(
-                new Student("Дмитрий", 17, Gender.MAN),
-                new Student("Максим", 20, Gender.MAN),
-                new Student("Екатерина", 20, Gender.WOMAN),
-                new Student("Михаил", 28, Gender.MAN)
-        );
-        StudentUtils utils = new StudentUtils();
-        OptionalDouble average = utils.getAverageAgeOfManStudent(students);
-        System.out.println("Список студентов :");
-        utils.printListStudents(students);
-        if ( average.isPresent() )
-        {
-            System.out.println("\nСредний возраст студентов мужского пола = " + average.getAsDouble());
-        } else
-        {
-            System.out.println("\nСредний возраст студентов посчитать невозможно");
-        }
-        List<Student> studentForMilitaryService = utils.getStudentsForMilitaryService(students);
-        System.out.println("\nКоличество студентов , подлежащих призыву : ");
-        utils.printListStudents(studentForMilitaryService);
+    private enum Gender {
+        MAN,
+        WOMAN
     }
 }
