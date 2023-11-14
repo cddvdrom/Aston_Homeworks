@@ -1,20 +1,19 @@
 package task1;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 public class GeneratorRandom {
     private final Random random;
     public GeneratorRandom() {
         this.random = new Random();
     }
     public List<Integer> generateList() {
-        List<Integer> list = new ArrayList<>();
-        int size = getRandomInt(RandomProperties.MIN_ARRAY_SIZE.getValue(),
-                RandomProperties.MAX_ARRAY_SIZE.getValue());
-        for (int i = 0; i < size; i++) {
-            list.add(getRandomInt(RandomProperties.MIN_RANGE.getValue(),
-                    RandomProperties.MAX_RANGE.getValue()));
-        }
-        return list;
+        Integer [] array = new Integer[getRandomInt(RandomProperties.MIN_ARRAY_SIZE.getValue(),
+                RandomProperties.MAX_ARRAY_SIZE.getValue())];
+
+            return Arrays.asList(array).stream().map( x-> getRandomInt(RandomProperties.MIN_RANGE.getValue(),
+                    RandomProperties.MAX_RANGE.getValue())).collect(Collectors.toList());
     }
     public int getRandomInt(int minRange, int maxRange) {
         return random.nextInt(maxRange - minRange + 1 ) + minRange;
@@ -23,7 +22,7 @@ public class GeneratorRandom {
         MIN_RANGE(0),
         MAX_RANGE(100),
         MIN_ARRAY_SIZE(1),
-        MAX_ARRAY_SIZE(12);
+        MAX_ARRAY_SIZE(22);
         private final int value;
         RandomProperties(int value) {
             this.value = value;
