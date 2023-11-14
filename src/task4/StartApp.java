@@ -19,7 +19,7 @@ public class StartApp {
             System.out.println("\nСредний возраст студентов мужского пола = " + average.getAsDouble());
         } else
         {
-            System.out.println("\nСредний возраст студентов посчитать невозможно");
+            System.out.println("\nСредний возраст студентов вычислить невозможно");
         }
         List<Student> studentForMilitaryService = utils.getStudentsForMilitaryService(students);
         System.out.println("\nКоличество студентов , подлежащих призыву : ");
