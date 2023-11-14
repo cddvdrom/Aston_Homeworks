@@ -7,7 +7,8 @@ public class OuterInConcole {
         if (list.size() == 0) {
             System.out.println("Требуемых данных не вводилось");
         } else {
-            System.out.println(list);
+            list.forEach(System.out::println);
+            }
         }
     }
-}
+
