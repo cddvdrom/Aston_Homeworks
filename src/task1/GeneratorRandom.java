@@ -12,7 +12,7 @@ public class GeneratorRandom {
         Integer [] array = new Integer[getRandomInt(RandomProperties.MIN_ARRAY_SIZE.getValue(),
                 RandomProperties.MAX_ARRAY_SIZE.getValue())];
 
-            return Arrays.asList(array).stream().map( x-> getRandomInt(RandomProperties.MIN_RANGE.getValue(),
+            return Arrays.stream(array).map(x-> getRandomInt(RandomProperties.MIN_RANGE.getValue(),
                     RandomProperties.MAX_RANGE.getValue())).collect(Collectors.toList());
     }
     public int getRandomInt(int minRange, int maxRange) {
