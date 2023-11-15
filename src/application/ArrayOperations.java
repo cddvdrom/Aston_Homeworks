@@ -1,9 +1,11 @@
 package application;
+
 import data.ArraySize;
 import exception.MyArrayDataException;
 import exception.MyArraySizeException;
 import validator.ArrayCellValueValidator;
 import validator.SizeOfArrayValidator;
+
 public class ArrayOperations {
     public int sum(String[][] array) {
         SizeOfArrayValidator sizeValidator = new SizeOfArrayValidator();
@@ -13,7 +15,7 @@ public class ArrayOperations {
             if (!sizeValidator.isValid(array.length))
             {
                 throw new MyArraySizeException("В данном массиве "
-                        + (array.length) + " строки "+"вместо " + ArraySize.RIGHT_SIZE.getSize());
+                        + (array.length) + " строки " + "вместо " + ArraySize.RIGHT_SIZE.getSize());
             }
         }
         catch (MyArraySizeException e) {
