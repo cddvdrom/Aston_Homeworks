@@ -1,5 +1,6 @@
 package application;
 import java.util.Arrays;
+
 public class ArrayResearcher {
     public void outputInfo(String[][] array) {
         ArrayOperations arrayOperations = new ArrayOperations();
