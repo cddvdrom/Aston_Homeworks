@@ -6,6 +6,6 @@ public class StartApp {
                 "Август", "Авдий", "Авель", "Авенир", "Аверий", "Аверкий", "Аверьян", "Авксентий", "Аверкий"
                 , "Аверьян", "Авксентий", "Авксентий" };
         WordAnalyser analyser = new WordAnalyser();
-
+        analyser.analyze(data);
     }
 }
