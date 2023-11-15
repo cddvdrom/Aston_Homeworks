@@ -1,17 +1,11 @@
 package task1;
 
-import task1.dataLoader.FileDataLoader;
-import task1.service.Converter;
-import task1.service.DisplayOutput;
-import task1.service.WordAnalyser;
-
 public class StartApp {
     public static void main(String[] args) {
-        Converter converter = new Converter();
-        FileDataLoader loader = new FileDataLoader();
-        String data=loader.load();
-        String[] dataArr = converter.getArrayFromString(data);
+        String[] data = {"Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Август", "Авдий", "Авель", "Авенир", "Аверий", "Аверкий", "Аверьян", "Авксентий", "Аверкий"
+                , "Аверьян", "Авксентий", "Авксентий" };
         WordAnalyser analyser = new WordAnalyser();
-        new DisplayOutput().show(analyser.analyse(dataArr));
+
     }
 }
