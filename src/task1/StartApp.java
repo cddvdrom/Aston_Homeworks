@@ -38,11 +38,11 @@ public class StartApp {
         run(analyser.analyze4(data));
     }
     public static void run (Supplier <Map <String,Long>> method){
-        long start = System.nanoTime()/1000;
+        long start = System.nanoTime() / 1000;
         Set <String> words = method.get().keySet();
         HashMap <String,Long> wordsCount = new HashMap<>(method.get());
-        long finish = System.nanoTime()/1000;
-        System.out.println("\nСписок уникальных слов : " + words);
+        long finish = System.nanoTime() / 1000;
+        System.out.println("\n" + "Список уникальных слов : " + words);
         System.out.println("Количество повторений : " + wordsCount);
         System.out.println("Время выполнения = " + (finish-start) + " микросекунд");
     }
