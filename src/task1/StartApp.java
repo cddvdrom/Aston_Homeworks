@@ -6,7 +6,7 @@ public class StartApp {
                 "Август", "Авдий", "Авель", "Авенир", "Аверий", "Аверкий", "Аверьян", "Авксентий", "Аверкий"
                 , "Аверьян", "Авксентий", "Авксентий" };
         WordAnalyser analyser = new WordAnalyser();
-        analyser.analyze(data);
-        System.out.println(analyser.analyze(data));
+        System.out.println("Список уникальных слов : "+analyser.analyze(data).keySet());
+        System.out.println("Количество повторений : "+ analyser.analyze(data));
     }
 }
