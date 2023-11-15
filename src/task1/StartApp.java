@@ -7,6 +7,6 @@ public class StartApp {
                 , "Аверьян", "Авксентий", "Авксентий" };
         WordAnalyser analyser = new WordAnalyser();
         analyser.analyze(data);
-        System.out.println(data);
+        System.out.println(analyser.analyze(data));
     }
 }
