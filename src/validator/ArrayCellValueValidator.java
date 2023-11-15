@@ -1,4 +1,5 @@
 package validator;
+
 public class ArrayCellValueValidator {
     public boolean isValid(String value){
         try
