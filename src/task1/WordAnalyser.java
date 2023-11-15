@@ -24,7 +24,7 @@ public class WordAnalyser {
         return () -> {
             HashMap<String, Long> map = new HashMap<>();
             for (String string : array) {
-                map.compute(string, (k, v) -> v == null ? 1 : v + 1);
+                map.compute(string, ( k,v ) -> v == null ? 1 : v + 1);
             }
             return map;
         };
