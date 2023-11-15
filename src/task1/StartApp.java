@@ -1,39 +1,50 @@
 package task1;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
+
 public class StartApp {
     public static void main(String[] args) {
-        String [] data = {"Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+        String[] data = {"Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
                 "Август", "Авдий", "Авель", "Авенир", "Аверий", "Аверкий", "Аверьян", "Авксентий", "Аверкий"
-                , "Аверьян", "Авксентий", "Авксентий" };
+                , "Аверьян", "Авксентий", "Авксентий",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Август", "Авдий", "Авель", "Авенир", "Аверий", "Аверкий", "Аверьян", "Авксентий", "Аверкий"
+                , "Аверьян", "Авксентий", "Авксентий",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
+                "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум"
+        };
         WordAnalyser analyser = new WordAnalyser();
+        run(analyser.analyze1(data));
+        run(analyser.analyze2(data));
+        run(analyser.analyze3(data));
+        run(analyser.analyze4(data));
 
-        long start = System.currentTimeMillis();
-        System.out.println( "Список уникальных слов : " + analyser.analyze1 (data).keySet() );
-        System.out.println( "Количество повторений : " + analyser.analyze1 (data) );
-        long finish = System.currentTimeMillis();
-        long time = finish-start;
-        System.out.println(time);
+    }
 
-        start = System.currentTimeMillis();
-        System.out.println( "Список уникальных слов : " + analyser.analyze2 (data).keySet() );
-        System.out.println( "Количество повторений : " + analyser.analyze2 (data) );
-         finish = System.currentTimeMillis();
-        time = finish-start;
-        System.out.println(time);
-
-        start = System.currentTimeMillis();
-        System.out.println( "Список уникальных слов : " + analyser.analyze3 (data).keySet() );
-        System.out.println( "Количество повторений : " + analyser.analyze3 (data) );
-        finish = System.currentTimeMillis();
-        time = finish-start;
-        System.out.println(time);
-
-        start = System.currentTimeMillis();
-        System.out.println( "Список уникальных слов : " + analyser.analyze4 (data).keySet() );
-        System.out.println( "Количество повторений : " + analyser.analyze4 (data) );
-        finish = System.currentTimeMillis();
-        time = finish-start;
-        System.out.println(time);
-
+    public static void run (Supplier <Map <String,Long>> method){
+        double start = System.nanoTime()/1000;
+        Set <String> words = method.get().keySet();
+        HashMap <String,Long> wordsCount = new HashMap<>(method.get());
+        double finish = System.nanoTime()/1000;
+        System.out.println("\nСписок уникальных слов : " + words);
+        System.out.println("Количество повторений : " + wordsCount);
+        System.out.println("Время выполнения = " + (finish-start) + " микросекунд");
     }
 }
