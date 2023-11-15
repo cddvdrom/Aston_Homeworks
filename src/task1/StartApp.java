@@ -40,7 +40,7 @@ public class StartApp {
     public static void run (Supplier <Map <String,Long>> method){
         long start = System.nanoTime() / 1000;
         Set <String> words = method.get().keySet();
-        HashMap <String,Long> wordsCount = new HashMap<>(method.get());
+        HashMap <String,Long> wordsCount = new HashMap <> (method.get());
         long finish = System.nanoTime() / 1000;
         System.out.println("\n" + "Список уникальных слов : " + words);
         System.out.println("Количество повторений : " + wordsCount);
