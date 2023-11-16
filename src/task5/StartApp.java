@@ -5,9 +5,10 @@ public class StartApp {
         Data data = new Data();
         OuterInConcole printer = new OuterInConcole();
         SearchCondition condition = String::startsWith;
+        InputData inputData = new InputData();
         System.out.println("Введите логины ,при завершении введите пустую строку :");
-        data.input();
+        data.setData(inputData.input());
         System.out.println("Список логинов , которые начинаются на f : ");
-        printer.printList(data.findDataCondition(condition, "f"));
+        printer.printList(data.findDataCondition( condition, "f"));
     }
 }
