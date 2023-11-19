@@ -1,6 +1,4 @@
-import java.util.Objects;
-
-public abstract class Fruit {
+public abstract class Fruit<T> {
     private final String name;
     private final float weight;
 
@@ -8,15 +6,9 @@ public abstract class Fruit {
         this.name = name;
         this.weight=weight;
     }
-
-    public String getName() {
-        return name;
-    }
-
     public float getWeight() {
         return weight;
     }
-
     @Override
     public String toString() {
         return "Fruit{" +
@@ -24,6 +16,4 @@ public abstract class Fruit {
                 ", weight=" + weight +
                 '}';
     }
-
-
 }

@@ -4,23 +4,14 @@ public class StartApp {
         Box <Apple> box = new Box <> ();
         Box <Orange> box2 = new Box <> ();
 
-        Apple apple1 = new Apple();
-        Apple apple2 = new Apple();
-        Apple apple3 = new Apple();
+        box.addFruit(new Apple(),5);
 
-        Orange orange1 = new Orange();
-        Orange orange2 = new Orange();
-        Orange orange3 = new Orange();
+        box2.addFruit(new Orange(),5);
 
-        box.addFruit(apple1);
-        box.addFruit(apple2);
-        box.addFruit(apple3);
+        System.out.println(box.getWeight());
 
-        box2.addFruit(orange1);
-        box2.addFruit(orange2);
-        box2.addFruit(orange3);
+        System.out.println(box2.getWeight());
 
-        System.out.println(box.getList());
-
+        System.out.println(box.compare(box2));
     }
 }
