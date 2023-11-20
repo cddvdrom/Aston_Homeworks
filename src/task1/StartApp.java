@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 
 public class StartApp {
     public static void main(String[] args) {
-        String[] data =
+        String [] data =
                 {
                 "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
                 "Август", "Авдий", "Авель", "Авенир", "Аверий", "Аверкий", "Аверьян", "Авксентий", "Аверкий",
@@ -30,13 +30,13 @@ public class StartApp {
                 "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум",
                 "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абакум", "Абрам", "Абросим", "Аввакум"
                 };
-
         WordAnalyser analyser = new WordAnalyser();
         run(analyser.analyze1(data));
         run(analyser.analyze2(data));
         run(analyser.analyze3(data));
         run(analyser.analyze4(data));
     }
+    
     public static void run (Supplier <Map <String,Long>> method){
         long start = System.nanoTime() / 1000;
         Set <String> words = method.get().keySet();
