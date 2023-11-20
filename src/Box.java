@@ -39,6 +39,6 @@ public class Box <T extends Fruit> {
         if (fruits.size() == 0){
             return "Корзина пуста";
         }
-        return "Корзина : " + fruits;
+        return "Корзина : " + fruits + " Вес корзины = " + getWeight();
     }
 }
