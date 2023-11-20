@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Box <T extends Fruit <T>> {
-    private ArrayList <Fruit> fruits;
+    private ArrayList <Fruit <T>> fruits;
 
     public Box() {
         fruits = new ArrayList<>();
@@ -24,7 +24,7 @@ public class Box <T extends Fruit <T>> {
     public boolean compare (Box <?> box) {
         return Math.abs(getWeight() - box.getWeight()) < 0.0001f;
     }
-    public ArrayList <Fruit> getFruits() {
+    public ArrayList <Fruit <T>> getFruits() {
         return fruits;
     }
     public void move (Box<T> anotherBox) {
