@@ -1,4 +1,4 @@
-public abstract class Fruit<T> {
+public abstract class Fruit {
     private final String name;
     private final float weight;
 
