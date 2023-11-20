@@ -11,9 +11,6 @@ public abstract class Fruit<T> {
     }
     @Override
     public String toString() {
-        return "Fruit{" +
-                "name='" + name + '\'' +
-                ", weight=" + weight +
-                '}';
+        return " " + name + " вес = " + weight;
     }
 }
