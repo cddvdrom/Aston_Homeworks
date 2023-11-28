@@ -10,12 +10,14 @@ public class ProfilePage {
     public ProfilePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver; }
-    @FindBy(xpath = "//*[contains(@class, 'account__name_hasAccentLetter')]")
-    private WebElement userMenu;
-    @FindBy(xpath = "//*[contains(@class, 'menu-item_action_exit menu__item menu__item_type_link')]")
+    @FindBy(xpath = "/html/body/div/div/main/div/section[1]/div/div/ul/li[2]/bdi")
+    private WebElement user;
+    @FindBy(xpath = "/html/body/div/div/div/div/div/div[6]/a[2]/div[2]/span")
     private WebElement logoutBtn;
+    @FindBy(xpath = "/html/body/div/div/header/div/div[2]/button/div/div[1]/img")
+    private WebElement rightMenu;
     public String getUserName() {
-        String userName = userMenu.getText();
-        return userName; }
+        return user.getText(); }
     public void userLogout() {
+        rightMenu.click();
         logoutBtn.click(); } }

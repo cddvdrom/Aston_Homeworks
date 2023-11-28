@@ -36,6 +36,5 @@ public class TestYandexLogin {
         loginPage.clickLoginBtn();
         String user = profilePage.getUserName();
         Assertions.assertEquals(confProperties.getProperty("login"), user);
-        profilePage.userLogout();
     }
 }
