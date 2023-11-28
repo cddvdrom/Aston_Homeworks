@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.boronin.Calculator;
+import ru.boronin.calculator.Calculator;
 
 public class CalculatorTest {
     @Test

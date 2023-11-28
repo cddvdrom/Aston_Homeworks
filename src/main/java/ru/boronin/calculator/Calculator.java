@@ -1,4 +1,4 @@
-package ru.boronin;
+package ru.boronin.calculator;
 
 public class Calculator {
     public double sum(double a, double b) {
