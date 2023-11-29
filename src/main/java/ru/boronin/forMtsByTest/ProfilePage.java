@@ -1,4 +1,4 @@
-package ru.boronin.forYandexTest;
+package ru.boronin.forMtsByTest;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
