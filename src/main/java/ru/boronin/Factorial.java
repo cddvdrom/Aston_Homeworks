@@ -11,7 +11,7 @@ public class Factorial {
                  BigInteger.ONE : calculateRec(n-1).multiply(BigInteger.valueOf(n));
     }
     public BigInteger calculateStream (long n) {
-        ArrayList <BigInteger> bigIntegers = new ArrayList <> ();
+        ArrayList <BigInteger> bigIntegers = new ArrayList <>();
         LongStream.rangeClosed(1,n).forEach((x)->bigIntegers.add(BigInteger.valueOf(x)));
         return bigIntegers.stream().reduce(BigInteger.ONE, BigInteger::multiply);
     }
