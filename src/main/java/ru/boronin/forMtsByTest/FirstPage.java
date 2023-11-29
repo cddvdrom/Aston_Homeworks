@@ -6,12 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class FirstPage {
     public WebDriver driver;
@@ -37,6 +32,9 @@ public class FirstPage {
     @FindBy(xpath = "//*[@id=\"pay-connection\"]/button")
     private WebElement continueButton;
 
+    @FindBy(partialLinkText = "Подробнее о сервисе")
+    private WebElement moreAboutServiceHref;
+
 
     public void setInputPhone(String phone) {
         inputPhone.sendKeys(phone);
@@ -50,6 +48,10 @@ public class FirstPage {
     public void clickContinueBtn() {
         continueButton.click();
     }
+    public void clickHrefMoreAboutService() {
+        moreAboutServiceHref.click();
+    }
+
     public String getPaySectionText () {
    return paySection.getText();
     }

@@ -10,6 +10,7 @@ import ru.boronin.forMtsByTest.FirstPage;
 public class TestMtsBy {
     public static FirstPage firstPage;
     public static ConfProperties confProperties;
+    public static WebDriver webDriver;
     @BeforeAll
     public static void setup() {
         confProperties = new ConfProperties();
@@ -18,7 +19,7 @@ public class TestMtsBy {
         ChromeOptions options = new ChromeOptions();
         options.setBinary(confProperties.getProperty("binary"));
         options.addArguments("--lang=ru-RU");
-        WebDriver webDriver = new ChromeDriver(options);
+        webDriver = new ChromeDriver(options);
         firstPage = new FirstPage(webDriver);
         webDriver.manage().window().maximize();
         webDriver.get(confProperties.getProperty("mtsByPage"));
@@ -32,8 +33,16 @@ public class TestMtsBy {
     @Test
     public void payIconsTest () {
         int actual = firstPage.getQuantityPayIcons();
-        int expected = Integer.valueOf(confProperties.getProperty("quantityPayIcons"));
+        int expected = Integer.parseInt(confProperties.getProperty("quantityPayIcons"));
         Assertions.assertEquals(actual, expected);
+    }
+    @Test
+    public void moreAboutServiceHref (){
+        firstPage.clickHrefMoreAboutService();
+        String actual = webDriver.getTitle();
+        String expected = confProperties.getProperty("moreAboutServiceTitle");
+        Assertions.assertEquals(actual, expected);
+        webDriver.navigate().back();
     }
 
 }

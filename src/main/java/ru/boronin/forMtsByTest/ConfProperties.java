@@ -9,8 +9,9 @@ public class ConfProperties {
 public ConfProperties () {
     try (
         InputStreamReader inputStreamReader = new InputStreamReader(
-                new FileInputStream("src/test/resources/conf.properties"), "UTF-8");
-   ) {
+                new FileInputStream("src/test/resources/conf.properties"), "UTF-8")
+        )
+    {
         PROPERTIES.load(inputStreamReader);
     }
     catch (IOException e) {
