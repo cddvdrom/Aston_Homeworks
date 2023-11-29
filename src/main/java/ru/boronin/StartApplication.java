@@ -1,9 +1,10 @@
 package ru.boronin;
 
-import ru.boronin.calculator.Calculator;
 public class StartApplication {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
-        System.out.println(calculator.sum(1,2));
+        Factorial factorial = new Factorial();
+        System.out.println(factorial.calculateRec(50));
+        System.out.println(factorial.calculateStream(50));
+        System.out.println(factorial.calculateLoop(50));
     }
 }
