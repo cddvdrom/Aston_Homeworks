@@ -2,7 +2,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.boronin.Factorial;
-
 import java.math.BigInteger;
 
 public class FactorialTest {
