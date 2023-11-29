@@ -6,8 +6,8 @@ import java.util.stream.LongStream;
 
 public class Factorial {
     public BigInteger calculateRec (long n) {
-        return ((BigInteger.valueOf (n).compareTo (BigInteger.ZERO) ==0) ||
-                 BigInteger.valueOf (n).compareTo (BigInteger.ONE) ==0) ?
+        return ((BigInteger.valueOf (n).compareTo (BigInteger.ZERO) == 0) ||
+                 BigInteger.valueOf (n).compareTo (BigInteger.ONE) == 0) ?
                  BigInteger.ONE : calculateRec(n-1).multiply(BigInteger.valueOf(n));
     }
     public BigInteger calculateStream (long n) {
