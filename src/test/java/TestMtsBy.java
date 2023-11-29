@@ -36,13 +36,18 @@ public class TestMtsBy {
         int expected = Integer.parseInt(confProperties.getProperty("quantityPayIcons"));
         Assertions.assertEquals(actual, expected);
     }
-    @Test
-    public void moreAboutServiceHref (){
+
+    public void moreAboutServiceHref () {
         firstPage.clickHrefMoreAboutService();
         String actual = webDriver.getTitle();
         String expected = confProperties.getProperty("moreAboutServiceTitle");
         Assertions.assertEquals(actual, expected);
         webDriver.navigate().back();
     }
-
+    @Test
+public void payFormTest (){
+    firstPage.setInputPhone(confProperties.getProperty("phone"));
+    firstPage.setInputMoney(confProperties.getProperty("sum"));
+    firstPage.setInputEmail(confProperties.getProperty("email"));
+}
 }

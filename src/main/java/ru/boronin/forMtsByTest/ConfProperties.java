@@ -1,6 +1,7 @@
 package ru.boronin.forMtsByTest;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 public class ConfProperties {
@@ -9,7 +10,7 @@ public class ConfProperties {
 public ConfProperties () {
     try (
         InputStreamReader inputStreamReader = new InputStreamReader(
-                new FileInputStream("src/test/resources/conf.properties"), "UTF-8")
+                new FileInputStream("src/test/resources/conf.properties"), StandardCharsets.UTF_8)
         )
     {
         PROPERTIES.load(inputStreamReader);
