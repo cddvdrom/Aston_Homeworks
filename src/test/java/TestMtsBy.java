@@ -13,6 +13,8 @@ import ru.boronin.forMtsByTest.FirstPage;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.function.Function;
 
 
 public class TestMtsBy {
@@ -30,9 +32,8 @@ public class TestMtsBy {
         options.setBinary(confProperties.getProperty("binary"));
         options.addArguments("--lang=ru-RU");
         webDriver = new ChromeDriver(options);
-        firstPage = new FirstPage(webDriver);
-         webDriver.manage().window().maximize();
-
+        webDriver.manage().window().maximize();
+        FirstPage page = new FirstPage(webDriver);
     }
 
     @AfterAll
@@ -45,7 +46,6 @@ public class TestMtsBy {
     public void onlinePayTextTest() {
         webDriver.get(confProperties.getProperty("mtsByPage"));
         new WebDriverWait(webDriver, Duration.ofSeconds(5)).until(ExpectedConditions.titleIs("МТС – мобильный оператор в Беларуси"));
-        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(3));
         String actual = firstPage.getPaySectionText();
         String expected = confProperties.getProperty("paySectionText");
         Assertions.assertEquals(actual, expected);
@@ -68,7 +68,7 @@ public class TestMtsBy {
         String actual = webDriver.getTitle();
         String expected = confProperties.getProperty("moreAboutServiceTitle");
         Assertions.assertEquals(actual, expected);
-        webDriver.navigate().back();
+        webDriver.switchTo().defaultContent();
 
     }
 
@@ -76,25 +76,39 @@ public class TestMtsBy {
     @Order(4)
     public void payFormTest() {
         webDriver.get(confProperties.getProperty("mtsByPage"));
+
+        webDriver.get(confProperties.getProperty("mtsByPage"));
         new WebDriverWait(webDriver, Duration.ofSeconds(10)).until(ExpectedConditions.titleIs("МТС – мобильный оператор в Беларуси"));
-        firstPage.setInputPhone(confProperties.getProperty("phone"));
-        firstPage.setInputMoney(confProperties.getProperty("sum"));
-        firstPage.setInputEmail(confProperties.getProperty("email"));
+        System.out.println("0");
 
+        String phone = confProperties.getProperty("phone");
+        String sum = confProperties.getProperty("sum");
+        String email = confProperties.getProperty("email");
 
-        new WebDriverWait(webDriver, Duration.ofSeconds(5)).
-                until(ExpectedConditions.visibilityOfElementLocated(
-                        By.id("cookie-agree")
-                ));
-        webDriver.findElement(By.id("cookie-agree")).click();
+        waitForAccesible(By.id("cookie-agree")).click();
+        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.invisibilityOfElementLocated(
+                By.id("cookie-agree")));
 
+        waitForAccesible(By.id("connection-phone")).sendKeys(phone);
+        webDriver.findElement(By.id("connection-email")).sendKeys(email);
+        webDriver.findElement(By.id("connection-sum")).sendKeys(sum);
 
-        Wait<WebDriver> waiter = new FluentWait<>(webDriver)
+webDriver.findElement(By.xpath("//*[@id=\"pay-connection\"]/button")).click();
+    }
+    public WebElement waitForAccesible(By by) {
+        Wait <WebDriver> waiter = new FluentWait<> (webDriver)
                 .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(1));
-        waiter.until(ExpectedConditions.
-                presenceOfElementLocated(By.xpath("//*[@id=\"pay-connection\"]/button"))).click();
-
+                .pollingEvery(Duration.ofSeconds(1))
+                .ignoring(NoSuchElementException.class);
+        waiter.until(d-> {
+            try {
+                WebElement element = webDriver.findElement(by);
+                return element.isDisplayed();
+            } catch(NoSuchElementException e) {
+                return false;
+            }
+                     }
+        );
+        return webDriver.findElement(by);
     }
 }
-

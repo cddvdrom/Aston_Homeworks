@@ -3,14 +3,16 @@ package ru.boronin.forMtsByTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class FirstPage {
     public WebDriver driver;
@@ -19,7 +21,8 @@ public class FirstPage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-
+    @FindBy(id = "cookie-agree")
+private WebElement cookieAcceptButton;
     @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/h2")
     private WebElement paySection;
     @FindBy(className = "pay__partners")
@@ -74,5 +77,60 @@ public class FirstPage {
 
     public String getHeaderPaymentInfo (){
         return headerPaymentInfo.getText();}
+
+    public void fillPaydInfo (String phone,String sum,String email){
+        setInputPhone(phone);
+        setInputMoney(sum);
+        setInputEmail(email);
+    }
+    public void acceptCookies(WebDriver driver){
+        Wait<WebDriver> waiter = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(1))
+                .ignoring(NoSuchElementException.class);
+        waiter.until(ExpectedConditions.elementToBeClickable(cookieAcceptButton));
+        cookieAcceptButton.click();
+
+    }
+    public void waitLoadPageByTitle (WebDriver driver,String title){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).
+                until(ExpectedConditions.titleIs(title));
+    }
+
+    public WebElement getCookieAcceptButton() {
+        return cookieAcceptButton;
+    }
+
+    public WebElement getPaySection() {
+        return paySection;
+    }
+
+    public WebElement getPayIcons() {
+        return payIcons;
+    }
+
+    public WebElement getServiceHref() {
+        return serviceHref;
+    }
+
+    public WebElement getInputPhone() {
+        return inputPhone;
+    }
+
+    public WebElement getInputMoney() {
+        return inputMoney;
+    }
+
+    public WebElement getInputEmail() {
+        return inputEmail;
+    }
+
+    public WebElement getContinueButton() {
+        return continueButton;
+    }
+
+    public WebElement getMoreAboutServiceHref() {
+        return moreAboutServiceHref;
+    }
 }
 
