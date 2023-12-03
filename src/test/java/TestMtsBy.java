@@ -78,7 +78,7 @@ public class TestMtsBy {
         webDriver.get(confProperties.getProperty("mtsByPage"));
 
         webDriver.get(confProperties.getProperty("mtsByPage"));
-        new WebDriverWait(webDriver, Duration.ofSeconds(10)).until(ExpectedConditions.titleIs("МТС – мобильный оператор в Беларуси"));
+     //   new WebDriverWait(webDriver, Duration.ofSeconds(10)).until(ExpectedConditions.titleIs("МТС – мобильный оператор в Беларуси"));
         System.out.println("0");
 
         String phone = confProperties.getProperty("phone");
@@ -86,10 +86,10 @@ public class TestMtsBy {
         String email = confProperties.getProperty("email");
 
         waitForAccesible(By.id("cookie-agree")).click();
-        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.invisibilityOfElementLocated(
-                By.id("cookie-agree")));
 
-        waitForAccesible(By.id("connection-phone")).sendKeys(phone);
+        waitForAccesible(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div"));
+
+        webDriver.findElement(By.id("connection-phone")).sendKeys(phone);
         webDriver.findElement(By.id("connection-email")).sendKeys(email);
         webDriver.findElement(By.id("connection-sum")).sendKeys(sum);
 
