@@ -29,32 +29,32 @@ public class TestMtsBy {
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         firstPage = new FirstPage(webDriver);
-        mainWindow = webDriver.getWindowHandles().iterator().next();
     }
     @BeforeEach
-    public void getHeadPage(){
+    public void getHeadPage() {
         webDriver.get(confProperties.getProperty("mtsByPage"));
         webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         new WebDriverWait(webDriver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.titleIs(confProperties.getProperty("titleFirstPage")));
-        firstPage.acceptCookies();}
-   // @AfterAll
+        firstPage.acceptCookies();
+    }
+    @AfterAll
     public static void afterAll() {
         webDriver.close();
     }
-    //@Test
+    @Test
     public void onlinePayTextTest() {
         String actual = firstPage.getPaySectionText();
         String expected = confProperties.getProperty("paySectionText");
         Assertions.assertEquals(actual, expected);
     }
-   // @Test
+    @Test
     public void payIconsTest() {
         int actual = firstPage.getQuantityPayIcons();
         int expected = Integer.parseInt(confProperties.getProperty("quantityPayIcons"));
         Assertions.assertEquals(actual, expected);
     }
-   // @Test
+    @Test
     public void moreAboutServiceHref() {
         firstPage.clickHrefMoreAboutService();
         String actual = webDriver.getTitle();
@@ -69,9 +69,11 @@ public class TestMtsBy {
         new WebDriverWait(webDriver, Duration.ofSeconds(5)).
                 until(ExpectedConditions.visibilityOfElementLocated(By.xpath
                         ("//*[@id=\"pay-connection\"]/button")));
-        firstPage.setInputPhone("phone");
-        firstPage.setInputEmail("email");
-        firstPage.setInputMoney("sum");
+        firstPage.setInputPhone(phone);
+        firstPage.setInputEmail(email);
+        firstPage.setInputMoney(sum);
         firstPage.clickContinueBtn();
+            firstPage.checkPaidApp();
+        Assertions.assertEquals(firstPage.getTextUseCard(),confProperties.getProperty("useCardText"));
     }
 }
