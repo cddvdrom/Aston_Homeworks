@@ -40,7 +40,7 @@ public class TestMtsBy {
     }
     @AfterAll
     public static void afterAll() {
-        webDriver.close();
+        webDriver.quit();
     }
     @Test
     public void onlinePayTextTest() {
@@ -73,7 +73,7 @@ public class TestMtsBy {
         firstPage.setInputEmail(email);
         firstPage.setInputMoney(sum);
         firstPage.clickContinueBtn();
-            firstPage.checkPaidApp();
+        firstPage.checkPaidApp();
         Assertions.assertEquals(firstPage.getTextUseCard(),confProperties.getProperty("useCardText"));
     }
 }
