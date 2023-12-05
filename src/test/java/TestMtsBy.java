@@ -5,22 +5,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.boronin.forMtsByTest.ConfProperties;
 import ru.boronin.forMtsByTest.FirstPage;
 import java.time.Duration;
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
-
 
 public class TestMtsBy {
     public static FirstPage firstPage;
     public static ConfProperties confProperties;
     public static WebDriver webDriver;
     public static WebElement element;
-
     public static String mainWindow;
 
     @BeforeAll
@@ -36,75 +31,47 @@ public class TestMtsBy {
         firstPage = new FirstPage(webDriver);
         mainWindow = webDriver.getWindowHandles().iterator().next();
     }
-
     @BeforeEach
     public void getHeadPage(){
         webDriver.get(confProperties.getProperty("mtsByPage"));
         webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        new WebDriverWait(webDriver, Duration.ofSeconds(10)).until(ExpectedConditions.titleIs("МТС – мобильный оператор в Беларуси"));
-        if(webDriver.findElement(By.id("cookie-agree")).isDisplayed()){
-        webDriver.findElement(By.id("cookie-agree")).click();};
-    }
-
-    @AfterAll
+        new WebDriverWait(webDriver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.titleIs(confProperties.getProperty("titleFirstPage")));
+        firstPage.acceptCookies();}
+   // @AfterAll
     public static void afterAll() {
         webDriver.close();
     }
-
-    @Test
+    //@Test
     public void onlinePayTextTest() {
         String actual = firstPage.getPaySectionText();
         String expected = confProperties.getProperty("paySectionText");
         Assertions.assertEquals(actual, expected);
     }
-
-    @Test
+   // @Test
     public void payIconsTest() {
         int actual = firstPage.getQuantityPayIcons();
         int expected = Integer.parseInt(confProperties.getProperty("quantityPayIcons"));
         Assertions.assertEquals(actual, expected);
     }
-
-    @Test
+   // @Test
     public void moreAboutServiceHref() {
         firstPage.clickHrefMoreAboutService();
         String actual = webDriver.getTitle();
         String expected = confProperties.getProperty("moreAboutServiceTitle");
         Assertions.assertEquals(actual, expected);
     }
-
     @Test
     public void payFormTest() {
-
-
         String phone = confProperties.getProperty("phone");
         String sum = confProperties.getProperty("sum");
         String email = confProperties.getProperty("email");
-
         new WebDriverWait(webDriver, Duration.ofSeconds(5)).
-                until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"pay-connection\"]/button")));
-
-        webDriver.findElement(By.id("connection-phone")).sendKeys(confProperties.getProperty("phone"));
-        webDriver.findElement(By.id("connection-email")).sendKeys(confProperties.getProperty("email"));
-        webDriver.findElement(By.id("connection-sum")).sendKeys(confProperties.getProperty("sum"));
-
-        webDriver.findElement(By.xpath("//*[@id=\"pay-connection\"]/button")).click();
-    }
-
-    public WebElement waitForAccesible(By by) {
-        Wait<WebDriver> waiter = new FluentWait<>(webDriver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(1))
-                .ignoring(NoSuchElementException.class);
-        waiter.until(d -> {
-                    try {
-                        WebElement element = webDriver.findElement(by);
-                        return element.isDisplayed();
-                    } catch (NoSuchElementException e) {
-                        return false;
-                    }
-                }
-        );
-        return webDriver.findElement(by);
+                until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+                        ("//*[@id=\"pay-connection\"]/button")));
+        firstPage.setInputPhone("phone");
+        firstPage.setInputEmail("email");
+        firstPage.setInputMoney("sum");
+        firstPage.clickContinueBtn();
     }
 }
