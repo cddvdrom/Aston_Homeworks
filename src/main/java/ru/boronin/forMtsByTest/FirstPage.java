@@ -23,12 +23,11 @@ public class FirstPage {
     }
     @FindBy(id = "cookie-agree")
 private WebElement cookieAcceptButton;
-    @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/h2")
+    @FindBy(xpath = "/html/body/div[6]/main/div/div[4]/div[1]/div/div/div[2]/section/div")
     private WebElement paySection;
     @FindBy(className = "pay__partners")
     private WebElement payIcons;
-    @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[1]/section/div/a")
-    private WebElement serviceHref;
+
     @FindBy(xpath = "//*[@id=\"connection-phone\"]")
     private WebElement inputPhone;
 
@@ -47,6 +46,9 @@ private WebElement cookieAcceptButton;
     @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/app-header/header/div/div/p[2]")
     private WebElement headerPaymentInfo;
 
+    public String getPaySectionText() {
+        return paySection.getText();
+    }
     public void setInputPhone(String phone) {
         inputPhone.sendKeys(phone);
     }
@@ -64,10 +66,6 @@ private WebElement cookieAcceptButton;
 
     public void clickHrefMoreAboutService() {
         moreAboutServiceHref.click();
-    }
-
-    public String getPaySectionText() {
-        return paySection.getText();
     }
 
     public int getQuantityPayIcons() {
@@ -97,10 +95,6 @@ private WebElement cookieAcceptButton;
                 until(ExpectedConditions.titleIs(title));
     }
 
-    public WebElement getCookieAcceptButton() {
-        return cookieAcceptButton;
-    }
-
     public WebElement getPaySection() {
         return paySection;
     }
@@ -109,11 +103,7 @@ private WebElement cookieAcceptButton;
         return payIcons;
     }
 
-    public WebElement getServiceHref() {
-        return serviceHref;
-    }
-
-    public WebElement getInputPhone() {
+       public WebElement getInputPhone() {
         return inputPhone;
     }
 
