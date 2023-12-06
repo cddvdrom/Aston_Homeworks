@@ -41,6 +41,14 @@ private WebElement cookieAcceptButton;
     private WebElement paidFrame;
     @FindBy(id = "cc-number")
     private WebElement cardNumber;
+    @FindBy(css = "input[placeholder='Номер телефона']")
+    private WebElement placeHolderPhone;
+
+    @FindBy(css = "input[placeholder='Сумма']")
+    private WebElement placeHolderSum;
+
+    @FindBy(css = "input[placeholder='E-mail для отправки чека']")
+    private WebElement placeHolderEmail;
 
     public String getPaySectionText() {
         return paySection.getText();
@@ -65,7 +73,7 @@ private WebElement cookieAcceptButton;
         return listPayIcons.size();
     }
     public void acceptCookies(){
-        if(cookieAcceptButton.isDisplayed())
+        if (cookieAcceptButton.isDisplayed())
         {
             cookieAcceptButton.click();
         }
