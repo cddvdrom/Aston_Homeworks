@@ -33,7 +33,6 @@ public class TestMtsBy {
     @BeforeEach
     public void getHeadPage() {
         webDriver.get(confProperties.getProperty("mtsByPage"));
-        webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         new WebDriverWait(webDriver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.titleIs(confProperties.getProperty("titleFirstPage")));
         firstPage.acceptCookies();
