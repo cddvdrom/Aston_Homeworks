@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.boronin.forMtsByTest.ConfProperties;
 import ru.boronin.forMtsByTest.FirstPage;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class TestMtsBy {
     public static FirstPage firstPage;
@@ -33,7 +32,6 @@ public class TestMtsBy {
     @BeforeEach
     public void getHeadPage() {
         webDriver.get(confProperties.getProperty("mtsByPage"));
-        webDriver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         new WebDriverWait(webDriver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.titleIs(confProperties.getProperty("titleFirstPage")));
         firstPage.acceptCookies();
@@ -66,9 +64,6 @@ public class TestMtsBy {
         String phone = confProperties.getProperty("phone");
         String sum = confProperties.getProperty("sum");
         String email = confProperties.getProperty("email");
-        new WebDriverWait(webDriver, Duration.ofSeconds(5)).
-                until(ExpectedConditions.visibilityOfElementLocated(By.xpath
-                        ("//*[@id=\"pay-connection\"]/button")));
         firstPage.setInputPhone(phone);
         firstPage.setInputEmail(email);
         firstPage.setInputMoney(sum);

@@ -65,9 +65,11 @@ private WebElement cookieAcceptButton;
         return listPayIcons.size();
     }
     public void acceptCookies(){
-        if(cookieAcceptButton.isDisplayed()){
-            cookieAcceptButton.click();};
-new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOf(cookieAcceptButton));
+        if(cookieAcceptButton.isDisplayed())
+        {
+            cookieAcceptButton.click();
+        }
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOf(cookieAcceptButton));
     }
     public WebElement getMoreAboutServiceHref() {
         return moreAboutServiceHref;
