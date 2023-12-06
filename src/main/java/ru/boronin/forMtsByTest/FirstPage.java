@@ -37,6 +37,11 @@ private WebElement cookieAcceptButton;
     private WebElement headerPaymentInfo;
     @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/div/span[2]")
     private WebElement useCard;
+    @FindBy(xpath = "/html/body/div[8]/div/iframe")
+    private WebElement paidFrame;
+    @FindBy(id = "cc-number")
+    private WebElement cardNumber;
+
     public String getPaySectionText() {
         return paySection.getText();
     }
@@ -69,11 +74,10 @@ new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invis
     }
     public void checkPaidApp()
     {
-        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".bepaid-app")));
-        WebElement frame = driver.findElement(By.cssSelector(".bepaid-iframe"));
-        driver.switchTo().frame(frame);
+        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(paidFrame));
+        driver.switchTo().frame(paidFrame);
         new WebDriverWait(driver,Duration.ofSeconds(5)).
-                until(ExpectedConditions.visibilityOfElementLocated(By.id("cc-number")));
+                until(ExpectedConditions.visibilityOf(cardNumber));
     }
     public String getTextUseCard (){
         return useCard.getText();
