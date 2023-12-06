@@ -106,6 +106,10 @@ public class TestMtsBy {
         String [] debtTexts = confProperties.getProperty("debt").split(",");
 
         Actions actions = new Actions(webDriver);
+
+        WebElement w = webDriver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div"));
+        actions.scrollToElement(w);
+
         WebElement select = webDriver.findElement(By.cssSelector("#pay-section > div > div > div.col-12.col-xl-8 > section > div > div.pay__form > div.select > div.select__wrapper > button"));
         actions.moveToElement(select).click().build().perform();
 
@@ -121,33 +125,33 @@ public class TestMtsBy {
         actions.moveToElement(select).click().build().perform();
         WebElement select2 = webDriver.findElement(By.xpath
                 ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[2]/p"));
-        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(select2));
         actions.moveToElement(select2).click().build().perform();
+        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(select2));
 
 
-        Assertions.assertEquals(homeInternet[0],webDriver.findElement(communicationServiceText[0]).getAttribute("placeholder"));
-        Assertions.assertEquals(homeInternet[1],webDriver.findElement(communicationServiceText[1]).getAttribute("placeholder"));
-        Assertions.assertEquals(homeInternet[2],webDriver.findElement(communicationServiceText[2]).getAttribute("placeholder"));
+        Assertions.assertEquals(homeInternetTexts[0],webDriver.findElement(homeInternet[0]).getAttribute("placeholder"));
+        Assertions.assertEquals(homeInternetTexts[1],webDriver.findElement(homeInternet[1]).getAttribute("placeholder"));
+        Assertions.assertEquals(homeInternetTexts[2],webDriver.findElement(homeInternet[2]).getAttribute("placeholder"));
 
         actions.moveToElement(select).click().build().perform();
         WebElement select3 = webDriver.findElement(By.xpath
                 ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[3]/p"));
-        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.invisibilityOf(select2));
         actions.moveToElement(select3).click().build().perform();
+        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(select3));
 
-        Assertions.assertEquals(paymentByInstallments[0],webDriver.findElement(communicationServiceText[0]).getAttribute("placeholder"));
-        Assertions.assertEquals(paymentByInstallments[1],webDriver.findElement(communicationServiceText[1]).getAttribute("placeholder"));
-        Assertions.assertEquals(paymentByInstallments[2],webDriver.findElement(communicationServiceText[2]).getAttribute("placeholder"));
 
-        actions.moveToElement(select).click();
+        Assertions.assertEquals(paymentByInstallmentsTexts[0],webDriver.findElement(paymentByInstallments[0]).getAttribute("placeholder"));
+        Assertions.assertEquals(paymentByInstallmentsTexts[1],webDriver.findElement(paymentByInstallments[1]).getAttribute("placeholder"));
+        Assertions.assertEquals(paymentByInstallmentsTexts[2],webDriver.findElement(paymentByInstallments[2]).getAttribute("placeholder"));
+
+        actions.moveToElement(select).click().build().perform();
         WebElement select4 = webDriver.findElement(By.xpath
                 ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[4]/p"));
-        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.invisibilityOf(select3));
         actions.moveToElement(select4).click().build().perform();
-
-        Assertions.assertEquals(debt[0],webDriver.findElement(communicationServiceText[0]).getAttribute("placeholder"));
-        Assertions.assertEquals(debt[1],webDriver.findElement(communicationServiceText[1]).getAttribute("placeholder"));
-        Assertions.assertEquals(debt[2],webDriver.findElement(communicationServiceText[2]).getAttribute("placeholder"));
+        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(select4));
+        Assertions.assertEquals(debtTexts[0],webDriver.findElement(debt[0]).getAttribute("placeholder"));
+        Assertions.assertEquals(debtTexts[1],webDriver.findElement(debt[1]).getAttribute("placeholder"));
+        Assertions.assertEquals(debtTexts[2],webDriver.findElement(debt[2]).getAttribute("placeholder"));
 
 
 
