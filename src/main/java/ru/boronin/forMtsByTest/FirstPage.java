@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class FirstPage {
         this.driver = driver;
     }
     @FindBy(id = "cookie-agree")
-private WebElement cookieAcceptButton;
+    private WebElement cookieAcceptButton;
     @FindBy(xpath = "/html/body/div[6]/main/div/div[4]/div[1]/div/div/div[2]/section/div")
     private WebElement paySection;
     @FindBy(className = "pay__partners")
@@ -37,6 +36,11 @@ private WebElement cookieAcceptButton;
     private WebElement headerPaymentInfo;
     @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/div/span[2]")
     private WebElement useCard;
+    @FindBy(xpath = "/html/body/div[8]/div/iframe")
+    private WebElement paidFrame;
+    @FindBy(id = "cc-number")
+    private WebElement cardNumber;
+
     public String getPaySectionText() {
         return paySection.getText();
     }
@@ -62,18 +66,17 @@ private WebElement cookieAcceptButton;
     public void acceptCookies(){
         if(cookieAcceptButton.isDisplayed()){
             cookieAcceptButton.click();};
-new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOf(cookieAcceptButton));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOf(cookieAcceptButton));
     }
     public WebElement getMoreAboutServiceHref() {
         return moreAboutServiceHref;
     }
     public void checkPaidApp()
     {
-        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".bepaid-app")));
-        WebElement frame = driver.findElement(By.cssSelector(".bepaid-iframe"));
-        driver.switchTo().frame(frame);
+        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(paidFrame));
+        driver.switchTo().frame(paidFrame);
         new WebDriverWait(driver,Duration.ofSeconds(5)).
-                until(ExpectedConditions.visibilityOfElementLocated(By.id("cc-number")));
+                until(ExpectedConditions.visibilityOf(cardNumber));
     }
     public String getTextUseCard (){
         return useCard.getText();

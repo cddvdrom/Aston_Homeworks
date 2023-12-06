@@ -66,9 +66,6 @@ public class TestMtsBy {
         String phone = confProperties.getProperty("phone");
         String sum = confProperties.getProperty("sum");
         String email = confProperties.getProperty("email");
-        new WebDriverWait(webDriver, Duration.ofSeconds(5)).
-                until(ExpectedConditions.visibilityOfElementLocated(By.xpath
-                        ("//*[@id=\"pay-connection\"]/button")));
         firstPage.setInputPhone(phone);
         firstPage.setInputEmail(email);
         firstPage.setInputMoney(sum);
