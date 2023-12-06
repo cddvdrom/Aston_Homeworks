@@ -107,30 +107,33 @@ public class TestMtsBy {
 
         Actions actions = new Actions(webDriver);
         WebElement select = webDriver.findElement(By.cssSelector("#pay-section > div > div > div.col-12.col-xl-8 > section > div > div.pay__form > div.select > div.select__wrapper > button"));
-        actions.moveToElement(select).click();
+        actions.moveToElement(select).click().build().perform();
 
 
         WebElement select1 = webDriver.findElement(By.xpath
                 ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[1]/p"));
-        actions.moveToElement(select1).click();
+        actions.moveToElement(select1).click().build().perform();
 
         Assertions.assertEquals(communicationServiceTexts[0],webDriver.findElement(communicationServiceText[0]).getAttribute("placeholder"));
         Assertions.assertEquals(communicationServiceTexts[1],webDriver.findElement(communicationServiceText[1]).getAttribute("placeholder"));
         Assertions.assertEquals(communicationServiceTexts[2],webDriver.findElement(communicationServiceText[2]).getAttribute("placeholder"));
 
-        actions.moveToElement(select).click();
+        actions.moveToElement(select).click().build().perform();
         WebElement select2 = webDriver.findElement(By.xpath
                 ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[2]/p"));
-        actions.moveToElement(select2).click();
+        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(select2));
+        actions.moveToElement(select2).click().build().perform();
+
 
         Assertions.assertEquals(homeInternet[0],webDriver.findElement(communicationServiceText[0]).getAttribute("placeholder"));
         Assertions.assertEquals(homeInternet[1],webDriver.findElement(communicationServiceText[1]).getAttribute("placeholder"));
         Assertions.assertEquals(homeInternet[2],webDriver.findElement(communicationServiceText[2]).getAttribute("placeholder"));
 
-        actions.moveToElement(select).click();
+        actions.moveToElement(select).click().build().perform();
         WebElement select3 = webDriver.findElement(By.xpath
                 ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[3]/p"));
-        actions.moveToElement(select3).click();
+        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.invisibilityOf(select2));
+        actions.moveToElement(select3).click().build().perform();
 
         Assertions.assertEquals(paymentByInstallments[0],webDriver.findElement(communicationServiceText[0]).getAttribute("placeholder"));
         Assertions.assertEquals(paymentByInstallments[1],webDriver.findElement(communicationServiceText[1]).getAttribute("placeholder"));
@@ -139,7 +142,8 @@ public class TestMtsBy {
         actions.moveToElement(select).click();
         WebElement select4 = webDriver.findElement(By.xpath
                 ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[4]/p"));
-        actions.moveToElement(select4).click();
+        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.invisibilityOf(select3));
+        actions.moveToElement(select4).click().build().perform();
 
         Assertions.assertEquals(debt[0],webDriver.findElement(communicationServiceText[0]).getAttribute("placeholder"));
         Assertions.assertEquals(debt[1],webDriver.findElement(communicationServiceText[1]).getAttribute("placeholder"));
