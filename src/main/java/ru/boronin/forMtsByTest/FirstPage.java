@@ -15,14 +15,40 @@ import java.util.List;
 public class FirstPage {
     private WebDriver driver;
     private Actions actions;
-    public FirstPage(WebDriver driver) {
+    private ConfProperties confProperties;
+    public FirstPage(WebDriver driver,ConfProperties confProperties) {
         PageFactory.initElements(driver, this);
         actions=new Actions(driver);
         this.driver = driver;
+        this.confProperties = confProperties;
     }
+    private By[] communicationService =
+            {
+                    By.cssSelector("input[placeholder='Номер телефона']"),
+                    By.cssSelector("input[placeholder='Сумма']"),
+                    By.cssSelector("input[placeholder='E-mail для отправки чека']"),
+            };
+    private By[] homeInternet =
+            {
+                    By.cssSelector("input[placeholder='Номер абонента']"),
+                    By.cssSelector("input[placeholder='Сумма']"),
+                    By.cssSelector("input[placeholder='E-mail для отправки чека']"),
+            };
+    private By[] paymentByInstallments =
+            {
+                    By.cssSelector("input[placeholder='Номер счета на 44']"),
+                    By.cssSelector("input[placeholder='Сумма']"),
+                    By.cssSelector("input[placeholder='E-mail для отправки чека']"),
+            };
+    private By[] debt =
+            {
+                    By.cssSelector("input[placeholder='Номер счета на 2073']"),
+                    By.cssSelector("input[placeholder='Сумма']"),
+                    By.cssSelector("input[placeholder='E-mail для отправки чека']"),
+            };
     @FindBy(id = "cookie-agree")
 private WebElement cookieAcceptButton;
-    @FindBy(xpath = "/html/body/div[6]/main/div/div[4]/div[1]/div/div/div[2]/section/div")
+    @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/h2")
     private WebElement paySection;
     @FindBy(className = "pay__partners")
     private WebElement payIcons;
@@ -40,8 +66,6 @@ private WebElement cookieAcceptButton;
     private WebElement useCard;
     @FindBy(xpath = "/html/body/div[8]/div/iframe")
     private WebElement paidFrame;
-    @FindBy(id = "cc-number")
-    private WebElement cardNumber;
     @FindBy(css = "input[placeholder='Номер телефона']")
     private WebElement placeHolderPhone;
     @FindBy(css = "input[placeholder='Сумма']")
@@ -58,45 +82,8 @@ private WebElement cookieAcceptButton;
     private WebElement select3;
     @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[4]/p")
     private WebElement select4;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[2]/div/div")
-    private WebElement cardBrands;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[1]/label")
-    private WebElement cardNumberText;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[2]/div[1]/app-input/div/div/div[1]/label")
-    private WebElement dateText;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[2]/div[3]/app-input/div/div/div[1]/label")
-    private WebElement cvvText;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[3]/app-input/div/div/div[1]/label")
-    private WebElement nameText;
-
-    public WebElement getCardNumberText() {
-        return cardNumberText;
-    }
-
-    public WebElement getDateText() {
-        return dateText;
-    }
-
-    public WebElement getCvvText() {
-        return cvvText;
-    }
-
-    public WebElement getNameText() {
-        return nameText;
-    }
-
-    public WebElement getCardBrands() {
-        return cardBrands;
-    }
-
-    public WebElement getPaidFrame() {
-        return paidFrame;
-    }
-
-    public WebElement getPaySection() {
-        return paySection;
-    }
-
+    @FindBy (xpath = "/html/body/div[6]/main/div/div[2]")
+    private WebElement cookieWindow;
     public void clickSelect (){
         actions.moveToElement(select).click().build().perform();
     }
@@ -119,8 +106,8 @@ private WebElement cookieAcceptButton;
     public void waitVisibilityOfSelect (WebElement element){
         new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.invisibilityOf(element));
     }
-    public String getPaySectionText() {
-        return paySection.getText();
+    public WebElement getPaySection () {
+        return paySection;
     }
     public void setInputPhone(String phone) {
         inputPhone.sendKeys(phone);
@@ -132,6 +119,7 @@ private WebElement cookieAcceptButton;
         inputEmail.sendKeys(email);
     }
     public void clickContinueBtn() {
+        new WebDriverWait(driver,Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOf(continueButton));
         continueButton.click();
     }
     public void clickHrefMoreAboutService() {
@@ -142,24 +130,58 @@ private WebElement cookieAcceptButton;
         return listPayIcons.size();
     }
     public void acceptCookies(){
-        if (cookieAcceptButton.isDisplayed())
-        {
-            cookieAcceptButton.click();
-        }
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOf(cookieAcceptButton));
+      try {
+          new WebDriverWait(driver,Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOf(cookieAcceptButton));
+          cookieAcceptButton.click();
+
+      }catch (Exception e){}
     }
-    public WebElement getMoreAboutServiceHref() {
-        return moreAboutServiceHref;
+        public void getHeadPage() {
+            driver.get(confProperties.getProperty("mtsByPage"));
+            new WebDriverWait(driver, Duration.ofSeconds(10))
+                    .until(ExpectedConditions.titleContains(confProperties.getProperty("titleFirstPage")));
+    }
+    public WebElement getContinueButton() {
+        return continueButton;
     }
     public void checkPaidApp()
     {
+        PayFrame payFrame = new PayFrame(driver);
         new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(paidFrame));
         driver.switchTo().frame(paidFrame);
         new WebDriverWait(driver,Duration.ofSeconds(5)).
-                until(ExpectedConditions.visibilityOf(cardNumber));
+                until(ExpectedConditions.visibilityOf(payFrame.getCardNumber()));
     }
     public String getTextUseCard (){
         return useCard.getText();
+    }
+    public String getCommunicationService (int n){
+        return driver.findElement(communicationService[n]).getAttribute("placeholder");
+    }
+    public String getHomeInternet (int n){
+        return driver.findElement(homeInternet[n]).getAttribute("placeholder");
+    }
+    public String paymentByInstallments (int n){
+        return driver.findElement(paymentByInstallments[n]).getAttribute("placeholder");
+    }
+    public String debt (int n){
+        return driver.findElement(debt[n]).getAttribute("placeholder");
+    }
+    public void fillPaydForm (String phone,String sum,String email){
+        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(continueButton));
+        setInputPhone(phone);
+        setInputEmail(email);
+        setInputMoney(sum);
+    }
+    public void clickContinueButton (){
+        actions.scrollToElement(getContinueButton());
+        clickContinueBtn();
+    }
+    public void switchToPayFrame (){
+        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(paidFrame));
+        driver.switchTo().frame(paidFrame);
+        new WebDriverWait(driver,Duration.ofSeconds(5)).
+                until(ExpectedConditions.visibilityOfElementLocated(By.id("cc-number")));
     }
 }
 
