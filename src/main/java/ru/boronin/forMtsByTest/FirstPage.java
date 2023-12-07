@@ -3,6 +3,7 @@ package ru.boronin.forMtsByTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,9 +13,11 @@ import java.time.Duration;
 import java.util.List;
 
 public class FirstPage {
-    public WebDriver driver;
+    private WebDriver driver;
+    private Actions actions;
     public FirstPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        actions=new Actions(driver);
         this.driver = driver;
     }
     @FindBy(id = "cookie-agree")
@@ -50,6 +53,54 @@ private WebElement cookieAcceptButton;
     @FindBy(css = "input[placeholder='E-mail для отправки чека']")
     private WebElement placeHolderEmail;
 
+    @FindBy(css = "#pay-section > div > div > div.col-12.col-xl-8 > section > div > div.pay__form > div.select > div.select__wrapper > button")
+    private WebElement select;
+
+    @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[1]/p")
+    private WebElement select1;
+    @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[2]/p")
+    private WebElement select2;
+    @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[3]/p")
+    private WebElement select3;
+    @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[4]/p")
+    private WebElement select4;
+    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[2]/div/div")
+    private WebElement cardBrands;
+
+    public WebElement getCardBrands() {
+        return cardBrands;
+    }
+
+    public WebElement getPaidFrame() {
+        return paidFrame;
+    }
+
+    public WebElement getPaySection() {
+        return paySection;
+    }
+
+    public void clickSelect (){
+        actions.moveToElement(select).click().build().perform();
+    }
+    public void clickSelect1 (){
+        actions.moveToElement(select1).click().build().perform();
+        waitVisibilityOfSelect(select1);
+    }
+    public void clickSelect2 (){
+        actions.moveToElement(select2).click().build().perform();
+        waitVisibilityOfSelect(select2);
+    }
+    public void clickSelect3 (){
+        actions.moveToElement(select3).click().build().perform();
+        waitVisibilityOfSelect(select3);
+    }
+    public void clickSelect4 (){
+        actions.moveToElement(select4).click().build().perform();
+        waitVisibilityOfSelect(select4);
+    }
+    public void waitVisibilityOfSelect (WebElement element){
+        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.invisibilityOf(element));
+    }
     public String getPaySectionText() {
         return paySection.getText();
     }

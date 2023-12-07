@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.w3c.dom.html.HTMLSelectElement;
 import ru.boronin.forMtsByTest.ConfProperties;
 import ru.boronin.forMtsByTest.FirstPage;
+
 import java.time.Duration;
+import java.util.List;
 
 
 public class TestMtsBy {
@@ -32,6 +34,7 @@ public class TestMtsBy {
         webDriver.manage().window().maximize();
         firstPage = new FirstPage(webDriver);
     }
+
     @BeforeEach
     public void getHeadPage() {
         webDriver.get(confProperties.getProperty("mtsByPage"));
@@ -39,30 +42,35 @@ public class TestMtsBy {
                 .until(ExpectedConditions.titleIs(confProperties.getProperty("titleFirstPage")));
         firstPage.acceptCookies();
     }
-  //  @AfterAll
+
+    @AfterAll
     public static void afterAll() {
         webDriver.quit();
     }
-  //  @Test
+
+      @Test
     public void onlinePayTextTest() {
         String actual = firstPage.getPaySectionText();
         String expected = confProperties.getProperty("paySectionText");
         Assertions.assertEquals(actual, expected);
     }
-  //  @Test
+
+      @Test
     public void payIconsTest() {
         int actual = firstPage.getQuantityPayIcons();
         int expected = Integer.parseInt(confProperties.getProperty("quantityPayIcons"));
         Assertions.assertEquals(actual, expected);
     }
- //   @Test
+
+       @Test
     public void moreAboutServiceHref() {
         firstPage.clickHrefMoreAboutService();
         String actual = webDriver.getTitle();
         String expected = confProperties.getProperty("moreAboutServiceTitle");
         Assertions.assertEquals(actual, expected);
     }
-  //  @Test
+
+      @Test
     public void payFormTest() {
         String phone = confProperties.getProperty("phone");
         String sum = confProperties.getProperty("sum");
@@ -72,88 +80,81 @@ public class TestMtsBy {
         firstPage.setInputMoney(sum);
         firstPage.clickContinueBtn();
         firstPage.checkPaidApp();
-        Assertions.assertEquals(firstPage.getTextUseCard(),confProperties.getProperty("useCardText"));
+        Assertions.assertEquals(firstPage.getTextUseCard(), confProperties.getProperty("useCardText"));
     }
 
     @Test
     public void payTextTest() {
-        By [] communicationServiceText = {
+        By[] communicationService = {
                 By.cssSelector("input[placeholder='Номер телефона']"),
                 By.cssSelector("input[placeholder='Сумма']"),
                 By.cssSelector("input[placeholder='E-mail для отправки чека']"),
         };
-
-        By [] homeInternet = {
+        By[] homeInternet = {
                 By.cssSelector("input[placeholder='Номер абонента']"),
                 By.cssSelector("input[placeholder='Сумма']"),
                 By.cssSelector("input[placeholder='E-mail для отправки чека']"),
         };
-
-        By [] paymentByInstallments = {
+        By[] paymentByInstallments = {
                 By.cssSelector("input[placeholder='Номер счета на 44']"),
                 By.cssSelector("input[placeholder='Сумма']"),
                 By.cssSelector("input[placeholder='E-mail для отправки чека']"),
         };
-        By [] debt = {
+        By[] debt = {
                 By.cssSelector("input[placeholder='Номер счета на 2073']"),
                 By.cssSelector("input[placeholder='Сумма']"),
                 By.cssSelector("input[placeholder='E-mail для отправки чека']"),
         };
+        String[] communicationServiceTexts = confProperties.getProperty("communicationServiceText").split(",");
+        String[] homeInternetTexts = confProperties.getProperty("homeInternet").split(",");
+        String[] paymentByInstallmentsTexts = confProperties.getProperty("paymentByInstallments").split(",");
+        String[] debtTexts = confProperties.getProperty("debt").split(",");
+        firstPage.clickSelect();
+        firstPage.clickSelect1();
+        Assertions.assertEquals(communicationServiceTexts[0], webDriver.findElement(communicationService[0]).getAttribute("placeholder"));
+        Assertions.assertEquals(communicationServiceTexts[1], webDriver.findElement(communicationService[1]).getAttribute("placeholder"));
+        Assertions.assertEquals(communicationServiceTexts[2], webDriver.findElement(communicationService[2]).getAttribute("placeholder"));
+        firstPage.clickSelect();
+        firstPage.clickSelect2();
+        Assertions.assertEquals(homeInternetTexts[0], webDriver.findElement(homeInternet[0]).getAttribute("placeholder"));
+        Assertions.assertEquals(homeInternetTexts[1], webDriver.findElement(homeInternet[1]).getAttribute("placeholder"));
+        Assertions.assertEquals(homeInternetTexts[2], webDriver.findElement(homeInternet[2]).getAttribute("placeholder"));
+        firstPage.clickSelect();
+        firstPage.clickSelect3();
+        Assertions.assertEquals(paymentByInstallmentsTexts[0], webDriver.findElement(paymentByInstallments[0]).getAttribute("placeholder"));
+        Assertions.assertEquals(paymentByInstallmentsTexts[1], webDriver.findElement(paymentByInstallments[1]).getAttribute("placeholder"));
+        Assertions.assertEquals(paymentByInstallmentsTexts[2], webDriver.findElement(paymentByInstallments[2]).getAttribute("placeholder"));
+        firstPage.clickSelect();
+        firstPage.clickSelect4();
+        Assertions.assertEquals(debtTexts[0], webDriver.findElement(debt[0]).getAttribute("placeholder"));
+        Assertions.assertEquals(debtTexts[1], webDriver.findElement(debt[1]).getAttribute("placeholder"));
+        Assertions.assertEquals(debtTexts[2], webDriver.findElement(debt[2]).getAttribute("placeholder"));
+        firstPage.clickSelect();
+        firstPage.clickSelect1();
+        String phone = confProperties.getProperty("phone");
+        String sum = confProperties.getProperty("sum");
+        String email = confProperties.getProperty("email");
+        firstPage.setInputPhone(phone);
+        firstPage.setInputEmail(email);
+        firstPage.setInputMoney(sum);
+        firstPage.clickContinueBtn();
+        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(firstPage.getPaidFrame()));
+        webDriver.switchTo().frame(firstPage.getPaidFrame());
+        new WebDriverWait(webDriver,Duration.ofSeconds(5)).
+                until(ExpectedConditions.visibilityOfElementLocated(By.id("cc-number")));
+        String actualSum = webDriver.findElement(By.xpath("/html/body/app-root/div/div/app-payment-container/app-header/header/div/div/p[1]")).getText();
+        String expectedSum = confProperties.getProperty("sum") + " BYN";
+        Assertions.assertEquals(expectedSum,actualSum);
 
-        String [] communicationServiceTexts = confProperties.getProperty("communicationServiceText").split(",");
-        String [] homeInternetTexts = confProperties.getProperty("homeInternet").split(",");
-        String [] paymentByInstallmentsTexts = confProperties.getProperty("paymentByInstallments").split(",");
-        String [] debtTexts = confProperties.getProperty("debt").split(",");
+        String actualPhone = webDriver.findElement(By.xpath("/html/body/app-root/div/div/app-payment-container/app-header/header/div/div/p[2]")).getText();
+        String expectedPhone = "Оплата: Услуги связи Номер:375" + confProperties.getProperty("phone");
+        Assertions.assertEquals(expectedPhone,actualPhone);
 
-        Actions actions = new Actions(webDriver);
+        List<WebElement> cardBrands = firstPage.getCardBrands().findElements(By.tagName("img"));
+        Assertions.assertEquals(5,cardBrands.size());
 
-        WebElement w = webDriver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div"));
-        actions.scrollToElement(w);
-
-        WebElement select = webDriver.findElement(By.cssSelector("#pay-section > div > div > div.col-12.col-xl-8 > section > div > div.pay__form > div.select > div.select__wrapper > button"));
-        actions.moveToElement(select).click().build().perform();
-
-
-        WebElement select1 = webDriver.findElement(By.xpath
-                ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[1]/p"));
-        actions.moveToElement(select1).click().build().perform();
-
-        Assertions.assertEquals(communicationServiceTexts[0],webDriver.findElement(communicationServiceText[0]).getAttribute("placeholder"));
-        Assertions.assertEquals(communicationServiceTexts[1],webDriver.findElement(communicationServiceText[1]).getAttribute("placeholder"));
-        Assertions.assertEquals(communicationServiceTexts[2],webDriver.findElement(communicationServiceText[2]).getAttribute("placeholder"));
-
-        actions.moveToElement(select).click().build().perform();
-        WebElement select2 = webDriver.findElement(By.xpath
-                ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[2]/p"));
-        actions.moveToElement(select2).click().build().perform();
-        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(select2));
-
-
-        Assertions.assertEquals(homeInternetTexts[0],webDriver.findElement(homeInternet[0]).getAttribute("placeholder"));
-        Assertions.assertEquals(homeInternetTexts[1],webDriver.findElement(homeInternet[1]).getAttribute("placeholder"));
-        Assertions.assertEquals(homeInternetTexts[2],webDriver.findElement(homeInternet[2]).getAttribute("placeholder"));
-
-        actions.moveToElement(select).click().build().perform();
-        WebElement select3 = webDriver.findElement(By.xpath
-                ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[3]/p"));
-        actions.moveToElement(select3).click().build().perform();
-        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(select3));
-
-
-        Assertions.assertEquals(paymentByInstallmentsTexts[0],webDriver.findElement(paymentByInstallments[0]).getAttribute("placeholder"));
-        Assertions.assertEquals(paymentByInstallmentsTexts[1],webDriver.findElement(paymentByInstallments[1]).getAttribute("placeholder"));
-        Assertions.assertEquals(paymentByInstallmentsTexts[2],webDriver.findElement(paymentByInstallments[2]).getAttribute("placeholder"));
-
-        actions.moveToElement(select).click().build().perform();
-        WebElement select4 = webDriver.findElement(By.xpath
-                ("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[4]/p"));
-        actions.moveToElement(select4).click().build().perform();
-        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(select4));
-        Assertions.assertEquals(debtTexts[0],webDriver.findElement(debt[0]).getAttribute("placeholder"));
-        Assertions.assertEquals(debtTexts[1],webDriver.findElement(debt[1]).getAttribute("placeholder"));
-        Assertions.assertEquals(debtTexts[2],webDriver.findElement(debt[2]).getAttribute("placeholder"));
+    }
 
 
 
-}
 }
