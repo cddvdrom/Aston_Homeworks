@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -10,10 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.boronin.forMtsByTest.ConfProperties;
 import ru.boronin.forMtsByTest.FirstPage;
 import ru.boronin.forMtsByTest.PayFrame;
-
 import java.time.Duration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class TestMtsBy {
@@ -22,7 +19,6 @@ public class TestMtsBy {
     public static WebDriver webDriver;
     public static PayFrame payFrame;
     public static Actions actions;
-
     @BeforeAll
     public static void setup() {
         confProperties = new ConfProperties();
@@ -40,13 +36,11 @@ public class TestMtsBy {
         payFrame = new PayFrame(webDriver);
         actions = new Actions(webDriver);
     }
-
     @BeforeEach
     public void before() {
         firstPage.getHeadPage();
         firstPage.acceptCookies();
     }
-
     @AfterAll
     public static void afterAll() {
         webDriver.quit();
@@ -58,14 +52,12 @@ public class TestMtsBy {
         String expected = confProperties.getProperty("paySectionText");
         Assertions.assertEquals(expected, actual);
     }
-
-    @Test
+   @Test
     public void payIconsTest() {
         int actual = firstPage.getQuantityPayIcons();
         int expected = Integer.parseInt(confProperties.getProperty("quantityPayIcons"));
         Assertions.assertEquals(actual, expected);
     }
-
     @Test
     public void moreAboutServiceHref() {
         firstPage.clickHrefMoreAboutService();
@@ -73,7 +65,6 @@ public class TestMtsBy {
         String expected = confProperties.getProperty("moreAboutServiceTitle");
         Assertions.assertEquals(actual, expected);
     }
-
     @Test
     public void payFormTest() {
         String phone = confProperties.getProperty("phone");
@@ -84,19 +75,16 @@ public class TestMtsBy {
         sum = confProperties.getProperty("sum");
         email = confProperties.getProperty("email");
         firstPage.fillPaydForm(phone, sum, email);
+        firstPage.clickContinueButton();
         firstPage.checkPaidApp();
         Assertions.assertEquals(firstPage.getTextUseCard(), confProperties.getProperty("useCardText"));
     }
-
-    @Test
+     @Test
     public void payTextTest() {
-
-
         String[] communicationServiceTexts = confProperties.getProperty("communicationServiceText").split(",");
         String[] homeInternetTexts = confProperties.getProperty("homeInternet").split(",");
         String[] paymentByInstallmentsTexts = confProperties.getProperty("paymentByInstallments").split(",");
         String[] debtTexts = confProperties.getProperty("debt").split(",");
-
         firstPage.clickSelect();
         firstPage.clickSelect1();
         Assertions.assertEquals(communicationServiceTexts[0], firstPage.getCommunicationService(0));
@@ -119,7 +107,6 @@ public class TestMtsBy {
         Assertions.assertEquals(debtTexts[2], firstPage.debt(2));
         firstPage.clickSelect();
         firstPage.clickSelect1();
-
         String phone = confProperties.getProperty("phone");
         String sum = confProperties.getProperty("sum");
         String email = confProperties.getProperty("email");
@@ -130,20 +117,15 @@ public class TestMtsBy {
         String expectedSum = confProperties.getProperty("sum") + " BYN";
         Assertions.assertEquals(expectedSum, actualSum);
         Assertions.assertEquals("Оплатить " + expectedSum, payFrame.getTextButtonSum());
-
         String actualPhone = payFrame.getPayPhoneNumber();
         String expectedPhone = "Оплата: Услуги связи Номер:375" + confProperties.getProperty("phone");
         Assertions.assertEquals(expectedPhone, actualPhone);
-
         int actual = payFrame.getQuantityCardBrands();
         int expected = Integer.parseInt(confProperties.getProperty("quantityPaySystem"));
         Assertions.assertEquals(expected, actual);
-
         Assertions.assertEquals("Номер карты", payFrame.getCardNumberText());
         Assertions.assertEquals("Срок действия", payFrame.getDateText());
         Assertions.assertEquals("CVC", payFrame.getCvvText());
         Assertions.assertEquals("Имя держателя (как на карте)", payFrame.getNameText());
     }
-
-
 }

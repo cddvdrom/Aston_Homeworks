@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.List;
 
@@ -131,14 +130,14 @@ private WebElement cookieAcceptButton;
     }
     public void acceptCookies(){
       try {
-          new WebDriverWait(driver,Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOf(cookieAcceptButton));
+          new WebDriverWait(driver,Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(cookieAcceptButton));
           cookieAcceptButton.click();
 
       }catch (Exception e){}
     }
         public void getHeadPage() {
             driver.get(confProperties.getProperty("mtsByPage"));
-            new WebDriverWait(driver, Duration.ofSeconds(10))
+            new WebDriverWait(driver, Duration.ofSeconds(15))
                     .until(ExpectedConditions.titleContains(confProperties.getProperty("titleFirstPage")));
     }
     public WebElement getContinueButton() {
@@ -147,9 +146,9 @@ private WebElement cookieAcceptButton;
     public void checkPaidApp()
     {
         PayFrame payFrame = new PayFrame(driver);
-        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(paidFrame));
+        new WebDriverWait(driver,Duration.ofSeconds(7)).until(ExpectedConditions.visibilityOf(paidFrame));
         driver.switchTo().frame(paidFrame);
-        new WebDriverWait(driver,Duration.ofSeconds(5)).
+        new WebDriverWait(driver,Duration.ofSeconds(7)).
                 until(ExpectedConditions.visibilityOf(payFrame.getCardNumber()));
     }
     public String getTextUseCard (){
