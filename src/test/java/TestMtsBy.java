@@ -4,10 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.w3c.dom.html.HTMLSelectElement;
 import ru.boronin.forMtsByTest.ConfProperties;
 import ru.boronin.forMtsByTest.FirstPage;
 
@@ -145,6 +143,7 @@ public class TestMtsBy {
         String actualSum = webDriver.findElement(By.xpath("/html/body/app-root/div/div/app-payment-container/app-header/header/div/div/p[1]")).getText();
         String expectedSum = confProperties.getProperty("sum") + " BYN";
         Assertions.assertEquals(expectedSum,actualSum);
+        Assertions.assertEquals("Оплатить "+ expectedSum,webDriver.findElement(By.xpath("/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/button")).getText());
 
         String actualPhone = webDriver.findElement(By.xpath("/html/body/app-root/div/div/app-payment-container/app-header/header/div/div/p[2]")).getText();
         String expectedPhone = "Оплата: Услуги связи Номер:375" + confProperties.getProperty("phone");
@@ -157,6 +156,8 @@ public class TestMtsBy {
         Assertions.assertEquals("Срок действия",firstPage.getDateText().getText());
         Assertions.assertEquals("CVC",firstPage.getCvvText().getText());
         Assertions.assertEquals("Имя держателя (как на карте)",firstPage.getNameText().getText());
+
+
     }
 
 

@@ -36,8 +36,6 @@ private WebElement cookieAcceptButton;
     private WebElement continueButton;
     @FindBy(partialLinkText = "Подробнее о сервисе")
     private WebElement moreAboutServiceHref;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/app-header/header/div/div/p[2]")
-    private WebElement headerPaymentInfo;
     @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/div/span[2]")
     private WebElement useCard;
     @FindBy(xpath = "/html/body/div[8]/div/iframe")
@@ -46,16 +44,12 @@ private WebElement cookieAcceptButton;
     private WebElement cardNumber;
     @FindBy(css = "input[placeholder='Номер телефона']")
     private WebElement placeHolderPhone;
-
     @FindBy(css = "input[placeholder='Сумма']")
     private WebElement placeHolderSum;
-
     @FindBy(css = "input[placeholder='E-mail для отправки чека']")
     private WebElement placeHolderEmail;
-
     @FindBy(css = "#pay-section > div > div > div.col-12.col-xl-8 > section > div > div.pay__form > div.select > div.select__wrapper > button")
     private WebElement select;
-
     @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[1]/p")
     private WebElement select1;
     @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[2]/p")
