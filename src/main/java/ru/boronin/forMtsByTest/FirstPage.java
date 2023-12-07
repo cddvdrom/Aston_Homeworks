@@ -66,6 +66,30 @@ private WebElement cookieAcceptButton;
     private WebElement select4;
     @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[2]/div/div")
     private WebElement cardBrands;
+    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[1]/label")
+    private WebElement cardNumberText;
+    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[2]/div[1]/app-input/div/div/div[1]/label")
+    private WebElement dateText;
+    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[2]/div[3]/app-input/div/div/div[1]/label")
+    private WebElement cvvText;
+    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[3]/app-input/div/div/div[1]/label")
+    private WebElement nameText;
+
+    public WebElement getCardNumberText() {
+        return cardNumberText;
+    }
+
+    public WebElement getDateText() {
+        return dateText;
+    }
+
+    public WebElement getCvvText() {
+        return cvvText;
+    }
+
+    public WebElement getNameText() {
+        return nameText;
+    }
 
     public WebElement getCardBrands() {
         return cardBrands;

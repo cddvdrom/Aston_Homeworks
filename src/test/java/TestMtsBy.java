@@ -153,6 +153,10 @@ public class TestMtsBy {
         List<WebElement> cardBrands = firstPage.getCardBrands().findElements(By.tagName("img"));
         Assertions.assertEquals(5,cardBrands.size());
 
+        Assertions.assertEquals("Номер карты",firstPage.getCardNumberText().getText());
+        Assertions.assertEquals("Срок действия",firstPage.getDateText().getText());
+        Assertions.assertEquals("CVC",firstPage.getCvvText().getText());
+        Assertions.assertEquals("Имя держателя (как на карте)",firstPage.getNameText().getText());
     }
 
 
