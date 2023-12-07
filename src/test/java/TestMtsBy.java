@@ -8,10 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.boronin.forMtsByTest.ConfProperties;
 import ru.boronin.forMtsByTest.FirstPage;
-
 import java.time.Duration;
 import java.util.List;
-
 
 public class TestMtsBy {
     public static FirstPage firstPage;
@@ -19,7 +17,6 @@ public class TestMtsBy {
     public static WebDriver webDriver;
     public static WebElement element;
     public static String mainWindow;
-
     @BeforeAll
     public static void setup() {
         confProperties = new ConfProperties();
@@ -32,7 +29,6 @@ public class TestMtsBy {
         webDriver.manage().window().maximize();
         firstPage = new FirstPage(webDriver);
     }
-
     @BeforeEach
     public void getHeadPage() {
         webDriver.get(confProperties.getProperty("mtsByPage"));
@@ -40,7 +36,6 @@ public class TestMtsBy {
                 .until(ExpectedConditions.titleIs(confProperties.getProperty("titleFirstPage")));
         firstPage.acceptCookies();
     }
-
     @AfterAll
     public static void afterAll() {
         webDriver.quit();
@@ -59,7 +54,6 @@ public class TestMtsBy {
         int expected = Integer.parseInt(confProperties.getProperty("quantityPayIcons"));
         Assertions.assertEquals(actual, expected);
     }
-
        @Test
     public void moreAboutServiceHref() {
         firstPage.clickHrefMoreAboutService();
@@ -67,7 +61,6 @@ public class TestMtsBy {
         String expected = confProperties.getProperty("moreAboutServiceTitle");
         Assertions.assertEquals(actual, expected);
     }
-
       @Test
     public void payFormTest() {
         String phone = confProperties.getProperty("phone");
@@ -80,7 +73,6 @@ public class TestMtsBy {
         firstPage.checkPaidApp();
         Assertions.assertEquals(firstPage.getTextUseCard(), confProperties.getProperty("useCardText"));
     }
-
     @Test
     public void payTextTest() {
         By[] communicationService = {
