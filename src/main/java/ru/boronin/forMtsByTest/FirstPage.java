@@ -83,22 +83,22 @@ private WebElement cookieAcceptButton;
     private WebElement select4;
     @FindBy (xpath = "/html/body/div[6]/main/div/div[2]")
     private WebElement cookieWindow;
-    public void clickSelect (){
+    public void clickSelect () {
         actions.moveToElement(select).click().build().perform();
     }
-    public void clickSelect1 (){
+    public void clickSelect1 () {
         actions.moveToElement(select1).click().build().perform();
         waitVisibilityOfSelect(select1);
     }
-    public void clickSelect2 (){
+    public void clickSelect2 () {
         actions.moveToElement(select2).click().build().perform();
         waitVisibilityOfSelect(select2);
     }
-    public void clickSelect3 (){
+    public void clickSelect3 () {
         actions.moveToElement(select3).click().build().perform();
         waitVisibilityOfSelect(select3);
     }
-    public void clickSelect4 (){
+    public void clickSelect4 () {
         actions.moveToElement(select4).click().build().perform();
         waitVisibilityOfSelect(select4);
     }
@@ -128,12 +128,12 @@ private WebElement cookieAcceptButton;
         List<WebElement> listPayIcons = payIcons.findElements(By.tagName("img"));
         return listPayIcons.size();
     }
-    public void acceptCookies(){
+    public void acceptCookies() {
       try {
           new WebDriverWait(driver,Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(cookieAcceptButton));
           cookieAcceptButton.click();
 
-      }catch (Exception e){}
+      }catch (Exception e) {}
     }
         public void getHeadPage() {
             driver.get(confProperties.getProperty("mtsByPage"));
@@ -151,19 +151,19 @@ private WebElement cookieAcceptButton;
         new WebDriverWait(driver,Duration.ofSeconds(7)).
                 until(ExpectedConditions.visibilityOf(payFrame.getCardNumber()));
     }
-    public String getTextUseCard (){
+    public String getTextUseCard () {
         return useCard.getText();
     }
-    public String getCommunicationService (int n){
+    public String getCommunicationService (int n) {
         return driver.findElement(communicationService[n]).getAttribute("placeholder");
     }
-    public String getHomeInternet (int n){
+    public String getHomeInternet (int n) {
         return driver.findElement(homeInternet[n]).getAttribute("placeholder");
     }
-    public String paymentByInstallments (int n){
+    public String paymentByInstallments (int n) {
         return driver.findElement(paymentByInstallments[n]).getAttribute("placeholder");
     }
-    public String debt (int n){
+    public String debt (int n) {
         return driver.findElement(debt[n]).getAttribute("placeholder");
     }
     public void fillPaydForm (String phone,String sum,String email){
@@ -172,11 +172,11 @@ private WebElement cookieAcceptButton;
         setInputEmail(email);
         setInputMoney(sum);
     }
-    public void clickContinueButton (){
+    public void clickContinueButton () {
         actions.scrollToElement(getContinueButton());
         clickContinueBtn();
     }
-    public void switchToPayFrame (){
+    public void switchToPayFrame () {
         new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(paidFrame));
         driver.switchTo().frame(paidFrame);
         new WebDriverWait(driver,Duration.ofSeconds(5)).
