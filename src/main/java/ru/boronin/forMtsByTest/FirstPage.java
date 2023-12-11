@@ -83,7 +83,7 @@ private WebElement cookieAcceptButton;
     private WebElement select4;
     @FindBy (xpath = "/html/body/div[6]/main/div/div[2]")
     private WebElement cookieWindow;
-    public void clickSelect (){
+    public void clickSelect () {
         actions.moveToElement(select).click().build().perform();
     }
     public void clickSelect1 () {
@@ -150,19 +150,19 @@ private WebElement cookieAcceptButton;
         new WebDriverWait(driver,Duration.ofSeconds(7)).
                 until(ExpectedConditions.visibilityOf(payFrame.getCardNumber()));
     }
-    public String getTextUseCard (){
+    public String getTextUseCard () {
         return useCard.getText();
     }
     public String getCommunicationService (int n) {
         return driver.findElement(communicationService[n]).getAttribute("placeholder");
     }
-    public String getHomeInternet (int n){
+    public String getHomeInternet (int n) {
         return driver.findElement(homeInternet[n]).getAttribute("placeholder");
     }
     public String paymentByInstallments (int n) {
         return driver.findElement(paymentByInstallments[n]).getAttribute("placeholder");
     }
-    public String debt (int n){
+    public String debt (int n) {
         return driver.findElement(debt[n]).getAttribute("placeholder");
     }
     public void fillPaydForm (String phone,String sum,String email) {

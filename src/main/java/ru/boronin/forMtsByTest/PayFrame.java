@@ -36,7 +36,7 @@ public class PayFrame {
     public WebElement getCardNumber() {
         return cardNumber;
     }
-    public String getTextSum (){
+    public String getTextSum () {
         return payForm.getText();
     }
     public String getTextButtonSum () {
