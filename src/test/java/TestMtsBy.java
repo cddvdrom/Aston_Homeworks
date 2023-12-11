@@ -92,12 +92,8 @@ public class TestMtsBy {
         Assertions.assertEquals(debtTexts[2], firstPage.debt(2));
         firstPage.clickSelect();
         firstPage.clickSelect1();
-        String phone = confProperties.getProperty("phone");
-        String sum = confProperties.getProperty("sum");
-        String email = confProperties.getProperty("email");
-        firstPage.fillPaydForm(phone, sum, email);
-        firstPage.clickContinueButton();
-        firstPage.switchToPayFrame();
+
+        firstPage.fillForm();
         String actualSum = payFrame.getTextSum();
         String expectedSum = confProperties.getProperty("sum") + " BYN";
         Assertions.assertEquals(expectedSum, actualSum);

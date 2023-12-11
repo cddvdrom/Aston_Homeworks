@@ -179,5 +179,13 @@ private WebElement cookieAcceptButton;
         new WebDriverWait(driver,Duration.ofSeconds(5)).
                 until(ExpectedConditions.visibilityOfElementLocated(By.id("cc-number")));
     }
+    public void fillForm (){
+        String phone = confProperties.getProperty("phone");
+        String sum = confProperties.getProperty("sum");
+        String email = confProperties.getProperty("email");
+        fillPaydForm(phone, sum, email);
+        clickContinueButton();
+        switchToPayFrame();
+    }
 }
 
