@@ -2,7 +2,6 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,9 +9,6 @@ import ru.boronin.forMtsByTest.ConfProperties;
 import ru.boronin.forMtsByTest.FirstPage;
 import ru.boronin.forMtsByTest.PayFrame;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-
 public class TestMtsBy {
     public static FirstPage firstPage;
     public static ConfProperties confProperties;
@@ -20,19 +16,11 @@ public class TestMtsBy {
     public static PayFrame payFrame;
     public static Actions actions;
     @BeforeAll
-    public static void setup() {
+    public static void setup () {
         confProperties = new ConfProperties();
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +
-                "/src/test/resources/chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary(confProperties.getProperty("binary"));
-        Map prefs = new HashMap();
-        prefs.put("profile.default_content_settings.cookies", 2);
-        options.setExperimentalOption("prefs", prefs);
-        options.addArguments("--lang=ru-RU");
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
-        firstPage = new FirstPage(webDriver, confProperties);
+        firstPage = new FirstPage(webDriver,confProperties);
         payFrame = new PayFrame(webDriver);
         actions = new Actions(webDriver);
     }
@@ -67,13 +55,10 @@ public class TestMtsBy {
     }
     @Test
     public void payFormTest() {
+        new WebDriverWait(webDriver, Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"pay-connection\"]/button")));
         String phone = confProperties.getProperty("phone");
         String sum = confProperties.getProperty("sum");
         String email = confProperties.getProperty("email");
-        new WebDriverWait(webDriver, Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"pay-connection\"]/button")));
-        phone = confProperties.getProperty("phone");
-        sum = confProperties.getProperty("sum");
-        email = confProperties.getProperty("email");
         firstPage.fillPaydForm(phone, sum, email);
         firstPage.clickContinueButton();
         firstPage.checkPaidApp();
