@@ -72,21 +72,22 @@ public class TestMtsBy {
         String[] debtTexts = confProperties.getProperty("debt").split(",");
         firstPage.clickSelect();
         firstPage.clickSelect1();
-        Assertions.assertEquals(communicationServiceTexts[0], firstPage.getCommunicationService(0));
-        Assertions.assertEquals(communicationServiceTexts[1], firstPage.getCommunicationService(1));
-        Assertions.assertEquals(communicationServiceTexts[2], firstPage.getCommunicationService(2));
+        for(int i=0;i<3;i++){
+        Assertions.assertEquals(communicationServiceTexts[i], firstPage.getCommunicationService(i));
+        }
         firstPage.clickSelect();
         firstPage.clickSelect2();
-        Assertions.assertEquals(homeInternetTexts[0], firstPage.getHomeInternet(0));
-        Assertions.assertEquals(homeInternetTexts[1], firstPage.getHomeInternet(1));
-        Assertions.assertEquals(homeInternetTexts[2], firstPage.getHomeInternet(2));
+         for(int i=0;i<3;i++) {
+             Assertions.assertEquals(homeInternetTexts[i], firstPage.getHomeInternet(i));
+         }
         firstPage.clickSelect();
         firstPage.clickSelect3();
-        Assertions.assertEquals(paymentByInstallmentsTexts[0], firstPage.paymentByInstallments(0));
-        Assertions.assertEquals(paymentByInstallmentsTexts[1], firstPage.paymentByInstallments(1));
-        Assertions.assertEquals(paymentByInstallmentsTexts[2], firstPage.paymentByInstallments(2));
+         for(int i=0;i<3;i++) {
+             Assertions.assertEquals(paymentByInstallmentsTexts[i], firstPage.paymentByInstallments(i));
+         }
         firstPage.clickSelect();
         firstPage.clickSelect4();
+
         Assertions.assertEquals(debtTexts[0], firstPage.debt(0));
         Assertions.assertEquals(debtTexts[1], firstPage.debt(1));
         Assertions.assertEquals(debtTexts[2], firstPage.debt(2));
@@ -98,6 +99,7 @@ public class TestMtsBy {
         String expectedSum = confProperties.getProperty("sum") + " BYN";
         Assertions.assertEquals(expectedSum, actualSum);
         Assertions.assertEquals("Оплатить " + expectedSum, payFrame.getTextButtonSum());
+
         String actualPhone = payFrame.getPayPhoneNumber();
         String expectedPhone = "Оплата: Услуги связи Номер:375" + confProperties.getProperty("phone");
         Assertions.assertEquals(expectedPhone, actualPhone);
