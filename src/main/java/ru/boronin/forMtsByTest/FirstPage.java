@@ -47,7 +47,7 @@ public class FirstPage {
             };
     @FindBy(id = "cookie-agree")
 private WebElement cookieAcceptButton;
-    @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/h2")
+    @FindBy(css = "#pay-section > div > div > div.col-12.col-xl-8 > section > div > h2")
     private WebElement paySection;
     @FindBy(className = "pay__partners")
     private WebElement payIcons;
@@ -57,13 +57,13 @@ private WebElement cookieAcceptButton;
     private WebElement inputMoney;
     @FindBy(id = "connection-email")
     private WebElement inputEmail;
-    @FindBy(xpath = "//*[@id=\"pay-connection\"]/button")
+    @FindBy(css = "#pay-connection > button")
     private WebElement continueButton;
     @FindBy(partialLinkText = "Подробнее о сервисе")
     private WebElement moreAboutServiceHref;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/div/span[2]")
+    @FindBy(css = ".card-page__card-pay__title")
     private WebElement useCard;
-    @FindBy(xpath = "/html/body/div[8]/div/iframe")
+    @FindBy(css = ".bepaid-iframe")
     private WebElement paidFrame;
     @FindBy(css = "input[placeholder='Номер телефона']")
     private WebElement placeHolderPhone;
@@ -71,7 +71,7 @@ private WebElement cookieAcceptButton;
     private WebElement placeHolderSum;
     @FindBy(css = "input[placeholder='E-mail для отправки чека']")
     private WebElement placeHolderEmail;
-    @FindBy(css = "#pay-section > div > div > div.col-12.col-xl-8 > section > div > div.pay__form > div.select > div.select__wrapper > button")
+    @FindBy(className = "select__header")
     private WebElement select;
     @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[1]/p")
     private WebElement select1;
@@ -81,8 +81,6 @@ private WebElement cookieAcceptButton;
     private WebElement select3;
     @FindBy(xpath = "//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[4]/p")
     private WebElement select4;
-    @FindBy (xpath = "/html/body/div[6]/main/div/div[2]")
-    private WebElement cookieWindow;
     public void clickSelect () {
         actions.moveToElement(select).click().build().perform();
     }
@@ -105,8 +103,8 @@ private WebElement cookieAcceptButton;
     public void waitVisibilityOfSelect (WebElement element) {
         new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.invisibilityOf(element));
     }
-    public WebElement getPaySection () {
-        return paySection;
+    public String getPaySectionText () {
+        return paySection.getText();
     }
     public void setInputPhone(String phone) {
         inputPhone.sendKeys(phone);

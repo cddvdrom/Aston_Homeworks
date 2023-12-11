@@ -36,7 +36,7 @@ public class TestMtsBy {
 
     @Test
     public void onlinePayTextTest() {
-        String actual = firstPage.getPaySection().getText();
+        String actual = firstPage.getPaySectionText();
         String expected = confProperties.getProperty("paySectionText");
         Assertions.assertEquals(expected, actual);
     }

@@ -17,21 +17,21 @@ public class PayFrame {
     }
     @FindBy(id = "cc-number")
     private WebElement cardNumber;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/app-header/header/div/div/p[1]")
+    @FindBy(className = "header__payment-amount")
     private WebElement payForm;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/button")
+    @FindBy(css = "button[type=\"submit\"]")
     private WebElement payFormButton;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/app-header/header/div/div/p[2]")
+    @FindBy(css = ".header__payment-info")
     private WebElement payPhoneNumber;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[2]/div/div")
+    @FindBy(className = "cards-brands")
     private WebElement cardBrands;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[1]/label")
+    @FindBy(css = ".ng-tns-c47-1 .ng-star-inserted")
     private WebElement cardNumberText;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[2]/div[1]/app-input/div/div/div[1]/label")
+    @FindBy(css = ".ng-tns-c47-4 .ng-star-inserted")
     private WebElement dateText;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[2]/div[3]/app-input/div/div/div[1]/label")
+    @FindBy(css = ".ng-tns-c47-5 .ng-star-inserted")
     private WebElement cvvText;
-    @FindBy(xpath = "/html/body/app-root/div/div/app-payment-container/section/app-card-page/div/div[1]/app-card-input/form/div[1]/div[3]/app-input/div/div/div[1]/label")
+    @FindBy(css = ".ng-tns-c47-3 .ng-star-inserted")
     private WebElement nameText;
     public WebElement getCardNumber() {
         return cardNumber;
@@ -40,6 +40,7 @@ public class PayFrame {
         return payForm.getText();
     }
     public String getTextButtonSum () {
+
         return payFormButton.getText();
     }
     public String getPayPhoneNumber () {
