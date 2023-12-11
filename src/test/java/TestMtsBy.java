@@ -27,32 +27,27 @@ public class TestMtsBy {
         payFrame = new PayFrame(webDriver);
         actions = new Actions(webDriver);
     }
-
     @BeforeEach
     public void before() {
         firstPage.getHeadPage();
         firstPage.acceptCookies();
     }
-
     @AfterAll
     public static void afterAll() {
         webDriver.quit();
     }
-
     @Test
     public void onlinePayTextTest() {
         String actual = firstPage.getPaySectionText();
         String expected = confProperties.getProperty("paySectionText");
         Assertions.assertEquals(expected, actual);
     }
-
     @Test
     public void payIconsTest() {
         int actual = firstPage.getQuantityPayIcons();
         int expected = Integer.parseInt(confProperties.getProperty("quantityPayIcons"));
         Assertions.assertEquals(actual, expected);
     }
-
     @Test
     public void moreAboutServiceHref() {
         firstPage.clickHrefMoreAboutService();
@@ -60,7 +55,6 @@ public class TestMtsBy {
         String expected = confProperties.getProperty("moreAboutServiceTitle");
         Assertions.assertEquals(actual, expected);
     }
-
     @Test
     public void payFormTest() {
         new WebDriverWait(webDriver, Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"pay-connection\"]/button")));
@@ -72,7 +66,6 @@ public class TestMtsBy {
         firstPage.checkPaidApp();
         Assertions.assertEquals(firstPage.getTextUseCard(), confProperties.getProperty("useCardText"));
     }
-
     @Test
     public void payTextTest() {
         String[] communicationServiceTexts = confProperties.getProperty("communicationServiceText").split(",");
