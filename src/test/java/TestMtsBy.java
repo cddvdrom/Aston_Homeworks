@@ -70,29 +70,19 @@ public class TestMtsBy {
         String[] homeInternetTexts = confProperties.getProperty("homeInternet").split(",");
         String[] paymentByInstallmentsTexts = confProperties.getProperty("paymentByInstallments").split(",");
         String[] debtTexts = confProperties.getProperty("debt").split(",");
-        firstPage.clickSelect();
-        firstPage.clickSelect1();
+
         for(int i=0;i<3;i++){
         Assertions.assertEquals(communicationServiceTexts[i], firstPage.getCommunicationService(i));
         }
-        firstPage.clickSelect();
-        firstPage.clickSelect2();
          for(int i=0;i<3;i++) {
              Assertions.assertEquals(homeInternetTexts[i], firstPage.getHomeInternet(i));
          }
-        firstPage.clickSelect();
-        firstPage.clickSelect3();
          for(int i=0;i<3;i++) {
              Assertions.assertEquals(paymentByInstallmentsTexts[i], firstPage.paymentByInstallments(i));
          }
-        firstPage.clickSelect();
-        firstPage.clickSelect4();
-
          for(int i=0;i<3;i++) {
              Assertions.assertEquals(debtTexts[i], firstPage.debt(i));
          }
-        firstPage.clickSelect();
-        firstPage.clickSelect1();
 
         firstPage.fillForm();
         String actualSum = payFrame.getTextSum();
