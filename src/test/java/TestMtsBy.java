@@ -88,9 +88,9 @@ public class TestMtsBy {
         firstPage.clickSelect();
         firstPage.clickSelect4();
 
-        Assertions.assertEquals(debtTexts[0], firstPage.debt(0));
-        Assertions.assertEquals(debtTexts[1], firstPage.debt(1));
-        Assertions.assertEquals(debtTexts[2], firstPage.debt(2));
+         for(int i=0;i<3;i++) {
+             Assertions.assertEquals(debtTexts[i], firstPage.debt(i));
+         }
         firstPage.clickSelect();
         firstPage.clickSelect1();
 
