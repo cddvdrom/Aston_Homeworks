@@ -6,12 +6,14 @@ import org.junit.jupiter.api.BeforeEach;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.boronin.pages.BasketPage;
 import ru.boronin.pages.HeadPage;
 
 
 public class TestPage {
     public static WebDriver driver;
     HeadPage headPage = new HeadPage(driver);
+    BasketPage basketPage = new BasketPage(driver);
 
     @BeforeAll
     static void beforeAll (){
