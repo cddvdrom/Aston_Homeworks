@@ -1,14 +1,12 @@
 package ru.boronin.test;
 
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import ru.boronin.pages.HeadPage;
 
-public class FunctionalTests extends TestHeadPage {
+public class FunctionalTests extends TestPage {
     @Test
     public void BasketTest() {
-
+        headPage.search().addProductsToBasket();
     }
 }
 

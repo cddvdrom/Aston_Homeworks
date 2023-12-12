@@ -9,9 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import ru.boronin.pages.HeadPage;
 
 
-public class TestHeadPage {
+public class TestPage {
     public static WebDriver driver;
-    HeadPage headPage = new HeadPage();
+    HeadPage headPage = new HeadPage(driver);
 
     @BeforeAll
     static void beforeAll (){
@@ -19,7 +19,7 @@ public class TestHeadPage {
     }
     @BeforeEach
     void openHeadPage (){
-     driver.get("https://wildberries.ru");
+     driver.manage().window().maximize();
     }
     @AfterEach
     void afterEach (){
