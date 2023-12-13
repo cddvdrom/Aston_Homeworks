@@ -17,14 +17,15 @@ import java.util.Map;
 public class HeadPage {
     public WebDriver driver;
     public Actions actions;
-    @FindBy(id = "searchInput")
-    public WebElement search;
     @FindBy(css = ".product-card__wrapper")
     public WebElement product;
-    By productCard = By.cssSelector(".product-card__wrapper");
+    public By productCard = By.cssSelector(".product-card__wrapper");
 
     @FindBy(css = ".hover .product-card__add-basket")
     public WebElement buttonToBasket;
+
+    @FindBy (xpath = "//a[@href='/lk/basket']")
+    WebElement basket;
 
     public By price = By.cssSelector(".price__lower-price");
     public By productName = By.cssSelector("a.product-card__link.j-card-link.j-open-full-product-card");
@@ -63,5 +64,8 @@ public class HeadPage {
     public void waitOfVisibility(WebElement element) {
         new WebDriverWait(driver, Duration.ofSeconds(4)).until
                 (ExpectedConditions.visibilityOf(element));
+    }
+    public void logIntoBasket () {
+    basket.click();
     }
 }
