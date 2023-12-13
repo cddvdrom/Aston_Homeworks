@@ -14,6 +14,9 @@ public class FunctionalTests extends TestPage {
         List<Map.Entry<String, String>> expectedEntries = new ArrayList<>(expectedMap.entrySet());
         List<Map.Entry<String, String>> actualEntries = new ArrayList<>(actualMap.entrySet());
 
+        System.out.println(expectedEntries);
+        System.out.println(actualEntries);
+
         for (int j = 0; j < expectedEntries.size() - 1; j++) {
             if (expectedEntries.get(j).getKey().toLowerCase().contains(actualEntries.get(j).getKey().toLowerCase())) {
                 expectedEntries.set(j, new AbstractMap.SimpleEntry<>(actualEntries.get(j).getKey(), actualEntries.get(j).getValue()));

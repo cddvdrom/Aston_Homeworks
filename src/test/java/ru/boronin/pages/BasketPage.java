@@ -35,6 +35,7 @@ public By brand = By.className("good-info__good-brand");
         Map<String, String> map = new TreeMap<>();
         for (WebElement item : items
         ) {
+            System.out.println(item.findElement(price).getText());
             String [] strings = (item.findElement(name).getText() +item.findElement(brand).getText()).split(",");
             map.put(
                      strings[0]+strings[1], item.findElement(price).getText()
