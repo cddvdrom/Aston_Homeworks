@@ -31,11 +31,11 @@ public By brand = By.className("good-info__good-brand");
         PageFactory.initElements(driver, this);
     }
     public Map<String, String> getBasketProducts() {
-        waitOfVisibility(basket);
+        waitOfVisibility(result);
         Map<String, String> map = new TreeMap<>();
         for (WebElement item : items
         ) {
-            System.out.println(item.findElement(price).getText());
+            waitOfVisibility(result);
             String [] strings = (item.findElement(name).getText() +item.findElement(brand).getText()).split(",");
             map.put(
                      strings[0]+strings[1], item.findElement(price).getText()
