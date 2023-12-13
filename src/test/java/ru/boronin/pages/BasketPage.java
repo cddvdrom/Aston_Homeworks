@@ -7,9 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -22,6 +20,8 @@ public class BasketPage {
     WebElement basket;
     @FindBy(css=".basket-section__header")
     WebElement quantity;
+    @FindBy (css = ".b-top__total.line span:nth-child(2)")
+    WebElement result;
 
     public By name = By.cssSelector("span.good-info__good-name");
     public By price = By.className("list-item__price-new");
@@ -48,5 +48,8 @@ public By brand = By.className("good-info__good-brand");
     }
     public String getQuantity (){
         return quantity.getAttribute("data-count");
+    }
+    public String getResultSum () {
+        return result.getText();
     }
 }

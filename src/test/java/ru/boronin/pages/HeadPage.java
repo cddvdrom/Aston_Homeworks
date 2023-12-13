@@ -44,11 +44,9 @@ public class HeadPage {
         waitOfVisibility(productList);
         return this;
     }
-
     public Map<String, String> addProductsToBasket() {
         waitOfVisibility(productList);
         Map<String, String> map = new TreeMap<>();
-
         int count = 0;
         for (WebElement x:products) {
             waitOfVisibility(productList);
@@ -64,24 +62,19 @@ public class HeadPage {
             if ( count == 5) {
                 break;}
         }
-
         return map;
     }
-
     public int getProductListSize() {
         return products.size();
     }
-
     public void waitOfPresent(By by) {
         new WebDriverWait(driver, Duration.ofSeconds(4)).until
                 (ExpectedConditions.presenceOfElementLocated(by));
     }
-
     public void waitOfVisibility(WebElement element) {
         new WebDriverWait(driver, Duration.ofSeconds(4)).until
                 (ExpectedConditions.visibilityOf(element));
     }
-
     public void logIntoBasket() {
         basket.click();
     }
