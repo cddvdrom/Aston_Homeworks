@@ -16,15 +16,17 @@ public class TestPage {
     public Utils utils = new Utils();
 
     @BeforeAll
-    static void beforeAll (){
-        driver=new ChromeDriver();
+    static void beforeAll() {
+        driver = new ChromeDriver();
     }
+
     @BeforeEach
-    void openHeadPage (){
-     driver.manage().window().maximize();
+    void openHeadPage() {
+        driver.manage().window().maximize();
     }
+
     @AfterEach
-    void afterEach () {
-            //driver.quit();
+    void afterEach() {
+       driver.quit();
     }
 }
