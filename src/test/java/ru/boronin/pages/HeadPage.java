@@ -48,19 +48,23 @@ public class HeadPage {
     public Map<String, String> addProductsToBasket() {
         waitOfVisibility(productList);
         Map<String, String> map = new TreeMap<>();
-        products.stream().forEach((x) -> {
-                    waitOfVisibility(productList);
-                    actions.scrollToElement(x);
-                    actions.moveToElement(x).perform();
-                    String string = x.findElement(productName).getAttribute("aria-label");
-                    String[] strings = string.split(",");
-                    string = String.join("", strings);
-                    map.put(string,
-                            x.findElement(price).getText());
-                    buttonToBasket.click();
 
-                }
-        );
+        int count = 0;
+        for (WebElement x:products) {
+            waitOfVisibility(productList);
+            actions.scrollToElement(x);
+            actions.moveToElement(x).build().perform();
+            String string = x.findElement(productName).getAttribute("aria-label");
+            String[] strings = string.split(",");
+            string = String.join("", strings);
+            map.put(string,
+                    x.findElement(price).getText());
+            buttonToBasket.click();
+            count ++;
+            if ( count == 5) {
+                break;}
+        }
+
         return map;
     }
 
