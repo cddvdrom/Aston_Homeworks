@@ -23,30 +23,34 @@ public class BasketPage {
     @FindBy (css = ".b-top__total.line span:nth-child(2)")
     WebElement result;
 
-    public By name = By.cssSelector("span.good-info__good-name");
-    public By price = By.className("list-item__price-new");
-public By brand = By.className("good-info__good-brand");
-    public BasketPage(WebDriver driver) {
+    public By nameSelector = By.cssSelector("span.good-info__good-name");
+    public By priceSelector = By.className("list-item__price-new");
+    public By brand = By.className("good-info__good-brand");
+    
+    public BasketPage (WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+    
     public Map<String, String> getBasketProducts() {
         waitOfVisibility(result);
         Map<String, String> map = new TreeMap<>();
         for (WebElement item : items
         ) {
             waitOfVisibility(result);
-            String [] strings = (item.findElement(name).getText() +item.findElement(brand).getText()).split(",");
+            String [] strings = (item.findElement(nameSelector).getText() +item.findElement(brand).getText()).split(",");
             map.put(
-                     strings[0]+strings[1], item.findElement(price).getText()
+                     strings[0]+strings[1], item.findElement(priceSelector).getText()
             );
         }
         return map;
     }
-    public void waitOfVisibility(WebElement element) {
+    
+    public void waitOfVisibility (WebElement element) {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until
                 (ExpectedConditions.visibilityOf(element));
     }
+    
     public String getQuantity (){
         return quantity.getAttribute("data-count");
     }

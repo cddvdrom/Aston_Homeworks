@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class HeadPage {
+    public final String url =  "https://www.wildberries.ru/catalog/0/search.aspx?search=";
     public WebDriver driver;
     public Actions actions;
     @FindBy(css = ".product-card__wrapper")
@@ -30,8 +31,8 @@ public class HeadPage {
     @FindBy(xpath = "//a[@href='/lk/basket']")
     WebElement basket;
 
-    public By price = By.cssSelector(".price__lower-price");
-    public By productName = By.cssSelector("a.product-card__link.j-card-link.j-open-full-product-card");
+    public By priceSelector = By.cssSelector(".price__lower-price");
+    public By productNameSelector = By.cssSelector("a.product-card__link.j-card-link.j-open-full-product-card");
 
     public HeadPage(WebDriver driver) {
         this.driver = driver;
@@ -40,7 +41,7 @@ public class HeadPage {
     }
 
     public HeadPage search() {
-        driver.get("https://www.wildberries.ru/catalog/0/search.aspx?search=" + TestData.item);
+        driver.get(url + TestData.item);
         waitOfVisibility(productList);
         return this;
     }
@@ -52,24 +53,17 @@ public class HeadPage {
             waitOfVisibility(productList);
             actions.scrollToElement(x);
             actions.moveToElement(x).build().perform();
-            String string = x.findElement(productName).getAttribute("aria-label");
+            String string = x.findElement(productNameSelector).getAttribute("aria-label");
             String[] strings = string.split(",");
             string = String.join("", strings);
             map.put(string,
-                    x.findElement(price).getText());
+                    x.findElement(priceSelector).getText());
             buttonToBasket.click();
             count ++;
             if ( count == 5) {
                 break;}
         }
         return map;
-    }
-    public int getProductListSize() {
-        return products.size();
-    }
-    public void waitOfPresent(By by) {
-        new WebDriverWait(driver, Duration.ofSeconds(4)).until
-                (ExpectedConditions.presenceOfElementLocated(by));
     }
     public void waitOfVisibility(WebElement element) {
         new WebDriverWait(driver, Duration.ofSeconds(4)).until
