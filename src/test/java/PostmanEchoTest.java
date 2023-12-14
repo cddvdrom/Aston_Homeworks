@@ -7,10 +7,6 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class PostmanEchoTest {
     private final static String URL = "https://postman-echo.com/";
-    public TestUtil utils;
-    public PostmanEchoTest() {
-        this.utils = new TestUtil();
-    }
     @Test
     public void getMethodTest() {
         RestAssured
@@ -57,7 +53,7 @@ public class PostmanEchoTest {
         given()
                 .body("hand-wave")
                 .when()
-                .post("https://postman-echo.com/post")
+                .post(URL + "post")
                 .then()
                 .log().all()
                 .statusCode(200)
@@ -72,7 +68,7 @@ public class PostmanEchoTest {
                 .multiPart("name","Denis")
                 .multiPart("age","48")
                 .when()
-                .post("https://postman-echo.com/post")
+                .post(URL+ "post")
                 .then()
                 .log().body()
                 .statusCode(200)
