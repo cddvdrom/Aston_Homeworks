@@ -42,7 +42,7 @@ public class PostmanEchoTest {
                 .body("args.foo1",equalTo("bar1"))
                 .body("args.foo2",equalTo("bar2"));;
     }
-   // @Test
+    @Test
     public void postMethodTest () {
         given()
                 .param("name", "Denis")
