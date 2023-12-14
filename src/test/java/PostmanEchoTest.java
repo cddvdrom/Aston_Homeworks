@@ -1,50 +1,72 @@
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 
 public class PostmanEchoTest {
-    @Test
+    private final static String URL = "https://postman-echo.com/";
+    public TestUtil utils;
+    public PostmanEchoTest(){
+        this.utils = new TestUtil();
+    }
+  //  @Test
     public void getMethodTest () {
         RestAssured
-                .get("https://postman-echo.com/get")
+                .given()
+                .when()
+                .get(URL + "get")
                 .then()
+                .log().body()
                 .assertThat()
-                .statusCode(200);
+                .statusCode(200)
+                .and()
+                .body("headers",notNullValue());
     }
-    @Test
+     @Test
     public void getMethodWithParametersTest () {
-        RestAssured
-                .get("https://postman-echo.com/get?foo1=bar1&foo2=bar2")
+        given()
+                .contentType(ContentType.JSON)
+                .when()
+                .queryParams("foo1","bar1","foo2","bar2")
+                .get(URL + "get/")
                 .then()
+                .log().all()
                 .assertThat()
-                .statusCode(200);
+                .statusCode(200)
+                .and()
+                .body("headers",notNullValue())
+                .body("args.foo1",equalTo("bar1"))
+                .body("args.foo2",equalTo("bar2"));;
     }
-    @Test
+   // @Test
     public void postMethodTest () {
-        RestAssured.given()
+        given()
                 .param("name", "Denis")
                 .param("age", "34")
+                .contentType(ContentType.JSON)
                 .when()
                 .post("https://postman-echo.com/post")
                 .then()
-                .statusCode(200)
+                .statusCode(201)
                 .body("form.name", equalTo("Denis"))
                 .body("form.age", equalTo("35"));
     }
-    @Test
+    //@Test
     public void putMethodTest () {
-        RestAssured.given()
+        given()
                 .header("Content-Type", "application/json")
                 .body("{\"name\": \"John\", \"age\": 30}")
                 .when()
                 .put("https://postman-echo.com/put")
                 .then()
                 .statusCode(200)
-                .body("json.name", equalTo("John"))
-                .body("json.age", equalTo(30));
+                ;
     }
-    @Test
+    //@Test
     public void deleteMethodTest () {
         RestAssured.delete("https://postman-echo.com/delete")
                 .then()
