@@ -106,16 +106,20 @@ public class PostmanEchoTest {
                 .then()
                 .log().all()
                 .statusCode(200)
+                .body("url", equalTo(URL + "put"))
                 .body("json.name",equalTo("Denis"))
                 .body("json.age",equalTo(48));
     }
 
-    //@Test
+    @Test
     public void deleteMethodTest() {
-        RestAssured.delete("https://postman-echo.com/delete")
+        RestAssured
+                .given()
+                .queryParam("id","5")
+                .delete(URL + "delete")
                 .then()
+                .log().all()
                 .statusCode(200)
-                .body("url", equalTo("/delete"));
+                .body("args.id",equalTo("5"));
     }
-
 }
