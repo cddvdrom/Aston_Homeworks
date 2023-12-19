@@ -11,10 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.boronin.test.TestData;
 
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class HeadPage {
     public final String url =  "https://www.wildberries.ru/catalog/0/search.aspx?search=";
@@ -45,7 +42,46 @@ public class HeadPage {
         waitOfVisibility(productList);
         return this;
     }
-    public Map<String, String> addProductsToBasket() {
+    public List<Map.Entry<String, String>> getProductsDataFromHeadPage () {
+        Map<String, String> map = new TreeMap<>();
+        int count = 0;
+        for (WebElement x:products) {
+            String string = x.findElement(productNameSelector).getAttribute("aria-label");
+            String[] strings = string.split(",");
+            string = String.join("", strings);
+            map.put(string,
+                    x.findElement(priceSelector).getText());
+            count ++;
+            if ( count == 5) {
+                break;}
+        }
+        List<Map.Entry<String, String>> entries = new ArrayList<>(map.entrySet());
+        return entries;
+
+    }
+    public void addProductsToBasket() {
+        int count = 0;
+        for (WebElement x:products) {
+            //waitOfVisibility(productList);
+            actions.scrollToElement(x);
+            actions.moveToElement(x).build().perform();
+            buttonToBasket.click();
+            count ++;
+            if ( count == 5) {
+                break;}
+        }
+    }
+    public void waitOfVisibility(WebElement element) {
+        new WebDriverWait(driver, Duration.ofSeconds(4)).until
+                (ExpectedConditions.visibilityOf(element));
+    }
+    public void logIntoBasket() {
+        basket.click();
+    }
+}
+
+/*
+public Map<String, String> addProductsToBasket() {
         waitOfVisibility(productList);
         Map<String, String> map = new TreeMap<>();
         int count = 0;
@@ -65,11 +101,4 @@ public class HeadPage {
         }
         return map;
     }
-    public void waitOfVisibility(WebElement element) {
-        new WebDriverWait(driver, Duration.ofSeconds(4)).until
-                (ExpectedConditions.visibilityOf(element));
-    }
-    public void logIntoBasket() {
-        basket.click();
-    }
-}
+*/

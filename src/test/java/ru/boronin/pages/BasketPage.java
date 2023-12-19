@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -32,7 +33,7 @@ public class BasketPage {
         PageFactory.initElements(driver, this);
     }
     
-    public Map<String, String> getBasketProducts() {
+    public List<Map.Entry<String, String>> getBasketProducts() {
         waitOfVisibility(result);
         Map<String, String> map = new TreeMap<>();
         for (WebElement item : items
@@ -43,7 +44,8 @@ public class BasketPage {
                      strings[0]+strings[1], item.findElement(priceSelector).getText()
             );
         }
-        return map;
+        List<Map.Entry<String, String>> entries = new ArrayList<>(map.entrySet());
+        return entries;
     }
     
     public void waitOfVisibility (WebElement element) {
