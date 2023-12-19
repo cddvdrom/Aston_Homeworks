@@ -12,7 +12,6 @@ public class FunctionalTests extends TestPage {
         headPage.logIntoBasket();
         List<Map.Entry<String, String>> productCardsFromBasket = basketPage.getBasketProducts();
         productsCardFromHeadPage = utils.castNames(productsCardFromHeadPage,productCardsFromBasket);
-
         Assertions.assertEquals(productsCardFromHeadPage, productCardsFromBasket);
 
         int actualQuantity = Integer.parseInt(basketPage.getQuantity());
